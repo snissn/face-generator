@@ -1,0 +1,54 @@
+<canvas height=400 width=400 id=c></canvas>
+<script>
+var c = document.getElementById("c");
+var ctx = c.getContext("2d");
+
+
+function call(fns,ctx){
+  ctx.beginPath();
+	const ret = fns[Math.floor(Math.random()*fns.length)](ctx)
+  ctx.stroke();
+	return ret;
+}
+
+function left_eyes(ctx){
+				const fns = [ 
+								function(ctx){ 
+								ctx.arc(150, 150, 5, 0, 2 * Math.PI); 
+								return 'Small Eyes';},
+								function(ctx){ 
+								ctx.arc(150, 150, 10, 0, 2 * Math.PI); 
+								return 'Medium Eyes';},
+								function(ctx){ 
+								ctx.arc(150, 150, 15, 0, 2 * Math.PI); 
+								return 'Large Eyes';}
+				]
+				return call(fns,ctx)
+}
+
+function right_eyes(ctx){
+				const fns = [ 
+								function(ctx){ 
+								ctx.arc(250, 150, 5, 0, 2 * Math.PI); 
+								return 'Small Eyes';},
+								function(ctx){ 
+								ctx.arc(250, 150, 10, 0, 2 * Math.PI); 
+								return 'Medium Eyes';},
+								function(ctx){ 
+								ctx.arc(250, 150, 15, 0, 2 * Math.PI); 
+								return 'Large Eyes';}
+				]
+				return call(fns,ctx)
+}
+function face(ctx){
+				const fns = [ 
+								function(ctx){ ctx.arc(200, 200, 100, 0, 2 * Math.PI); return 'Small Face';},
+								function(ctx){ ctx.arc(200, 200, 125, 0, 2 * Math.PI); return 'Medium Face';},
+								function(ctx){ ctx.arc(200, 200, 150, 0, 2 * Math.PI); return 'Large Face';}
+				]
+				return call(fns,ctx)
+}
+const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx)}
+console.log(features)
+document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
+</script>
