@@ -45,6 +45,21 @@ function right_eyes(ctx){
 				]
 				return call(fns,ctx)
 }
+
+
+function nose(ctx){
+	const fns = [
+	function(ctx){
+    ctx.moveTo(200, 200);
+    ctx.lineTo(200, 150);
+    ctx.moveTo(200, 200);
+    ctx.lineTo(220, 200);
+   	return 'small nose';
+	}
+	]
+				return call(fns,ctx)
+
+}
 function face(ctx){
 				const fns = [ 
 								function(ctx){ ctx.arc(200, 200, 100, 0, 2 * Math.PI); return 'Small Face';},
@@ -53,7 +68,7 @@ function face(ctx){
 				]
 				return call(fns,ctx)
 }
-const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx)}
+const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx)}
 console.log(features)
 document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
 </script>
