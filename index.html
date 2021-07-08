@@ -15,7 +15,6 @@ function call(fns,ctx){
   ctx.stroke();
 	return ret;
 }
-
 function left_eyes(ctx){
 				const fns = [ 
 								function(ctx){ 
@@ -277,21 +276,12 @@ function mustashe(ctx){
     	ctx.lineTo(275, 215);
 		return 'triangle stash';
 	},
-	function(ctx){
-		ctx.arc(167.5,225,15,1.3 * Math.PI,1.7 * Math.PI);
-		ctx.arc(232.5,225,15,1.3 * Math.PI,1.7 * Math.PI);
-
-    	// ctx.moveTo(125, 211);
-		// ctx.lineTo(152.5,211);
-
-		// ctx.moveTo(192.5,215);
-		// ctx.lineTo(222.5,215);
-
-		// ctx.moveTo(252.5,215)
-    	// ctx.lineTo(275, 215);
+	// function(ctx){
+	// 	ctx.moveTo(125, 215);
+    // 	ctx.lineTo(275, 215);
 		
-		return 'weird stash';
-	},
+	// 	return 'basic stash';
+	// },
 
 	
 	
@@ -307,5 +297,6 @@ function mustashe(ctx){
 
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
+document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3);
 document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
 </script>
