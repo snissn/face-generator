@@ -150,7 +150,14 @@ function face(ctx){
 				const fns = [ 
 								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); return 'Small Face';},
 								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); return 'Medium Face';},
-								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); return 'Large Face';}
+								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); return 'Large Face';},
+								function(ctx){ 
+									ctx.moveTo(25,25);
+									ctx.lineTo(375,25);
+									ctx.lineTo(200,400);
+									ctx.lineTo(25,25);
+									//ctx.triangle(45,45,375,45,210,365); 
+									return 'Pizza Face';}
 				]
 				return call(fns,ctx)
 }
@@ -208,9 +215,11 @@ function hat(ctx){
 
 function mouth(ctx){
 				const fns = [ 
-								function(ctx){ ctx.arc(190, 275, 50, 10, 2 * Math.PI); return 'Top Left Sad Mouth';},
-								function(ctx){ ctx.arc(200, 295, 50, 9.5, 2 * Math.PI, 0 * Math.PI); return 'Center Sad Mouth';},
-								function(ctx){ ctx.arc(200, 255, 50, 9.5, 2 * Math.PI, 1.5 * Math.PI); return 'Center Happy Mouth';},
+								function(ctx){ ctx.arc(190, 275, 50, 10, 2 * Math.PI); return ' Left Side Sad Mouth';},
+								function(ctx){ ctx.arc(200, 295, 50, 1 * Math.PI, 2 * Math.PI, 0 * Math.PI); return 'Center Sad Mouth';},
+								function(ctx){ ctx.arc(200, 255, 50, Math.PI, 2 * Math.PI, 1 * Math.PI); return 'Center Happy Mouth';},
+								function(ctx){ctx.arc(200,255,10,Math.PI,2 * Math.PI); return 'small sad mouth'},
+								function(ctx){ctx.arc(200,255,10,2 * Math.PI, Math.PI); return 'small happy mouth'},
 								function(ctx){ ctx.arc(200, 255, 10, 0, 2 * Math.PI); return 'Suprised Mouth';}
 				]
 				return call(fns,ctx)
