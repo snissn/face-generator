@@ -10,6 +10,10 @@ function getRandom(){
   return array[0]/(2**32);
 }
 
+function call(fns, ctx){
+	const calls = [ function(fns,ctx){callStroke(fns,ctx)}, function(fns,ctx){callFill(fns,ctx)}] 
+	return calls[Math.floor(getRandom()*calls.length)](fns,ctx)
+}
 function callStroke(fns,ctx){
   ctx.beginPath();
 	const ret = fns[Math.floor(getRandom()*fns.length)](ctx)
@@ -47,7 +51,7 @@ function left_eyes(ctx){
 								return 'Large Square Eyes';}
 								
 				]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 }
 
 function right_eyes(ctx){
@@ -71,7 +75,7 @@ function right_eyes(ctx){
 								ctx.rect(240, 140, 35, 35); 
 								return 'Large Square Eyes';},
 				]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 }
 
 
@@ -100,7 +104,7 @@ function nose(ctx){
    	return 'small left nose';
 	}
 	]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 
 }
 
@@ -126,7 +130,7 @@ function brow_left(ctx){
    	return 'suprised left eyebrow';
 	}
 	]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 
 }
 
@@ -151,7 +155,7 @@ function brow_right(ctx){
    	return 'suprised right eyebrow';
 	}
 	]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 
 }
 
@@ -223,7 +227,7 @@ function hat(ctx){
 								}
 							]
 								
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 }
 
 function mouth(ctx){
@@ -235,7 +239,7 @@ function mouth(ctx){
 								function(ctx){ctx.arc(200,255,10,2 * Math.PI, Math.PI); return 'small happy mouth'},
 								function(ctx){ ctx.arc(200, 255, 10, 0, 2 * Math.PI); return 'Suprised Mouth';}
 				]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 }
 
 function mustashe(ctx){
@@ -313,7 +317,7 @@ function mustashe(ctx){
 		return 'no stash';
 	}
 				]
-				return callFill(fns,ctx)
+				return call(fns,ctx)
 }
 
 
