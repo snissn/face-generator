@@ -295,6 +295,11 @@ function mustashe(ctx){
 
 
 
+
+// Now draw!
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, c.width, c.height);
+
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
 document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3);
