@@ -20,13 +20,23 @@ function left_eyes(ctx){
 				const fns = [ 
 								function(ctx){ 
 								ctx.arc(150, 150, 5, 0, 2 * Math.PI); 
-								return 'Small Eyes';},
+								return 'Small Circle Eyes';},
+								function(ctx){ 
+								ctx.rect(140, 140, 25, 25); 
+								return 'Small Square Eyes';},
 								function(ctx){ 
 								ctx.arc(150, 150, 10, 0, 2 * Math.PI); 
-								return 'Medium Eyes';},
+								return 'Medium Cicle Eyes';},
+								function(ctx){ 
+								ctx.rect(140, 140, 30, 30); 
+								return 'Medium Square Eyes';},
 								function(ctx){ 
 								ctx.arc(150, 150, 15, 0, 2 * Math.PI); 
-								return 'Large Eyes';}
+								return 'Large Circle Eyes';},
+								function(ctx){ 
+								ctx.rect(140, 140, 35, 35); 
+								return 'Large Square Eyes';}
+								
 				]
 				return call(fns,ctx)
 }
@@ -35,13 +45,22 @@ function right_eyes(ctx){
 				const fns = [ 
 								function(ctx){ 
 								ctx.arc(250, 150, 5, 0, 2 * Math.PI); 
-								return 'Small Eyes';},
+								return 'Small Circle Eyes';},
+								function(ctx){ 
+								ctx.rect(240, 140, 25, 25); 
+								return 'Small Square Eyes';},
 								function(ctx){ 
 								ctx.arc(250, 150, 10, 0, 2 * Math.PI); 
-								return 'Medium Eyes';},
+								return 'Medium Circle Eyes';},
+								function(ctx){ 
+								ctx.rect(240, 140, 30, 30); 
+								return 'Medium Square Eyes';},
 								function(ctx){ 
 								ctx.arc(250, 150, 15, 0, 2 * Math.PI); 
-								return 'Large Eyes';}
+								return 'Large Circle Eyes';},
+								function(ctx){ 
+								ctx.rect(240, 140, 35, 35); 
+								return 'Large Square Eyes';},
 				]
 				return call(fns,ctx)
 }
@@ -54,21 +73,230 @@ function nose(ctx){
     ctx.lineTo(200, 150);
     ctx.moveTo(200, 200);
     ctx.lineTo(220, 200);
-   	return 'small nose';
+   	return 'small right nose';
+	},
+	function(ctx){
+	ctx.moveTo(200,150);
+	ctx.lineTo(220,200);
+	ctx.moveTo(200,150);
+	ctx.lineTo(180,200);
+	ctx.lineTo(220,200);
+   	return 'small triangle nose';
+	},
+	function(ctx){
+    ctx.moveTo(200, 200);
+    ctx.lineTo(200, 150);
+    ctx.moveTo(200, 200);
+    ctx.lineTo(180, 200);
+   	return 'small left nose';
 	}
 	]
 				return call(fns,ctx)
 
 }
+
+function brow_left(ctx){
+	const fns = [
+	function(ctx){
+    ctx.moveTo(140, 125);
+    ctx.lineTo(160, 125);
+    
+   	return 'normal left eyebrow';
+	},
+	function(ctx){
+    ctx.moveTo(160, 105);
+    ctx.lineTo(180, 125);
+    
+   	return 'mad left eyebrow';
+	},
+
+	function(ctx){
+    ctx.moveTo(140, 105);
+    ctx.lineTo(160, 105);
+    
+   	return 'suprised left eyebrow';
+	}
+	]
+				return call(fns,ctx)
+
+}
+
+function brow_right(ctx){
+	const fns = [
+	function(ctx){
+    ctx.moveTo(240, 125);
+    ctx.lineTo(260, 125);
+    
+   	return 'normal right eyebrow';
+	},
+	function(ctx){
+    ctx.moveTo(220, 125);
+    ctx.lineTo(240, 105);
+    
+   	return 'mad right eyebrow';
+	},
+	function(ctx){
+    ctx.moveTo(240, 105);
+    ctx.lineTo(260, 105);
+    
+   	return 'suprised right eyebrow';
+	}
+	]
+				return call(fns,ctx)
+
+}
+
 function face(ctx){
 				const fns = [ 
-								function(ctx){ ctx.arc(200, 200, 100, 0, 2 * Math.PI); return 'Small Face';},
-								function(ctx){ ctx.arc(200, 200, 125, 0, 2 * Math.PI); return 'Medium Face';},
-								function(ctx){ ctx.arc(200, 200, 150, 0, 2 * Math.PI); return 'Large Face';}
+								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); return 'Small Face';},
+								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); return 'Medium Face';},
+								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); return 'Large Face';}
 				]
 				return call(fns,ctx)
 }
-const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx)}
+
+function hat(ctx){
+				const fns = [ 
+								function(ctx){ 
+									ctx.ellipse(200, 35, 15,5,00,0, 2 * Math.PI);	
+									ctx.moveTo(230,85);						
+									ctx.ellipse(200, 85, 30,5,00, 0, 2 * Math.PI); 
+									ctx.moveTo(185,35);
+									ctx.lineTo(185,90);
+									ctx.moveTo(215,35);
+									ctx.lineTo(215,90);
+									
+									return 'top hat'
+								},
+
+								function(ctx){ 
+									ctx.ellipse(200, 70, 25,5,00,0, 2 * Math.PI);	
+									ctx.moveTo(230,85);						
+									ctx.ellipse(200, 85, 30,5,00, 0, 2 * Math.PI); 
+									ctx.moveTo(175,70);
+									ctx.lineTo(175,88);
+									ctx.moveTo(225,70);
+									ctx.lineTo(225,88);
+									
+									return 'fedora'
+								},
+								function(ctx){ 
+									ctx.moveTo(170,85);
+									ctx.lineTo(230,85);
+									ctx.lineTo(230,55)
+									ctx.moveTo(170,85);
+									ctx.lineTo(170,55);
+									ctx.arc(170,45,10, .5* Math.PI, 1.5*Math.PI);
+									ctx.arc(230,45,10, 1.5 * Math.PI, .5 * Math.PI);
+									ctx.moveTo(170,75);
+									ctx.lineTo(230,75);
+
+					
+									
+									return 'cheif\'s hat'
+								},
+
+								function(ctx){ 
+									
+									
+									return 'no hat'
+								}
+							]
+								
+				return call(fns,ctx)
+}
+
+function mouth(ctx){
+				const fns = [ 
+								function(ctx){ ctx.arc(190, 275, 50, 10, 2 * Math.PI); return 'Top Left Sad Mouth';},
+								function(ctx){ ctx.arc(200, 295, 50, 9.5, 2 * Math.PI, 0 * Math.PI); return 'Center Sad Mouth';},
+								function(ctx){ ctx.arc(200, 255, 50, 9.5, 2 * Math.PI, 1.5 * Math.PI); return 'Center Happy Mouth';},
+								function(ctx){ ctx.arc(200, 255, 10, 0, 2 * Math.PI); return 'Suprised Mouth';}
+				]
+				return call(fns,ctx)
+}
+
+function mustashe(ctx){
+				const fns = [ 
+				function(ctx){
+    	ctx.moveTo(125, 215);
+    	ctx.lineTo(275, 215);
+		ctx.rect(115,205,10,10);
+		ctx.rect(275,205,10,10);
+		return 'small stash';
+	},
+	
+	function(ctx){
+				for (i=0; i< 145; i+=1) {
+					angle = 0.1 * i;
+					x=(1+angle)*Math.cos(angle);
+					y=(1+angle)*Math.sin(angle);
+					ctx.lineTo(275+x, 200+y);
+}
+		ctx.moveTo(125,200);
+				for (i=0; i< 145; i+=1) {
+					angle = 0.1 * i;
+					x=(1+angle)*Math.sin(angle-20.5);
+					y=(1+angle)*Math.cos(angle-20.5);
+					ctx.lineTo(125+x, 200+y);
+	}
+
+	
+
+		ctx.moveTo(125, 215);
+    	ctx.lineTo(275, 215);
+		return 'spiral stash';
+	},
+	function(ctx){
+				for (i=0; i< 145; i+=20) {
+					angle = 0.1 * i;
+					x=(1+angle)*Math.cos(angle+1.24);
+					y=(1+angle)*Math.sin(angle+1.24);
+					ctx.lineTo(287+x, 207.8+y);
+}
+		ctx.moveTo(113,207.8);
+				for (i=0; i< 145; i+=20) {
+					angle = 0.1 * i;
+					x=(1+angle)*Math.sin(angle-.35);
+					y=(1+angle)*Math.cos(angle-.35);
+					ctx.lineTo(113+x, 207.8+y);
+	}
+
+	
+
+		ctx.moveTo(125, 215);
+    	ctx.lineTo(275, 215);
+		return 'triangle stash';
+	},
+	function(ctx){
+		ctx.arc(167.5,225,15,1.3 * Math.PI,1.7 * Math.PI);
+		ctx.arc(232.5,225,15,1.3 * Math.PI,1.7 * Math.PI);
+
+    	// ctx.moveTo(125, 211);
+		// ctx.lineTo(152.5,211);
+
+		// ctx.moveTo(192.5,215);
+		// ctx.lineTo(222.5,215);
+
+		// ctx.moveTo(252.5,215)
+    	// ctx.lineTo(275, 215);
+		
+		return 'weird stash';
+	},
+
+	
+	
+	function(ctx){
+    	
+		return 'no stash';
+	}
+				]
+				return call(fns,ctx)
+}
+
+
+
+const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
 document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
 </script>
