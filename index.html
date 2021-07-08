@@ -3,16 +3,25 @@
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 
+
 function getRandom(){
   var array = new Uint32Array(1);
   window.crypto.getRandomValues(array);
   return array[0]/(2**32);
 }
 
-function call(fns,ctx){
+function callStroke(fns,ctx){
   ctx.beginPath();
 	const ret = fns[Math.floor(getRandom()*fns.length)](ctx)
   ctx.stroke();
+	return ret;
+}
+
+function callFill(fns,ctx){
+  ctx.beginPath();
+	const ret = fns[Math.floor(getRandom()*fns.length)](ctx)
+  ctx.stroke();
+  ctx.fill();
 	return ret;
 }
 
@@ -38,7 +47,7 @@ function left_eyes(ctx){
 								return 'Large Square Eyes';}
 								
 				]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 }
 
 function right_eyes(ctx){
@@ -62,7 +71,7 @@ function right_eyes(ctx){
 								ctx.rect(240, 140, 35, 35); 
 								return 'Large Square Eyes';},
 				]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 }
 
 
@@ -91,7 +100,7 @@ function nose(ctx){
    	return 'small left nose';
 	}
 	]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 
 }
 
@@ -117,7 +126,7 @@ function brow_left(ctx){
    	return 'suprised left eyebrow';
 	}
 	]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 
 }
 
@@ -142,7 +151,7 @@ function brow_right(ctx){
    	return 'suprised right eyebrow';
 	}
 	]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 
 }
 
@@ -159,7 +168,11 @@ function face(ctx){
 									//ctx.triangle(45,45,375,45,210,365); 
 									return 'Pizza Face';}
 				]
-				return call(fns,ctx)
+				ctx.lineWidth=4;
+				const ret = callStroke(fns,ctx)
+				ctx.lineWidth=2;
+				return ret;
+
 }
 
 function hat(ctx){
@@ -210,7 +223,7 @@ function hat(ctx){
 								}
 							]
 								
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 }
 
 function mouth(ctx){
@@ -222,7 +235,7 @@ function mouth(ctx){
 								function(ctx){ctx.arc(200,255,10,2 * Math.PI, Math.PI); return 'small happy mouth'},
 								function(ctx){ ctx.arc(200, 255, 10, 0, 2 * Math.PI); return 'Suprised Mouth';}
 				]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 }
 
 function mustashe(ctx){
@@ -300,7 +313,7 @@ function mustashe(ctx){
 		return 'no stash';
 	}
 				]
-				return call(fns,ctx)
+				return callFill(fns,ctx)
 }
 
 
@@ -309,6 +322,7 @@ function mustashe(ctx){
 // Now draw!
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, c.width, c.height);
+ctx.fillStyle = "black";
 
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
