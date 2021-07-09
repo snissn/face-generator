@@ -3,16 +3,29 @@
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 
+
 function getRandom(){
   var array = new Uint32Array(1);
   window.crypto.getRandomValues(array);
   return array[0]/(2**32);
 }
 
-function call(fns,ctx){
+function call(fns, ctx){
+	const calls = [ function(fns,ctx){callStroke(fns,ctx)}, function(fns,ctx){callFill(fns,ctx)}] 
+	return calls[Math.floor(getRandom()*calls.length)](fns,ctx)
+}
+function callStroke(fns,ctx){
   ctx.beginPath();
 	const ret = fns[Math.floor(getRandom()*fns.length)](ctx)
   ctx.stroke();
+	return ret;
+}
+
+function callFill(fns,ctx){
+  ctx.beginPath();
+	const ret = fns[Math.floor(getRandom()*fns.length)](ctx)
+  ctx.stroke();
+  ctx.fill();
 	return ret;
 }
 function left_eyes(ctx){
@@ -158,7 +171,11 @@ function face(ctx){
 									//ctx.triangle(45,45,375,45,210,365); 
 									return 'Pizza Face';}
 				]
-				return call(fns,ctx)
+				ctx.lineWidth=4;
+				const ret = callStroke(fns,ctx)
+				ctx.lineWidth=2;
+				return ret;
+
 }
 
 function hat(ctx){
@@ -299,6 +316,7 @@ function mustashe(ctx){
 // Now draw!
 ctx.fillStyle = "white";
 ctx.fillRect(0, 0, c.width, c.height);
+ctx.fillStyle = "black";
 
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
