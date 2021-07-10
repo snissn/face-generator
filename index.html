@@ -655,7 +655,19 @@ function mustashe(ctx){
 		return 'no stash';
 	}
 				]
-				return call(fns,ctx)
+
+	const fns1 = [
+	function(ctx){
+    	
+		return 'no stash';
+	}
+	]
+	if(gender){
+					return call(fns1,ctx);
+				}
+				else {
+					return call(fns,ctx);
+				}
 }
 
 
