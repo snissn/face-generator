@@ -2,12 +2,42 @@
 <script>
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
+ctx.lineWidth =4;
 
 function getRandom(){
   var array = new Uint32Array(1);
   window.crypto.getRandomValues(array);
   return array[0]/(2**32);
 }
+function getRandomBackground(){
+	let colors = ['#0528F2','#4CB1F7','#FFC700','#021E73','#001131']
+  		return colors[Math.floor(Math.random()* 5)]; 
+	
+}
+
+/*function getRandomColor(){
+	random = Math.floor(Math.random()* 3);
+	if (random == 0){
+		return "white";
+	}
+
+	else if (random == 1){
+		//return "black";
+		return 'white';
+	}
+
+	else{
+		var letters = '0123456789ABCDEF';
+  		var color = '#';
+  		for (var i = 0; i < 6; i++) {
+    		color += letters[Math.floor(Math.random() * 16)];
+  		}
+	
+  return color;
+  //return 'white';
+
+	}
+} */
 
 function call(fns,ctx){
   ctx.beginPath();
@@ -15,25 +45,47 @@ function call(fns,ctx){
   ctx.stroke();
 	return ret;
 }
+
+ctx.fillStyle = "blue";
+ctx.rect(10, 10, 30, 30);
+//ctx.fill();
+
 function left_eyes(ctx){
 				const fns = [ 
-								function(ctx){ 
+							 	function(ctx){ 
 								ctx.arc(150, 150, 5, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Small Circle Eyes';},
+
 								function(ctx){ 
 								ctx.rect(140, 140, 25, 25); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Small Square Eyes';},
+
 								function(ctx){ 
 								ctx.arc(150, 150, 10, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Medium Cicle Eyes';},
+
 								function(ctx){ 
 								ctx.rect(140, 140, 30, 30); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Medium Square Eyes';},
+
 								function(ctx){ 
 								ctx.arc(150, 150, 15, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Large Circle Eyes';},
+
 								function(ctx){ 
-								ctx.rect(140, 140, 35, 35); 
+								ctx.rect(140, 140, 35, 35);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
 								return 'Large Square Eyes';}
 								
 				]
@@ -44,21 +96,38 @@ function right_eyes(ctx){
 				const fns = [ 
 								function(ctx){ 
 								ctx.arc(250, 150, 5, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Small Circle Eyes';},
+
 								function(ctx){ 
 								ctx.rect(240, 140, 25, 25); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Small Square Eyes';},
+								
 								function(ctx){ 
 								ctx.arc(250, 150, 10, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Medium Circle Eyes';},
+
 								function(ctx){ 
 								ctx.rect(240, 140, 30, 30); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Medium Square Eyes';},
+
 								function(ctx){ 
 								ctx.arc(250, 150, 15, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Large Circle Eyes';},
+
 								function(ctx){ 
 								ctx.rect(240, 140, 35, 35); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Large Square Eyes';},
 				]
 				return call(fns,ctx)
@@ -72,6 +141,7 @@ function nose(ctx){
     ctx.lineTo(200, 150);
     ctx.moveTo(200, 200);
     ctx.lineTo(220, 200);
+	
    	return 'small right nose';
 	},
 	function(ctx){
@@ -80,6 +150,8 @@ function nose(ctx){
 	ctx.moveTo(200,150);
 	ctx.lineTo(180,200);
 	ctx.lineTo(220,200);
+	ctx.fillStyle = getRandomBackground();
+								ctx.fill();
    	return 'small triangle nose';
 	},
 	function(ctx){
@@ -147,14 +219,26 @@ function brow_right(ctx){
 
 function face(ctx){
 				const fns = [ 
-								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); return 'Small Face';},
-								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); return 'Medium Face';},
-								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); return 'Large Face';},
+					
+								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
+									ctx.fillStyle = getRandomBackground();
+									ctx.fill();
+									return 'Small Face';},
+								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); 
+									ctx.fillStyle = getRandomBackground();
+									ctx.fill();		
+									return 'Medium Face';},
+								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); 
+									ctx.fillStyle = getRandomBackground();
+									ctx.fill();
+									return 'Large Face';},
 								function(ctx){ 
 									ctx.moveTo(25,25);
 									ctx.lineTo(375,25);
 									ctx.lineTo(200,400);
 									ctx.lineTo(25,25);
+									ctx.fillStyle = getRandomBackground();
+									ctx.fill();
 									//ctx.triangle(45,45,375,45,210,365); 
 									return 'Pizza Face';}
 				]
@@ -164,13 +248,20 @@ function face(ctx){
 function hat(ctx){
 				const fns = [ 
 								function(ctx){ 
+									ctx.fillStyle = getRandomBackground();
+									ctx.rect(185,35,30,54);
+									ctx.fill();
+									ctx.moveTo(185,35);
 									ctx.ellipse(200, 35, 15,5,00,0, 2 * Math.PI);	
-									ctx.moveTo(230,85);						
+									ctx.moveTo(230,85);	
+									ctx.fill();					
 									ctx.ellipse(200, 85, 30,5,00, 0, 2 * Math.PI); 
+									ctx.fill();
 									ctx.moveTo(185,35);
 									ctx.lineTo(185,90);
 									ctx.moveTo(215,35);
 									ctx.lineTo(215,90);
+									ctx.fill();
 									
 									return 'top hat'
 								},
@@ -179,14 +270,19 @@ function hat(ctx){
 									ctx.ellipse(200, 70, 25,5,00,0, 2 * Math.PI);	
 									ctx.moveTo(230,85);						
 									ctx.ellipse(200, 85, 30,5,00, 0, 2 * Math.PI); 
+									ctx.fillStyle = 'white';
+									ctx.fill();
 									ctx.moveTo(175,70);
 									ctx.lineTo(175,88);
 									ctx.moveTo(225,70);
 									ctx.lineTo(225,88);
+									ctx.fill();
 									
 									return 'fedora'
 								},
 								function(ctx){ 
+									ctx.fillStyle = 'white';
+									
 									ctx.moveTo(170,85);
 									ctx.lineTo(230,85);
 									ctx.lineTo(230,55)
@@ -196,6 +292,7 @@ function hat(ctx){
 									ctx.arc(230,45,10, 1.5 * Math.PI, .5 * Math.PI);
 									ctx.moveTo(170,75);
 									ctx.lineTo(230,75);
+									ctx.fill();
 
 					
 									
@@ -214,12 +311,35 @@ function hat(ctx){
 
 function mouth(ctx){
 				const fns = [ 
-								function(ctx){ ctx.arc(190, 275, 50, 10, 2 * Math.PI); return ' Left Side Sad Mouth';},
-								function(ctx){ ctx.arc(200, 295, 50, 1 * Math.PI, 2 * Math.PI, 0 * Math.PI); return 'Center Sad Mouth';},
-								function(ctx){ ctx.arc(200, 255, 50, Math.PI, 2 * Math.PI, 1 * Math.PI); return 'Center Happy Mouth';},
-								function(ctx){ctx.arc(200,255,10,Math.PI,2 * Math.PI); return 'small sad mouth'},
-								function(ctx){ctx.arc(200,255,10,2 * Math.PI, Math.PI); return 'small happy mouth'},
-								function(ctx){ ctx.arc(200, 255, 10, 0, 2 * Math.PI); return 'Suprised Mouth';}
+								function(ctx){ ctx.arc(190, 275, 50, 10, 2 * Math.PI);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return ' Left Side Sad Mouth';},
+
+								function(ctx){ ctx.arc(200, 295, 50, 1 * Math.PI, 2 * Math.PI, 0 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Center Sad Mouth';},
+
+								function(ctx){ ctx.arc(200, 255, 50, Math.PI, 2 * Math.PI, 1 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();	
+								return 'Center Happy Mouth';},
+
+								function(ctx){ctx.arc(200,255,10,Math.PI,2 * Math.PI);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'small sad mouth'},
+
+								function(ctx){ctx.arc(200,255,10,2 * Math.PI, Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'small happy mouth'},
+
+								function(ctx){ ctx.arc(200, 255, 10, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Suprised Mouth';}
 				]
 				return call(fns,ctx)
 }
@@ -231,6 +351,8 @@ function mustashe(ctx){
     	ctx.lineTo(275, 215);
 		ctx.rect(115,205,10,10);
 		ctx.rect(275,205,10,10);
+		ctx.fillStyle = getRandomBackground();
+		ctx.fill();
 		return 'small stash';
 	},
 	
@@ -255,27 +377,27 @@ function mustashe(ctx){
     	ctx.lineTo(275, 215);
 		return 'spiral stash';
 	},
-	function(ctx){
-				for (i=0; i< 145; i+=20) {
-					angle = 0.1 * i;
-					x=(1+angle)*Math.cos(angle+1.24);
-					y=(1+angle)*Math.sin(angle+1.24);
-					ctx.lineTo(287+x, 207.8+y);
-}
-		ctx.moveTo(113,207.8);
-				for (i=0; i< 145; i+=20) {
-					angle = 0.1 * i;
-					x=(1+angle)*Math.sin(angle-.35);
-					y=(1+angle)*Math.cos(angle-.35);
-					ctx.lineTo(113+x, 207.8+y);
-	}
+// 	function(ctx){
+// 				for (i=0; i< 145; i+=20) {
+// 					angle = 0.1 * i;
+// 					x=(1+angle)*Math.cos(angle+1.24);
+// 					y=(1+angle)*Math.sin(angle+1.24);
+// 					ctx.lineTo(287+x, 207.8+y);
+// }
+// 		ctx.moveTo(113,207.8);
+// 				for (i=0; i< 145; i+=20) {
+// 					angle = 0.1 * i;
+// 					x=(1+angle)*Math.sin(angle-.35);
+// 					y=(1+angle)*Math.cos(angle-.35);
+// 					ctx.lineTo(113+x, 207.8+y);
+// 	}
 
 	
 
-		ctx.moveTo(125, 215);
-    	ctx.lineTo(275, 215);
-		return 'triangle stash';
-	},
+// 		ctx.moveTo(125, 215);
+//     	ctx.lineTo(275, 215);
+// 		return 'triangle stash';
+// 	},
 	// function(ctx){
 	// 	ctx.moveTo(125, 215);
     // 	ctx.lineTo(275, 215);
@@ -297,11 +419,12 @@ function mustashe(ctx){
 
 
 // Now draw!
-ctx.fillStyle = "white";
+ctx.fillStyle = getRandomBackground();
 ctx.fillRect(0, 0, c.width, c.height);
 
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
-document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3);
+document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81);
 document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
+document.write(getRandomBackground());
 </script>
