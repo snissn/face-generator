@@ -2,6 +2,7 @@
 <script>
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
+var gender = Math.floor(Math.random()* 2);
 ctx.lineWidth =4;
 ctx.strokeStyle = '#001131';
 
@@ -54,6 +55,7 @@ ctx.rect(10, 10, 30, 30);
 
 function left_eyes(ctx){
 				const fns = [ 
+
 							 	function(ctx){ 
 								ctx.arc(150, 150, 5, 0, 2 * Math.PI); 
 								ctx.fillStyle = getRandomBackground();
@@ -91,7 +93,126 @@ function left_eyes(ctx){
 								return 'Large Square Eyes';}
 								
 				]
-				return call(fns,ctx)
+				const fns1 = [
+								
+				function(ctx){ 
+								ctx.arc(150, 150, 5, 0, 2 * Math.PI);
+								ctx.moveTo(150,145);
+								ctx.lineTo(150,135); 
+								ctx.moveTo(150+(5*Math.cos(Math.PI/3)),150-(5*Math.sin(Math.PI/3)));
+								ctx.lineTo(150+(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.moveTo(150+(5*Math.cos(Math.PI/6)),150-(5*Math.sin(Math.PI/6)));
+								ctx.lineTo(150+(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.moveTo(150-(5*Math.cos(Math.PI/3)),150-(5*Math.sin(Math.PI/3)));
+								ctx.lineTo(150-(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.moveTo(150-(5*Math.cos(Math.PI/6)),150-(5*Math.sin(Math.PI/6)));
+								ctx.lineTo(150-(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Small Female Circle Eyes';},
+				function(ctx){ 
+							ctx.rect(140, 140, 25, 25);
+
+								ctx.moveTo(140,140);
+								ctx.lineTo(140,130);
+
+								ctx.moveTo(146.25,140);
+								ctx.lineTo(146.25,130);
+
+								ctx.moveTo(152.5,140);
+								ctx.lineTo(152.5,130);
+
+								ctx.moveTo(158.75,140);
+								ctx.lineTo(158.75,130);
+
+								ctx.moveTo(165,140);
+								ctx.lineTo(165,130);
+
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return 'Small Female Square Eyes';},
+								
+
+				function(ctx){ 
+								ctx.arc(150, 150, 10, 0, 2 * Math.PI);
+								ctx.moveTo(150,140);
+								ctx.lineTo(150,130); 
+								ctx.moveTo(150+(10*Math.cos(Math.PI/3)),150-(10*Math.sin(Math.PI/3)));
+								ctx.lineTo(150+(20*Math.cos(Math.PI/3)),150-(20*Math.sin(Math.PI/3)));
+								ctx.moveTo(150+(10*Math.cos(Math.PI/6)),150-(10*Math.sin(Math.PI/6)));
+								ctx.lineTo(150+(20*Math.cos(Math.PI/6)),150-(20*Math.sin(Math.PI/6)));
+								ctx.moveTo(150-(10*Math.cos(Math.PI/3)),150-(10*Math.sin(Math.PI/3)));
+								ctx.lineTo(150-(20*Math.cos(Math.PI/3)),150-(20*Math.sin(Math.PI/3)));
+								ctx.moveTo(150-(10*Math.cos(Math.PI/6)),150-(10*Math.sin(Math.PI/6)));
+								ctx.lineTo(150-(20*Math.cos(Math.PI/6)),150-(20*Math.sin(Math.PI/6)));
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Medium Female Circle Eyes';},
+					function(ctx){ 
+							ctx.rect(140, 140, 30, 30);
+
+								ctx.moveTo(140,140);
+								ctx.lineTo(140,130);
+
+								ctx.moveTo(147.5,140);
+								ctx.lineTo(147.5,130);
+
+								ctx.moveTo(155,140);
+								ctx.lineTo(155,130);
+
+								ctx.moveTo(162.5,140);
+								ctx.lineTo(162.5,130);
+
+								ctx.moveTo(170,140);
+								ctx.lineTo(170,130);
+
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return 'Medium Female Square Eyes';},
+				function(ctx){ 
+								ctx.arc(150, 150, 15, 0, 2 * Math.PI);
+								ctx.moveTo(150,135);
+								ctx.lineTo(150,125); 
+								ctx.moveTo(150+(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.lineTo(150+(25*Math.cos(Math.PI/3)),150-(25*Math.sin(Math.PI/3)));
+								ctx.moveTo(150+(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.lineTo(150+(25*Math.cos(Math.PI/6)),150-(25*Math.sin(Math.PI/6)));
+								ctx.moveTo(150-(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.lineTo(150-(25*Math.cos(Math.PI/3)),150-(25*Math.sin(Math.PI/3)));
+								ctx.moveTo(150-(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.lineTo(150-(25*Math.cos(Math.PI/6)),150-(25*Math.sin(Math.PI/6)));
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Large Female Circle Eyes';},
+				function(ctx){ 
+								ctx.rect(140, 140, 35, 35);
+
+								ctx.moveTo(140,140);
+								ctx.lineTo(140,130);
+
+								ctx.moveTo(149,140);
+								ctx.lineTo(149,130);
+
+								ctx.moveTo(158,140);
+								ctx.lineTo(158,130);
+
+								ctx.moveTo(167,140);
+								ctx.lineTo(167,130);
+
+								ctx.moveTo(175,140);
+								ctx.lineTo(175,130);
+
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return 'Large Female Square Eyes';}
+
+				]
+				if(gender == 0){
+					return call(fns,ctx);
+				}
+				else {
+					return call(fns1,ctx);
+				}
 }
 
 function right_eyes(ctx){
@@ -132,7 +253,127 @@ function right_eyes(ctx){
 								ctx.fill();
 								return 'Large Square Eyes';},
 				]
-				return call(fns,ctx)
+				const fns1 = [
+								
+				function(ctx){ 
+								ctx.arc(250, 150, 5, 0, 2 * Math.PI);
+								ctx.moveTo(250,145);
+								ctx.lineTo(250,135); 
+								ctx.moveTo(250+(5*Math.cos(Math.PI/3)),150-(5*Math.sin(Math.PI/3)));
+								ctx.lineTo(250+(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.moveTo(250+(5*Math.cos(Math.PI/6)),150-(5*Math.sin(Math.PI/6)));
+								ctx.lineTo(250+(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.moveTo(250-(5*Math.cos(Math.PI/3)),150-(5*Math.sin(Math.PI/3)));
+								ctx.lineTo(250-(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.moveTo(250-(5*Math.cos(Math.PI/6)),150-(5*Math.sin(Math.PI/6)));
+								ctx.lineTo(250-(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Small Female Circle Eyes';},
+				function(ctx){ 
+							ctx.rect(240, 140, 25, 25);
+
+								ctx.moveTo(240,140);
+								ctx.lineTo(240,130);
+
+								ctx.moveTo(246.25,140);
+								ctx.lineTo(246.25,130);
+
+								ctx.moveTo(252.5,140);
+								ctx.lineTo(252.5,130);
+
+								ctx.moveTo(258.75,140);
+								ctx.lineTo(258.75,130);
+
+								ctx.moveTo(265,140);
+								ctx.lineTo(265,130);
+
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return 'Small Female Square Eyes';},
+								
+
+				function(ctx){ 
+								ctx.arc(250, 150, 10, 0, 2 * Math.PI);
+								ctx.moveTo(250,140);
+								ctx.lineTo(250,130); 
+								ctx.moveTo(250+(10*Math.cos(Math.PI/3)),150-(10*Math.sin(Math.PI/3)));
+								ctx.lineTo(250+(20*Math.cos(Math.PI/3)),150-(20*Math.sin(Math.PI/3)));
+								ctx.moveTo(250+(10*Math.cos(Math.PI/6)),150-(10*Math.sin(Math.PI/6)));
+								ctx.lineTo(250+(20*Math.cos(Math.PI/6)),150-(20*Math.sin(Math.PI/6)));
+								ctx.moveTo(250-(10*Math.cos(Math.PI/3)),150-(10*Math.sin(Math.PI/3)));
+								ctx.lineTo(250-(20*Math.cos(Math.PI/3)),150-(20*Math.sin(Math.PI/3)));
+								ctx.moveTo(250-(10*Math.cos(Math.PI/6)),150-(10*Math.sin(Math.PI/6)));
+								ctx.lineTo(250-(20*Math.cos(Math.PI/6)),150-(20*Math.sin(Math.PI/6)));
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Medium Female Circle Eyes';},
+					function(ctx){ 
+							ctx.rect(240, 140, 30, 30);
+
+								ctx.moveTo(240,140);
+								ctx.lineTo(240,130);
+
+								ctx.moveTo(247.5,140);
+								ctx.lineTo(247.5,130);
+
+								ctx.moveTo(255,140);
+								ctx.lineTo(255,130);
+
+								ctx.moveTo(262.5,140);
+								ctx.lineTo(262.5,130);
+
+								ctx.moveTo(270,140);
+								ctx.lineTo(270,130);
+
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return 'Medium Female Square Eyes';},
+				function(ctx){ 
+								ctx.arc(250, 150, 15, 0, 2 * Math.PI);
+								ctx.moveTo(250,135);
+								ctx.lineTo(250,125); 
+								ctx.moveTo(250+(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.lineTo(250+(25*Math.cos(Math.PI/3)),150-(25*Math.sin(Math.PI/3)));
+								ctx.moveTo(250+(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.lineTo(250+(25*Math.cos(Math.PI/6)),150-(25*Math.sin(Math.PI/6)));
+								ctx.moveTo(250-(15*Math.cos(Math.PI/3)),150-(15*Math.sin(Math.PI/3)));
+								ctx.lineTo(250-(25*Math.cos(Math.PI/3)),150-(25*Math.sin(Math.PI/3)));
+								ctx.moveTo(250-(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
+								ctx.lineTo(250-(25*Math.cos(Math.PI/6)),150-(25*Math.sin(Math.PI/6)));
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								return 'Large Female Circle Eyes';},
+				function(ctx){ 
+								ctx.rect(240, 140, 35, 35);
+
+								ctx.moveTo(240,140);
+								ctx.lineTo(240,130);
+
+								ctx.moveTo(249,140);
+								ctx.lineTo(249,130);
+
+								ctx.moveTo(258,140);
+								ctx.lineTo(258,130);
+
+								ctx.moveTo(267,140);
+								ctx.lineTo(267,130);
+
+								ctx.moveTo(275,140);
+								ctx.lineTo(275,130);
+
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill(); 
+								return 'Large Female Square Eyes';}
+
+				]
+
+				if(gender == 0){
+					return call(fns,ctx);
+				}
+				else {
+					return call(fns1,ctx);
+				}
 }
 
 
