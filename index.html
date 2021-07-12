@@ -513,22 +513,30 @@ function hat(ctx){
 									return 'top hat'
 									},
 
+
 								function(ctx){ 
-									ctx.ellipse(200, 70, 25,5,00,0, 2 * Math.PI);	
-									ctx.moveTo(230,85);						
-									ctx.ellipse(200, 85, 30,5,00, 0, 2 * Math.PI); 
-									//ctx.fillStyle = 'white';
 									ctx.fillStyle = getRandomBackground();
+
+   								ctx.beginPath()
+									ctx.ellipse(200, 85, 45,10,00, 0, 2 * Math.PI); 
 									ctx.fill();
-									ctx.moveTo(175,70);
-									ctx.lineTo(175,88);
-									ctx.moveTo(225,70);
-									ctx.lineTo(225,88);
+									ctx.stroke();
+
+									ctx.beginPath()
+									ctx.rect(175, 70, 50, 18);
 									ctx.fill();
-									ctx.fillRect(175, 70, 50, 18);
+									ctx.stroke();
+
+									ctx.beginPath()
+									ctx.ellipse(200, 70, 25,5,00,0, 2 * Math.PI);	
+									ctx.stroke()
+									ctx.fill();
 									
 									return 'fedora'
 									},
+
+
+
 
 
 
