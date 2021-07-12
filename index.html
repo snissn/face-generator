@@ -490,24 +490,28 @@ function face(ctx){
 
 function hat(ctx){
 				const fns = [ 
+
 								function(ctx){ 
 									ctx.fillStyle = getRandomBackground();
+
+
+									ctx.beginPath();
+									ctx.ellipse(200, 88, 35,12,00, 0, 2 * Math.PI); 
+									ctx.fill();
+									ctx.stroke();
+
+									ctx.beginPath();
 									ctx.rect(185,35,30,54);
 									ctx.fill();
-									ctx.moveTo(185,35);
+									ctx.stroke();
+
+									ctx.beginPath();
 									ctx.ellipse(200, 35, 15,5,00,0, 2 * Math.PI);	
-									ctx.moveTo(230,85);	
+									ctx.stroke();
 									ctx.fill();					
-									ctx.ellipse(200, 85, 30,5,00, 0, 2 * Math.PI); 
-									ctx.fill();
-									ctx.moveTo(185,35);
-									ctx.lineTo(185,90);
-									ctx.moveTo(215,35);
-									ctx.lineTo(215,90);
-									ctx.fill();
-									
+
 									return 'top hat'
-								},
+									},
 
 								function(ctx){ 
 									ctx.ellipse(200, 70, 25,5,00,0, 2 * Math.PI);	
