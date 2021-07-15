@@ -463,9 +463,26 @@ function brow_right(ctx){
 function face(ctx){
 				const fns = [ 
 					
-								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
+								function(ctx){ 
+									ctx.moveTo(200,95)
+									ctx.lineTo(150, 45)
+									ctx.stroke()
+									ctx.beginPath();
+									ctx.moveTo(220,95)
+									ctx.lineTo(170, 45)
+									ctx.stroke()
+									ctx.beginPath();
+									ctx.moveTo(180,95)
+									ctx.lineTo(130, 45)
+									ctx.stroke()
+									ctx.beginPath();
+
+								ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
 									ctx.fillStyle = getRandomBackground();
 									ctx.fill();
+
+
+
 									return 'Small Face';},
 								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); 
 									ctx.fillStyle = getRandomBackground();
