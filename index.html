@@ -13,7 +13,7 @@ function getRandom(){
   return array[0]/(2**32);
 }
 function getRandomBackground(){
-	let colors = ['#0528F2','#4CB1F7','#FFC700', '#6B1CEB','#E01B32','#01EA05'];
+	let colors = ['#0528F2','#4CB1F7','#FFC700', '#6B1CEB','#E01B32','#01EA05', 'white'];
   		return colors[Math.floor(Math.random()* colors.length)]; 
 	
 }
@@ -463,9 +463,26 @@ function brow_right(ctx){
 function face(ctx){
 				const fns = [ 
 					
-								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
+								function(ctx){ 
 									ctx.fillStyle = getRandomBackground();
+									ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
 									ctx.fill();
+
+									ctx.moveTo(25,200);
+									ctx.arc(200,200,175, Math.PI, 2 * Math.PI);
+									ctx.moveTo(85,200);
+									ctx.lineTo(85,300);
+									ctx.lineTo(25,300);
+									ctx.lineTo(25,200);
+
+									ctx.moveTo(315,200);
+									ctx.lineTo(315,300);
+									ctx.lineTo(375,300);
+									ctx.lineTo(375,200);
+									ctx.fill();
+
+									ctx.fillStyle = 'black';
+
 									return 'Small Face';},
 								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); 
 									ctx.fillStyle = getRandomBackground();
@@ -696,7 +713,7 @@ ctx.fillRect(0, 0, c.width, c.height);
 
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
 console.log(features)
-document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81);
+document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
 document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
 document.write(getRandomBackground());
 </script>
