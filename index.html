@@ -3,6 +3,8 @@
 var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 var gender = Math.floor(Math.random()* 2);
+var pickface = Math.floor(Math.random()* 4 +1);
+var hat_or_hair = Math.floor(Math.random()* 2);
 ctx.lineWidth =4;
 ctx.strokeStyle = '#001131';
 
@@ -13,7 +15,10 @@ function getRandom(){
   return array[0]/(2**32);
 }
 function getRandomBackground(){
+
 	let colors = ['white','white','white','#0528F2','#4CB1F7','#FFC700', '#6B1CEB','#E01B32','#01EA05'];
+
+
   		return colors[Math.floor(Math.random()* colors.length)]; 
 	
 }
@@ -461,20 +466,36 @@ function brow_right(ctx){
 }
 
 function face(ctx){
-				const fns = [ 
+				const fns1 = [ 
 					
-								function(ctx){ ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
+								function(ctx){ 
 									ctx.fillStyle = getRandomBackground();
+									ctx.arc(200, 200, 115, 0, 2 * Math.PI); 
 									ctx.fill();
-									return 'Small Face';},
+									
+
+									// // Hair 4.1
+									// ctx.moveTo(300+(115*Math.cos(Math.PI)),85+(115*Math.sin(.6*Math.PI)));
+									// ctx.arc(300,165,115,.6*Math.PI, Math.PI);
+
+
+									return 'Small Face';}
+					]
+				const fns2 = [
 								function(ctx){ ctx.arc(200, 200, 140, 0, 2 * Math.PI); 
 									ctx.fillStyle = getRandomBackground();
-									ctx.fill();		
-									return 'Medium Face';},
+									ctx.fill();	
+									
+									return 'Medium Face';}
+					]
+					const fns3 =[
 								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); 
 									ctx.fillStyle = getRandomBackground();
 									ctx.fill();
-									return 'Large Face';},
+									
+									return 'Large Face';}
+					]
+					const fns4 = [
 								function(ctx){ 
 									ctx.moveTo(25,25);
 									ctx.lineTo(375,25);
@@ -482,15 +503,29 @@ function face(ctx){
 									ctx.lineTo(25,25);
 									ctx.fillStyle = getRandomBackground();
 									ctx.fill();
+
+
 									//ctx.triangle(45,45,375,45,210,365); 
 									return 'Pizza Face';}
 				]
-				return call(fns,ctx)
+				if(pickface ==1){
+					return call(fns1,ctx);
+				}
+				else if (pickface ==2){
+					return call(fns2,ctx);
+				}
+				else if (pickface == 3){
+					return call(fns3,ctx);
+				}
+				else{
+					return call(fns4,ctx);
+				}
+				
 }
 
 function hat(ctx){
 				const fns = [ 
-
+								
 								function(ctx){ 
 									ctx.fillStyle = getRandomBackground();
 
@@ -565,8 +600,169 @@ function hat(ctx){
 									return 'no hat'
 								}
 							]
-								
-				return call(fns,ctx)
+				const fns1 = [
+					function (ctx) {
+						// Hair 1.1
+									ctx.moveTo(215+(20*Math.cos(.4*Math.PI)),85+(20*Math.sin(.4*Math.PI)));
+									ctx.arc(215,85,20,.4 * Math.PI, Math.PI);
+									return 'single hair'
+					},
+					function(ctx){
+						//Hair 2.1
+									ctx.moveTo(200,85);
+									ctx.lineTo(200,105);
+									ctx.moveTo(210,105);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.cos(angle-19);
+										y=(1+angle)*Math.sin(angle-19);
+										ctx.lineTo(210.5+x, 105+y);
+									}
+									return "right squigle"
+					},
+					function(ctx){
+						//Hair 3.1
+									ctx.moveTo(200,85);
+									ctx.lineTo(200,105);
+									ctx.moveTo(190,105);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.sin(angle-20.75);
+										y=(1+angle)*Math.cos(angle-20.75);
+										ctx.lineTo(189+x, 105+y);
+									}
+									return 'left squigle'
+					}
+					
+				]
+				const fns2 = [
+					function(ctx){
+					//Hair 1.2
+									ctx.moveTo(215+(20*Math.cos(.4*Math.PI)),60+(20*Math.sin(.4*Math.PI)));
+									ctx.arc(215,60,20,.4 * Math.PI, Math.PI);
+									return 'single hair'	
+				},
+				function(ctx){
+									//Hair 2.2
+									ctx.moveTo(200,60);
+									ctx.lineTo(200,80);
+									ctx.moveTo(210,80);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.cos(angle-19);
+										y=(1+angle)*Math.sin(angle-19);
+										ctx.lineTo(210.5+x, 80+y);
+									}
+									return 'right squigle'
+					},
+				function(ctx){
+									//Hair 3.2
+									ctx.moveTo(200,60);
+									ctx.lineTo(200,80);
+									ctx.moveTo(190,80);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.sin(angle-20.75);
+										y=(1+angle)*Math.cos(angle-20.75);
+										ctx.lineTo(189+x, 80+y);
+									}
+									return 'left squigle'
+				}
+
+				]
+				const fns3 = [
+					function (ctx){
+					// Hair 1.3
+									ctx.moveTo(215+(20*Math.cos(.4*Math.PI)),35+(20*Math.sin(.4*Math.PI)));
+									ctx.arc(215,35,20,.4 * Math.PI, Math.PI);
+									return 'single hair'
+				},
+				function (ctx){
+									//Hair 2.3
+									ctx.moveTo(200,35);
+									ctx.lineTo(200,55);
+									ctx.moveTo(210,55);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.cos(angle-19);
+										y=(1+angle)*Math.sin(angle-19);
+										ctx.lineTo(210.5+x, 55+y);
+									
+									}
+										return 'right squigle'
+				},
+				function(ctx){
+
+									// //Hair 3.3
+									ctx.moveTo(200,35);
+									ctx.lineTo(200,55);
+									ctx.moveTo(190,55);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.sin(angle-20.75);
+										y=(1+angle)*Math.cos(angle-20.75);
+										ctx.lineTo(189+x, 55+y);
+									}
+									return 'left squigle'
+				}
+
+				]
+				const fns4 = [
+					function(ctx){							
+					//Hair 1.4
+									ctx.moveTo(215+(20*Math.cos(.4*Math.PI)),25+(20*Math.sin(.4*Math.PI)));
+									ctx.arc(215,25,20,.4 * Math.PI, Math.PI);
+									return 'single hair'
+					},
+					function(ctx){
+									// Hair 2.4
+									ctx.moveTo(200,25);
+									ctx.lineTo(200,45);
+									ctx.moveTo(210,45);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.cos(angle-19);
+										y=(1+angle)*Math.sin(angle-19);
+										ctx.lineTo(210.5+x, 45+y);
+									}
+									return 'right squigle'
+					},
+					function(ctx){
+
+									//Hair 3.4
+									ctx.moveTo(200,25);
+									ctx.lineTo(200,45);
+									ctx.moveTo(190,45);
+									for (i=0; i< 100; i+=1) {
+										angle = 0.1 * i;
+										x=(1+angle)*Math.sin(angle-20.75);
+										y=(1+angle)*Math.cos(angle-20.75);
+										ctx.lineTo(189+x, 45+y);
+									}
+									return 'left squigle'
+					}
+
+				]
+				if(hat_or_hair ==1){
+					
+				
+					if (pickface ==1){
+						return call(fns1,ctx);
+					}
+				 	if (pickface == 2){
+						return call(fns2,ctx);
+					}
+				
+				 	if (pickface == 3){
+						return call(fns3,ctx);
+					 }
+					else {
+						return call(fns4,ctx);
+					}
+				}
+				else {
+					return call(fns,ctx);
+				}
 }
 
 function mouth(ctx){
@@ -694,9 +890,9 @@ function mustashe(ctx){
 ctx.fillStyle = getRandomBackground();
 ctx.fillRect(0, 0, c.width, c.height);
 
-const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat:hat(ctx)}
+const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx)}
 console.log(features)
-document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81);
+document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
 document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
 document.write(getRandomBackground());
 </script>
