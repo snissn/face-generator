@@ -1,6 +1,8 @@
-<canvas height=400 width=400 id=c></canvas>
 <script>
-var c = document.getElementById("c");
+function generate(){
+var c = document.createElement("canvas")
+    c.height = 400
+    c.width = 400
 var ctx = c.getContext("2d");
 var gender = Math.floor(Math.random()* 2);
 var pickface = Math.floor(Math.random()* 4 +1);
@@ -891,8 +893,17 @@ ctx.fillStyle = getRandomBackground();
 ctx.fillRect(0, 0, c.width, c.height);
 
 const features = { face: face(ctx), right_eye:right_eyes(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx)}
+document.body.appendChild(c);
 console.log(features)
-document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
-document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
-document.write(getRandomBackground());
+//document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
+//document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
+//document.write(getRandomBackground());
+}
+
+window.addEventListener('load', function () {
+    for(var i = 0; i < 1000; i++){
+        generate();
+    }
+})
+
 </script>
