@@ -1039,6 +1039,7 @@ ctx.fillRect(0, 0, c.width, c.height);
 const features = { face: face(ctx), left_eye:left_eyes(ctx), nose:nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx)}
 
 
+document.body.appendChild(c);
 console.log(features)
 //document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
 //document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
