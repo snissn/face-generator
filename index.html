@@ -1,4 +1,5 @@
 <script>
+  var pizza_image = new Image();
 function generate(){
 var c = document.createElement("canvas")
     c.height = 400
@@ -648,6 +649,9 @@ function face(ctx){
 									ctx.lineTo(25,25);
 									ctx.fillStyle = getRandomBackground();
 									ctx.fill();
+                  ctx.drawImage(pizza_image, 0, 0);
+									ctx.fill();
+
 
 
 									//ctx.triangle(45,45,375,45,210,365); 
@@ -1047,9 +1051,14 @@ console.log(features)
 }
 
 window.addEventListener('load', function () {
+pizza_image.src="./pizza.jpeg"
+pizza_image.addEventListener('load', e => {
+
+
     for(var i = 0; i < 1000; i++){
         generate();
     }
+    });
 })
 
 </script>
