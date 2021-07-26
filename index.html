@@ -5,7 +5,7 @@ var c = document.createElement("canvas")
     c.width = 400
 var ctx = c.getContext("2d");
 var gender = Math.floor(Math.random()* 2);
-var pickface = Math.floor(Math.random()* 4 +1);
+var pickface = Math.floor(Math.random()* 5 +1);
 var hat_or_hair = Math.floor(Math.random()* 2);
 var pickeyes = Math.floor(Math.random()* 6 +1);
 ctx.lineWidth =4;
@@ -642,16 +642,30 @@ function face(ctx){
 					]
 					const fns4 = [
 								function(ctx){ 
-									ctx.moveTo(25,25);
-									ctx.lineTo(375,25);
+									ctx.moveTo(5,25);
+									ctx.lineTo(395,25);
 									ctx.lineTo(200,400);
-									ctx.lineTo(25,25);
+									ctx.lineTo(5,25);
 									ctx.fillStyle = getRandomBackground();
 									ctx.fill();
 
 
 									//ctx.triangle(45,45,375,45,210,365); 
 									return 'Pizza Face';}
+				]
+				const fns5 = [
+								function(ctx){ 
+									ctx.moveTo(25,25);
+									ctx.rect(25,25,350,350);
+									// ctx.lineTo(375,25);
+									// ctx.lineTo(200,400);
+									// ctx.lineTo(25,25);
+									ctx.fillStyle = getRandomBackground();
+									ctx.fill();
+
+
+									//ctx.triangle(45,45,375,45,210,365); 
+									return 'Square Face';}
 				]
 				if(pickface ==1){
 					return call(fns1,ctx);
@@ -662,8 +676,11 @@ function face(ctx){
 				else if (pickface == 3){
 					return call(fns3,ctx);
 				}
-				else{
+				else if (pickface == 4){
 					return call(fns4,ctx);
+				}
+				else {
+					return call(fns5,ctx);
 				}
 				
 }
