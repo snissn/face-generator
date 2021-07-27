@@ -1,5 +1,7 @@
 <script>
   var pizza_image = new Image();
+  var galaxy_image = new Image();
+  var rainbow_image = new Image();
 function generate(){
 var c = document.createElement("canvas")
     c.height = 400
@@ -18,12 +20,31 @@ function getRandom(){
   window.crypto.getRandomValues(array);
   return array[0]/(2**32);
 }
+
 function getRandomBackground(){
+let colors = ['white','white','white','#0528F2','#4CB1F7','#FFC700', '#6B1CEB','#E01B32','#01EA05'];
+
+return colors[Math.floor(Math.random()* colors.length)];
+}
+
+function getCrazyRandomBackground(){
+	var backgroundpicker = Math.floor(Math.random()* 25 +1);
 
 	let colors = ['white','white','white','#0528F2','#4CB1F7','#FFC700', '#6B1CEB','#E01B32','#01EA05'];
 
-
-  		return colors[Math.floor(Math.random()* colors.length)]; 
+if (backgroundpicker == 1 ){
+	ctx.drawImage(galaxy_image, 0, 0);
+}
+else if (backgroundpicker ==2 ){
+	ctx.drawImage(pizza_image, 0, 0);
+}
+else if (backgroundpicker ==3){
+	ctx.drawImage(rainbow_image, 0, 0);
+}
+  
+else {
+	ctx.fillStyle =  colors[Math.floor(Math.random()* colors.length)]; 
+}
 	
 }
 
@@ -69,20 +90,36 @@ function left_eyes(ctx){
 								ctx.arc(150, 150, 5, 0, 2 * Math.PI); 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
+								ctx.moveTo(151,150);
+								ctx.arc(150,150,1,0,2 *Math.PI);
+								ctx.fillStyle = "white";
+								ctx.fill();
 
 								ctx.moveTo(255,150);
 
 								ctx.arc(250, 150, 5, 0, 2 * Math.PI); 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
-								return 'Small Circle Eyes';},
-
+								ctx.moveTo(251,150);
+								ctx.arc(250,150,1,0,2 *Math.PI);
+								ctx.fillStyle = "white";
+								ctx.fill();
+								return 'Small Circle Eyes'
+								 },
 								function(ctx){ 
 								ctx.rect(140, 140, 25, 25); 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
+								ctx.moveTo(150,150);
+								ctx.rect(150,150,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 
 								ctx.rect(240, 140, 25, 25); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								ctx.moveTo(250,150);
+								ctx.rect(250,150,10,10);
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 								return 'Small Square Eyes';},
@@ -92,9 +129,19 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 
-								ctx.moveTo(260,150);
+								ctx.moveTo(152,150);
+								ctx.arc(150,150,2,0,2 *Math.PI);
+								ctx.fillStyle = "white";
+								ctx.fill();
 
+								ctx.moveTo(260,150);
 								ctx.arc(250, 150, 10, 0, 2 * Math.PI); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								
+
+								ctx.moveTo(252,150);
+								ctx.arc(250,150,2,0,2 *Math.PI);
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 								return 'Medium Cicle Eyes';},
@@ -104,7 +151,17 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 
+								ctx.moveTo(145,145);
+								ctx.rect(145,145,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
 								ctx.rect(240, 140, 30, 30); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
+								ctx.moveTo(245,145);
+								ctx.rect(245,145,10,10);
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 								return 'Medium Square Eyes';},
@@ -113,11 +170,19 @@ function left_eyes(ctx){
 								ctx.arc(150, 150, 15, 0, 2 * Math.PI); 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
+								ctx.moveTo(153,150);
+								ctx.arc(150,150,3,0,2 *Math.PI);
+								ctx.fillStyle = getRandomBackground();;
+								ctx.fill();
 
 								ctx.moveTo(265,150);
 
 								ctx.arc(250, 150, 15, 0, 2 * Math.PI); 
 								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								ctx.moveTo(253,150);
+								ctx.arc(250,150,3,0,2 *Math.PI);
+								ctx.fillStyle = getRandomBackground();;
 								ctx.fill();
 								return 'Large Circle Eyes';},
 
@@ -125,8 +190,16 @@ function left_eyes(ctx){
 								ctx.rect(140, 140, 35, 35);
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill(); 
+								ctx.moveTo(147.5,147.4);
+								ctx.rect(147.5,147.5,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 
 								ctx.rect(240, 140, 35, 35); 
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+								ctx.moveTo(247.5,147.4);
+								ctx.rect(247.5,147.5,10,10);
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 								return 'Large Square Eyes';}
@@ -149,6 +222,11 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 
+								ctx.moveTo(151,150);
+								ctx.arc(150,150,1,0,2 *Math.PI);
+								ctx.fillStyle = "white";
+								ctx.fill();
+
 								ctx.moveTo(255,150);
 
 								ctx.arc(250, 150, 5, 0, 2 * Math.PI);
@@ -163,6 +241,11 @@ function left_eyes(ctx){
 								ctx.moveTo(250-(5*Math.cos(Math.PI/6)),150-(5*Math.sin(Math.PI/6)));
 								ctx.lineTo(250-(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
 								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
+								ctx.moveTo(251,150);
+								ctx.arc(250,150,1,0,2 *Math.PI);
+								ctx.fillStyle = "white";
 								ctx.fill();
 								return 'Small Female Circle Eyes';},
 				function(ctx){ 
@@ -186,6 +269,11 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill(); 
 
+								ctx.moveTo(150,150);
+								ctx.rect(150,150,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
 // AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 								ctx.rect(240, 140, 25, 25);
 
@@ -206,6 +294,11 @@ function left_eyes(ctx){
 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill(); 
+
+								ctx.moveTo(250,150);
+								ctx.rect(250,150,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Small Female Square Eyes';},
 								
 
@@ -224,6 +317,11 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 
+								ctx.moveTo(152,150);
+								ctx.arc(150,150,2,0,2 *Math.PI);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
 								ctx.moveTo(260,150);
 
 								ctx.arc(250, 150, 10, 0, 2 * Math.PI);
@@ -238,6 +336,11 @@ function left_eyes(ctx){
 								ctx.moveTo(250-(10*Math.cos(Math.PI/6)),150-(10*Math.sin(Math.PI/6)));
 								ctx.lineTo(250-(20*Math.cos(Math.PI/6)),150-(20*Math.sin(Math.PI/6)));
 								ctx.fillStyle = getRandomBackground();
+
+								ctx.moveTo(252,150);
+								ctx.arc(250,150,2,0,2 *Math.PI);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Medium Female Circle Eyes';},
 					function(ctx){ 
 							ctx.rect(140, 140, 30, 30);
@@ -258,7 +361,12 @@ function left_eyes(ctx){
 								ctx.lineTo(170,130);
 
 								ctx.fillStyle = getRandomBackground();
-								ctx.fill(); 
+								ctx.fill();
+								
+								ctx.moveTo(145,145);
+								ctx.rect(145,145,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 
 								ctx.rect(240, 140, 30, 30);
 
@@ -279,6 +387,11 @@ function left_eyes(ctx){
 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill(); 
+
+								ctx.moveTo(245,145);
+								ctx.rect(245,145,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Medium Female Square Eyes';},
 				function(ctx){ 
 								ctx.arc(150, 150, 15, 0, 2 * Math.PI);
@@ -295,6 +408,11 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill();
 
+								ctx.moveTo(153,150);
+								ctx.arc(150,150,3,0,2 *Math.PI);
+								ctx.fillStyle = getRandomBackground();;
+								ctx.fill();
+
 								ctx.moveTo(265,150)
 
 								ctx.arc(250, 150, 15, 0, 2 * Math.PI);
@@ -309,6 +427,11 @@ function left_eyes(ctx){
 								ctx.moveTo(250-(15*Math.cos(Math.PI/6)),150-(15*Math.sin(Math.PI/6)));
 								ctx.lineTo(250-(25*Math.cos(Math.PI/6)),150-(25*Math.sin(Math.PI/6)));
 								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
+								ctx.moveTo(253,150);
+								ctx.arc(250,150,3,0,2 *Math.PI);
+								ctx.fillStyle = getRandomBackground();;
 								ctx.fill();
 								return 'Large Female Circle Eyes';},
 				function(ctx){ 
@@ -332,6 +455,11 @@ function left_eyes(ctx){
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill(); 
 
+								ctx.moveTo(147.5,147.4);
+								ctx.rect(147.5,147.5,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
+
 								ctx.rect(240, 140, 35, 35);
 
 								ctx.moveTo(240,140);
@@ -351,6 +479,11 @@ function left_eyes(ctx){
 
 								ctx.fillStyle = getRandomBackground();
 								ctx.fill(); 
+
+								ctx.moveTo(247.5,147.4);
+								ctx.rect(247.5,147.5,10,10);
+								ctx.fillStyle = getRandomBackground();
+								ctx.fill();
 								return 'Large Female Square Eyes';}
 
 				]
@@ -636,7 +769,8 @@ function face(ctx){
 					]
 					const fns3 =[
 								function(ctx){ ctx.arc(200, 200, 165, 0, 2 * Math.PI); 
-									ctx.fillStyle = getRandomBackground();
+									//ctx.fillStyle = getRandomBackground();
+									getCrazyRandomBackground();
 									ctx.fill();
 									
 									return 'Large Face';}
@@ -649,7 +783,7 @@ function face(ctx){
 									ctx.lineTo(5,25);
 									ctx.fillStyle = getRandomBackground();
 									ctx.fill();
-                  ctx.drawImage(pizza_image, 0, 0);
+                  getCrazyRandomBackground();
 									ctx.fill();
 
 
@@ -664,7 +798,9 @@ function face(ctx){
 									// ctx.lineTo(375,25);
 									// ctx.lineTo(200,400);
 									// ctx.lineTo(25,25);
-									ctx.fillStyle = getRandomBackground();
+									//ctx.fillStyle = getRandomBackground();
+									//ctx.drawImage(galaxy_image, 0, 0);
+									getCrazyRandomBackground();
 									ctx.fill();
 
 
@@ -1068,6 +1204,13 @@ console.log(features)
 }
 
 window.addEventListener('load', function () {
+rainbow_image.src = "./rainbow.png"
+rainbow_image.addEventListener('load', e=>{
+	
+galaxy_image.src="./galaxy.jpg"
+galaxy_image.addEventListener('load', e=>{
+
+
 pizza_image.src="./pizza.jpeg"
 pizza_image.addEventListener('load', e => {
 
@@ -1075,7 +1218,7 @@ pizza_image.addEventListener('load', e => {
     for(var i = 0; i < 1000; i++){
         generate();
     }
-    });
+    })})})
 })
 
 </script>
