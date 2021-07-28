@@ -183,22 +183,31 @@
         },
 
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.rect(140, 140, 35, 35);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = 'white';//
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+
           ctx.moveTo(147.5, 147.4);
           ctx.rect(147.5, 147.5, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.rect(240, 140, 35, 35);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = 'white';
           ctx.fill();
+          ctx.stroke();
           ctx.moveTo(247.5, 147.4);
+
+          ctx.beginPath();
           ctx.rect(247.5, 147.5, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor
           ctx.fill();
-          return "Large Square Eyes";
+          return `Large ${eyecolor} Square Eyes`;
         },
       ];
       const fns1 = [
