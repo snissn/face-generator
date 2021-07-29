@@ -80,105 +80,150 @@
     function left_eyes(ctx) {
       const fns = [
         function (ctx) {
+          const eyecolor = getRandomBackground();
+
           ctx.arc(150, 150, 5, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
-          ctx.moveTo(151, 150);
-          ctx.arc(150, 150, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = "white";
-          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
+          ctx.moveTo(152.5, 150);
+          ctx.strokeStyle = eyecolor;
+          //ctx.arc(150, 150, 2.5, 0, 2 * Math.PI);
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = eyecolor;
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.beginPath();
           ctx.moveTo(255, 150);
-
           ctx.arc(250, 150, 5, 0, 2 * Math.PI);
-          ctx.fillStyle = "white";
+          ctx.fillStyle = eyecolor;
           ctx.fill();
-          ctx.moveTo(251, 150);
-          ctx.arc(250, 150, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(252.5, 150);
+          ctx.strokeStyle = eyecolor;
+          //ctx.arc(250, 150, 2.5, 0, 2 * Math.PI);
+          ctx.strokeStyle = "black";
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Small Circle Eyes";
         },
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.rect(140, 140, 25, 25);
-          ctx.fillStyle = getRandomBackground();
-          ctx.fill();
-          ctx.moveTo(150, 150);
-          ctx.rect(150, 150, 10, 10);
-          ctx.fillStyle = getRandomBackground();
-          ctx.fill();
-
-          ctx.rect(240, 140, 25, 25);
-          ctx.fillStyle = getRandomBackground();
-          ctx.fill();
-          ctx.moveTo(250, 150);
-          ctx.rect(250, 150, 10, 10);
-          ctx.fillStyle = getRandomBackground();
-          ctx.fill();
-          return "Small Square Eyes";
-        },
-
-        function (ctx) {
-          ctx.arc(150, 150, 10, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
-          ctx.fill();
-
-          ctx.moveTo(152, 150);
-          ctx.arc(150, 150, 2, 0, 2 * Math.PI);
           ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
+          ctx.moveTo(150, 150);
+          ctx.rect(150, 150, 10, 10);
+          ctx.fillStyle = eyecolor;
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.rect(240, 140, 25, 25);
+          ctx.fillStyle = "white";
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(250, 150);
+          ctx.rect(250, 150, 10, 10);
+          ctx.fillStyle = eyecolor;
+          ctx.fill();
+          return "Small Square Eyes";
+        }, 
+
+        function (ctx) {
+          const eyecolor = getRandomBackground();
+          ctx.arc(150, 150, 10, 0, 2 * Math.PI);
+          ctx.fillStyle = "white";
+          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
+
+          ctx.moveTo(153.5, 150);
+          ctx.arc(150, 150, 3.5, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.beginPath();
           ctx.moveTo(260, 150);
           ctx.arc(250, 150, 10, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
-          ctx.moveTo(252, 150);
-          ctx.arc(250, 150, 2, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.beginPath();
+          ctx.moveTo(253.5, 150);
+          ctx.arc(250, 150, 3.5, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Medium Cicle Eyes";
         },
 
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.rect(140, 140, 30, 30);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
           ctx.moveTo(145, 145);
           ctx.rect(145, 145, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.rect(240, 140, 30, 30);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(245, 145);
           ctx.rect(245, 145, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Medium Square Eyes";
         },
 
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.arc(150, 150, 15, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
-          ctx.moveTo(153, 150);
-          ctx.arc(150, 150, 3, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
-          ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
+          ctx.moveTo(157.5, 150);
+          ctx.arc(150, 150, 7.5, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.beginPath();
           ctx.moveTo(265, 150);
-
           ctx.arc(250, 150, 15, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+
           ctx.moveTo(253, 150);
-          ctx.arc(250, 150, 3, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.beginPath();
+          ctx.arc(250, 150, 7.5, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          //ctx.stroke();
           return "Large Circle Eyes";
         },
 
@@ -207,11 +252,12 @@
           ctx.rect(247.5, 147.5, 10, 10);
           ctx.fillStyle = eyecolor
           ctx.fill();
-          return `Large ${eyecolor} Square Eyes`;
+          return `Large Square Eyes`;
         },
       ];
       const fns1 = [
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.arc(150, 150, 5, 0, 2 * Math.PI);
           ctx.moveTo(150, 145);
           ctx.lineTo(150, 135);
@@ -223,16 +269,19 @@
           ctx.lineTo(150 - 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
           ctx.moveTo(150 - 5 * Math.cos(Math.PI / 6), 150 - 5 * Math.sin(Math.PI / 6));
           ctx.lineTo(150 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
           ctx.moveTo(151, 150);
-          ctx.arc(150, 150, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = "white";
+          //ctx.arc(150, 150, 1, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(255, 150);
-
           ctx.arc(250, 150, 5, 0, 2 * Math.PI);
           ctx.moveTo(250, 145);
           ctx.lineTo(250, 135);
@@ -244,70 +293,68 @@
           ctx.lineTo(250 - 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
           ctx.moveTo(250 - 5 * Math.cos(Math.PI / 6), 150 - 5 * Math.sin(Math.PI / 6));
           ctx.lineTo(250 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(251, 150);
-          ctx.arc(250, 150, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = "white";
+          //ctx.arc(250, 150, 1, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Small Female Circle Eyes";
         },
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.rect(140, 140, 25, 25);
-
           ctx.moveTo(140, 140);
           ctx.lineTo(140, 130);
-
           ctx.moveTo(146.25, 140);
           ctx.lineTo(146.25, 130);
-
           ctx.moveTo(152.5, 140);
           ctx.lineTo(152.5, 130);
-
           ctx.moveTo(158.75, 140);
           ctx.lineTo(158.75, 130);
-
           ctx.moveTo(165, 140);
           ctx.lineTo(165, 130);
-
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
           ctx.moveTo(150, 150);
           ctx.rect(150, 150, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
           // AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+          ctx.beginPath();
           ctx.rect(240, 140, 25, 25);
-
           ctx.moveTo(240, 140);
           ctx.lineTo(240, 130);
-
           ctx.moveTo(246.25, 140);
           ctx.lineTo(246.25, 130);
-
           ctx.moveTo(252.5, 140);
           ctx.lineTo(252.5, 130);
-
           ctx.moveTo(258.75, 140);
           ctx.lineTo(258.75, 130);
-
           ctx.moveTo(265, 140);
           ctx.lineTo(265, 130);
-
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(250, 150);
           ctx.rect(250, 150, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Small Female Square Eyes";
         },
 
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.arc(150, 150, 10, 0, 2 * Math.PI);
           ctx.moveTo(150, 140);
           ctx.lineTo(150, 130);
@@ -319,16 +366,19 @@
           ctx.lineTo(150 - 20 * Math.cos(Math.PI / 3), 150 - 20 * Math.sin(Math.PI / 3));
           ctx.moveTo(150 - 10 * Math.cos(Math.PI / 6), 150 - 10 * Math.sin(Math.PI / 6));
           ctx.lineTo(150 - 20 * Math.cos(Math.PI / 6), 150 - 20 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
-          ctx.moveTo(152, 150);
-          ctx.arc(150, 150, 2, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.beginPath();
+          ctx.moveTo(154, 150);
+          ctx.arc(150, 150, 4, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(260, 150);
-
           ctx.arc(250, 150, 10, 0, 2 * Math.PI);
           ctx.moveTo(250, 140);
           ctx.lineTo(250, 130);
@@ -340,67 +390,66 @@
           ctx.lineTo(250 - 20 * Math.cos(Math.PI / 3), 150 - 20 * Math.sin(Math.PI / 3));
           ctx.moveTo(250 - 10 * Math.cos(Math.PI / 6), 150 - 10 * Math.sin(Math.PI / 6));
           ctx.lineTo(250 - 20 * Math.cos(Math.PI / 6), 150 - 20 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
+          ctx.fill();
+          ctx.stroke();
 
-          ctx.moveTo(252, 150);
-          ctx.arc(250, 150, 2, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.beginPath();
+          ctx.moveTo(254, 150);
+          ctx.arc(250, 150, 4, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Medium Female Circle Eyes";
         },
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.rect(140, 140, 30, 30);
-
           ctx.moveTo(140, 140);
           ctx.lineTo(140, 130);
-
           ctx.moveTo(147.5, 140);
           ctx.lineTo(147.5, 130);
-
           ctx.moveTo(155, 140);
           ctx.lineTo(155, 130);
-
           ctx.moveTo(162.5, 140);
           ctx.lineTo(162.5, 130);
-
           ctx.moveTo(170, 140);
           ctx.lineTo(170, 130);
-
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
           ctx.moveTo(145, 145);
           ctx.rect(145, 145, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.rect(240, 140, 30, 30);
-
           ctx.moveTo(240, 140);
           ctx.lineTo(240, 130);
-
           ctx.moveTo(247.5, 140);
           ctx.lineTo(247.5, 130);
-
           ctx.moveTo(255, 140);
           ctx.lineTo(255, 130);
-
           ctx.moveTo(262.5, 140);
           ctx.lineTo(262.5, 130);
-
           ctx.moveTo(270, 140);
           ctx.lineTo(270, 130);
-
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(245, 145);
           ctx.rect(245, 145, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Medium Female Square Eyes";
         },
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.arc(150, 150, 15, 0, 2 * Math.PI);
           ctx.moveTo(150, 135);
           ctx.lineTo(150, 125);
@@ -412,16 +461,19 @@
           ctx.lineTo(150 - 25 * Math.cos(Math.PI / 3), 150 - 25 * Math.sin(Math.PI / 3));
           ctx.moveTo(150 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
           ctx.lineTo(150 - 25 * Math.cos(Math.PI / 6), 150 - 25 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
-          ctx.moveTo(153, 150);
-          ctx.arc(150, 150, 3, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.moveTo(156, 150);
+          ctx.arc(150, 150, 6, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(265, 150);
-
           ctx.arc(250, 150, 15, 0, 2 * Math.PI);
           ctx.moveTo(250, 135);
           ctx.lineTo(250, 125);
@@ -433,64 +485,61 @@
           ctx.lineTo(250 - 25 * Math.cos(Math.PI / 3), 150 - 25 * Math.sin(Math.PI / 3));
           ctx.moveTo(250 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
           ctx.lineTo(250 - 25 * Math.cos(Math.PI / 6), 150 - 25 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
-          ctx.moveTo(253, 150);
-          ctx.arc(250, 150, 3, 0, 2 * Math.PI);
-          ctx.fillStyle = getRandomBackground();
+          ctx.beginPath();
+          ctx.moveTo(256, 150);
+          ctx.arc(250, 150, 6, 0, 2 * Math.PI);
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Large Female Circle Eyes";
         },
         function (ctx) {
+          const eyecolor = getRandomBackground();
           ctx.rect(140, 140, 35, 35);
-
           ctx.moveTo(140, 140);
           ctx.lineTo(140, 130);
-
           ctx.moveTo(149, 140);
           ctx.lineTo(149, 130);
-
           ctx.moveTo(158, 140);
           ctx.lineTo(158, 130);
-
           ctx.moveTo(167, 140);
           ctx.lineTo(167, 130);
-
           ctx.moveTo(175, 140);
           ctx.lineTo(175, 130);
-
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
+          ctx.beginPath();
 
           ctx.moveTo(147.5, 147.4);
           ctx.rect(147.5, 147.5, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.rect(240, 140, 35, 35);
-
           ctx.moveTo(240, 140);
           ctx.lineTo(240, 130);
-
           ctx.moveTo(249, 140);
           ctx.lineTo(249, 130);
-
           ctx.moveTo(258, 140);
           ctx.lineTo(258, 130);
-
           ctx.moveTo(267, 140);
           ctx.lineTo(267, 130);
-
           ctx.moveTo(275, 140);
           ctx.lineTo(275, 130);
-
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = "white";
           ctx.fill();
+          ctx.stroke();
 
+          ctx.beginPath();
           ctx.moveTo(247.5, 147.4);
           ctx.rect(247.5, 147.5, 10, 10);
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Large Female Square Eyes";
         },
@@ -1172,7 +1221,7 @@
     document.body.appendChild(c);
     console.log(features);
     //document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
-    //document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
+    document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
     //document.write(getRandomBackground());
   }
 
