@@ -2,6 +2,7 @@
   var pizza_image = new Image();
   var galaxy_image = new Image();
   var rainbow_image = new Image();
+  const line_width = 4;
   function generate() {
     var c = document.createElement("canvas");
     c.height = 400;
@@ -11,7 +12,7 @@
     var pickface = Math.floor(Math.random() * 5 + 1);
     var hat_or_hair = Math.floor(Math.random() * 2);
     var pickeyes = Math.floor(Math.random() * 6 + 1);
-    ctx.lineWidth = 4;
+    ctx.lineWidth = line_width;
     ctx.strokeStyle = "#001131";
 
     function getRandom() {
@@ -719,8 +720,8 @@
       const fns = [
         function (ctx) {
           ctx.moveTo(200, 200);
-          ctx.lineTo(200, 150);
-          ctx.moveTo(200, 200);
+          ctx.lineTo(200, 150 + line_width/2);
+          ctx.moveTo(200- line_width/2, 200);
           ctx.lineTo(220, 200);
 
           return "small right nose";
@@ -728,17 +729,18 @@
         function (ctx) {
           ctx.moveTo(200, 150);
           ctx.lineTo(220, 200);
-          ctx.moveTo(200, 150);
+          ctx.lineTo(200, 150);
           ctx.lineTo(180, 200);
           ctx.lineTo(220, 200);
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
+          ctx.closePath();
           return "small triangle nose";
         },
         function (ctx) {
           ctx.moveTo(200, 200);
-          ctx.lineTo(200, 150);
-          ctx.moveTo(200, 200);
+          ctx.lineTo(200, 150 + line_width/2);
+          ctx.moveTo(200 + line_width/2, 200);
           ctx.lineTo(180, 200);
           return "small left nose";
         },
@@ -1095,6 +1097,8 @@
       const fns = [
         function (ctx) {
           ctx.arc(190, 275, 50, 10, 2 * Math.PI);
+          ctx.moveTo(190+((50 + line_width/2) * Math.cos(10)),275+ ((50 + line_width/2) * Math.sin(10)));
+          ctx.lineTo(240 + line_width/2 -.5,275 + line_width/2 - .5);
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return " Left Side Sad Mouth";
@@ -1102,6 +1106,8 @@
 
         function (ctx) {
           ctx.arc(200, 295, 50, 1 * Math.PI, 2 * Math.PI, 0 * Math.PI);
+          ctx.moveTo(150- line_width/2,295);
+          ctx.lineTo(250+line_width/2,295)
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "Center Sad Mouth";
@@ -1109,6 +1115,8 @@
 
         function (ctx) {
           ctx.arc(200, 255, 50, Math.PI, 2 * Math.PI, 1 * Math.PI);
+          ctx.moveTo(150- line_width/2,255);
+          ctx.lineTo(250+ line_width/2,255);
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "Center Happy Mouth";
@@ -1116,6 +1124,8 @@
 
         function (ctx) {
           ctx.arc(200, 255, 10, Math.PI, 2 * Math.PI);
+          ctx.moveTo(190- line_width/2,255);
+          ctx.lineTo(210 + line_width/2,255);
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "small sad mouth";
@@ -1123,6 +1133,8 @@
 
         function (ctx) {
           ctx.arc(200, 255, 10, 2 * Math.PI, Math.PI);
+          ctx.moveTo(190 - line_width/2,255);
+          ctx.lineTo(210 + line_width/2,255);
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "small happy mouth";
