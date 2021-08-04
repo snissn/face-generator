@@ -21,6 +21,14 @@
       return array[0] / 2 ** 32;
     }
 
+    function getRandomEyeColor() {
+      let ret = getRandomBackground()
+      if(ret == "white"){
+        return "#001131";
+      }
+      return ret;
+    }
+
     function getRandomBackground() {
       let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
@@ -81,7 +89,7 @@
     function left_eyes(ctx) {
       const fns = [
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
 
           ctx.arc(150, 150, 5, 0, 2 * Math.PI);
           ctx.fillStyle = eyecolor;
@@ -114,7 +122,7 @@
           return "Small Circle Eyes";
         },
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 25, 25);
           ctx.fillStyle = "white";
           ctx.fill();
@@ -142,7 +150,7 @@
         }, 
 
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 10, 0, 2 * Math.PI);
           ctx.fillStyle = "white";
           ctx.fill();
@@ -171,7 +179,7 @@
         },
 
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 30, 30);
           ctx.fillStyle = "white";
           ctx.fill();
@@ -199,7 +207,7 @@
         },
 
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 15, 0, 2 * Math.PI);
           ctx.fillStyle = "white";
           ctx.fill();
@@ -229,7 +237,7 @@
         },
 
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 35, 35);
           ctx.fillStyle = 'white';//
           ctx.fill();
@@ -258,7 +266,7 @@
       ];
       const fns1 = [
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 5, 0, 2 * Math.PI);
           ctx.moveTo(150, 145);
           ctx.lineTo(150, 135);
@@ -306,7 +314,7 @@
           return "Small Female Circle Eyes";
         },
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 25, 25);
           ctx.moveTo(140, 140);
           ctx.lineTo(140, 130);
@@ -355,7 +363,7 @@
         },
 
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 10, 0, 2 * Math.PI);
           ctx.moveTo(150, 140);
           ctx.lineTo(150, 130);
@@ -403,7 +411,7 @@
           return "Medium Female Circle Eyes";
         },
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 30, 30);
           ctx.moveTo(140, 140);
           ctx.lineTo(140, 130);
@@ -450,7 +458,7 @@
           return "Medium Female Square Eyes";
         },
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 15, 0, 2 * Math.PI);
           ctx.moveTo(150, 135);
           ctx.lineTo(150, 125);
@@ -498,7 +506,7 @@
           return "Large Female Circle Eyes";
         },
         function (ctx) {
-          const eyecolor = getRandomBackground();
+          const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 35, 35);
           ctx.moveTo(140, 140);
           ctx.lineTo(140, 130);
