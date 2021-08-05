@@ -1,3 +1,22 @@
+  <style>
+*{color: #001131}
+
+canvas,img{margin:15px;border:5px solid #001131;}</style>
+
+
+    <div style="margin:0 auto; width:800px;">
+      <H1>Shape Faces NFT</h1>
+    <h3> Shape Faces is a study in starting with the basic mathematical building blocks of Geometry: circles, squares, triangles and lines to build up towards a vision of humanity.
+    </h3>
+    <h4>We contrast from other projects that begin with a more presumptive shape of faces like crypto punks in that they begin with the visage of humanity and play within it. Shape Faces begins from the mathematical abyss of abstract shapes and produces, through minimal touches, an undeniable glimpse of our huamnity.
+    </h4>
+    </div>
+
+    <div id="content" style="margin:0 auto; width:100%;text-align:center;">
+
+     </div>
+
+
 <script>
   var pizza_image = new Image();
   var galaxy_image = new Image();
@@ -1135,10 +1154,10 @@
 
     const features = { face: face(ctx), left_eye: left_eyes(ctx), nose: nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx) };
 
-    document.body.appendChild(c);
+    content.appendChild(c);
     console.log(features);
     //document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
-    document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
+    //document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
     //document.write(getRandomBackground());
   }
 
