@@ -29,6 +29,12 @@
       return ret;
     }
 
+    function getRandomHairColor() {
+      let colors = ["#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
+
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
     function getRandomBackground() {
       let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
@@ -652,7 +658,7 @@
       ];
       const fns6 = [
         function (ctx) {
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = getRandomHairColor();
           ctx.rect(50, 30, 300,260);
           ctx.fill();
           ctx.stroke();
@@ -680,7 +686,7 @@
       const fns7 = [
         function (ctx) {
 
-          ctx.fillStyle = getRandomBackground();
+          ctx.fillStyle = getRandomHairColor();
           ctx.rect(25, 20, 350,285);
           ctx.fill();
           ctx.stroke();
@@ -992,6 +998,15 @@
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return " Left Side Sad Mouth";
+        },
+
+        function (ctx) {
+          ctx.arc(190, 275, 50,2 * Math.PI,10);
+          ctx.moveTo(190+((50 + line_width/2) * Math.cos(10)),275+ ((50 + line_width/2) * Math.sin(10)));
+          ctx.lineTo(240 + line_width/2 -.5,275 + line_width/2 - .5);
+          ctx.fillStyle = getRandomBackground();
+          ctx.fill();
+          return "Left Side Happy Mouth";
         },
 
         function (ctx) {
