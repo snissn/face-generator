@@ -1,5 +1,10 @@
   <style>
 *{color: #001131}
+pre{
+  text-align:left;
+  margin:0 auto;
+    width:300px;
+}
 
 canvas,img{margin:15px;border:5px solid #001131;}</style>
 
@@ -1154,11 +1159,16 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
 
     const features = { face: face(ctx), left_eye: left_eyes(ctx), nose: nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx) };
 
-    content.appendChild(c);
-    console.log(features);
-    //document.write('Total Faces Possible: ' + 6 * 6 * 3 * 6 * 6 * 4 * 4 * 6 * 3 * 81 * 720);
-    //document.write('<pre>'+JSON.stringify(features,undefined,2)+'</pre>')
-    //document.write(getRandomBackground());
+      if(window.location.protocol != 'file:'){ // will throw error because of hosted images
+        var canvasImage = new Image()
+        canvasImage.src = c.toDataURL('image/png');
+        content.appendChild(canvasImage);
+      }else{
+        content.appendChild(c);
+      }
+
+      //var pre = document.createElement("pre"); pre.innerHTML = JSON.stringify(features,undefined,2); content.appendChild(pre);
+
   }
 
   window.addEventListener("load", function () {
@@ -1168,7 +1178,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
       galaxy_image.addEventListener("load", (e) => {
         pizza_image.src = "./pizza.jpeg";
         pizza_image.addEventListener("load", (e) => {
-          for (var i = 0; i < 1000; i++) {
+          for (var i = 0; i < 50; i++) {
             generate();
           }
         });
