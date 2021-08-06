@@ -13,7 +13,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
       <H1>Shape Faces NFT</h1>
     <h3> Shape Faces is a study in starting with the basic mathematical building blocks of Geometry: circles, squares, triangles and lines to build up towards a vision of humanity.
     </h3>
-    <h4>We contrast from other projects that begin with a more presumptive shape of faces like crypto punks in that they begin with the visage of humanity and play within it. Shape Faces begins from the mathematical abyss of abstract shapes and produces, through minimal touches, an undeniable glimpse of our huamnity.
+    <h4>We contrast from other projects that begin with a more presumptive shape of faces unlike crypto punks in that they begin with the visage of humanity and play within it. Shape Faces begins from the mathematical abyss of abstract shapes and produces, through minimal touches, an undeniable glimpse of our huamnity.
     </h4>
     </div>
 
@@ -600,9 +600,35 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
 
           return "small right nose";
         },
+
+        function (ctx){
+          ctx.moveTo(200, 150);
+          ctx.lineTo(220, 200);
+          ctx.lineTo(200, 150);
+          ctx.lineTo(180, 200);
+          ctx.lineTo(220, 200);
+          ctx.fillStyle = getRandomBackground();
+          ctx.fill();
+          ctx.closePath();
+          ctx.fillStyle = getRandomBackground();
+          ctx.fill();
+          ctx.closePath();
+          return "small triangle nose";
+        },
+        
         function (ctx) {
-          const leftp = [194,192];
-          const rightp = [207,192];
+          ctx.moveTo(200, 200);
+          ctx.lineTo(200, 150 + line_width/2);
+          ctx.moveTo(200 + line_width/2, 200);
+          ctx.lineTo(180, 200);
+          return "small left nose";
+        },
+      ];
+
+      const fns1 = [
+      function (ctx) {
+          const leftp = [194.5,192];
+          const rightp = [207.5,192];
           ctx.moveTo(200, 150);
           ctx.lineTo(220, 200);
           ctx.lineTo(200, 150);
@@ -619,20 +645,20 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.moveTo(220,200);
           ctx.lineTo(rightp[0],rightp[1]);
           ctx.lineTo(leftp[0]-line_width/2,leftp[1])
+          ctx.lineWidth = 1;
           ctx.lineTo(200,150);
           ctx.moveTo(rightp[0],rightp[1]);
           ctx.lineTo(200,150);
-          return "small triangle nose";
-        },
-        function (ctx) {
-          ctx.moveTo(200, 200);
-          ctx.lineTo(200, 150 + line_width/2);
-          ctx.moveTo(200 + line_width/2, 200);
-          ctx.lineTo(180, 200);
-          return "small left nose";
-        },
-      ];
+          ctx.lineWidth = 4;
+          return "small 3D triangle nose";
+        }
+      ]
+      var d3 = Math.floor(Math.random() * 25 + 1);  
+      if (d3 == 1){
+        return call(fns1,ctx)
+      } else{
       return call(fns, ctx);
+      }
     }
 
     function brow_left(ctx) {
