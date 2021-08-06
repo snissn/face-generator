@@ -601,6 +601,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "small right nose";
         },
         function (ctx) {
+          const leftp = [194,189];
+          const rightp = [207,189];
           ctx.moveTo(200, 150);
           ctx.lineTo(220, 200);
           ctx.lineTo(200, 150);
@@ -609,6 +611,17 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           ctx.closePath();
+          ctx.rect(192,197,3,3);
+          ctx.rect(205,197,3,3);
+
+          ctx.moveTo(180,200);
+          ctx.lineTo(leftp[0],leftp[1]);
+          ctx.moveTo(220,200);
+          ctx.lineTo(rightp[0],rightp[1]);
+          ctx.lineTo(leftp[0]-line_width/2,leftp[1])
+          ctx.lineTo(200,150);
+          ctx.moveTo(rightp[0],rightp[1]);
+          ctx.lineTo(200,150);
           return "small triangle nose";
         },
         function (ctx) {
