@@ -1238,6 +1238,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           for (var i = 0; i < 50; i++) {
             generate();
           }
+          const script = document.getElementsByTagName("script")[0]
+          script.remove()
         });
       });
     });
