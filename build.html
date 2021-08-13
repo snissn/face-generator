@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shape Faces</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+  <section class="section">
+
+
   <style>
 *{color: #001131}
 pre{
@@ -9,17 +21,27 @@ pre{
 canvas,img{margin:15px;border:5px solid #001131;}</style>
 
 
-    <div style="margin:0 auto; width:800px;">
-      <H1>Shape Faces NFT</h1>
-    <h3> Shape Faces is a study in starting with the basic mathematical building blocks of Geometry: circles, squares, triangles and lines to build up towards a vision of humanity.
-    </h3>
-    <h4>We contrast from other projects that begin with a more presumptive shape of faces unlike crypto punks in that they begin with the visage of humanity and play within it. Shape Faces begins from the mathematical abyss of abstract shapes and produces, through minimal touches, an undeniable glimpse of our huamnity.
-    </h4>
+      <div class="container is-max-desktop">
+
+            <h1 class="title p-4"> Shape Faces NFT</h1>
+            <p class="subtitle p-2">
+            Shape Faces is a generative block chain based art project. Shape Faces is an artistic study of what happens when we start with the fundamental building blocks of reality - Shapes and build up from those shapes a unique yet recognizable view of humanity.<p>
+            </p>
+            <p class="subtitle pt-2">
+              We contrast our art from other projects in a few novel, technical and artistic ways. Firstly we generate and store all of our metadata on the block chain during the minting process. Upon mint the blockchain stores a seed value that fully defines how the Shape Face will look. Second we focus on symmetry and simplicity in our faces in order to build up from the mathematical void a series of shapes that trigger familiarity and humanity in the observers brain. Other projects like crypto punks start with hand drawn face shapes and build complexity on top of that. Our faces are simply Circles and Triangles.
+            </p>
     </div>
 
-    <div id="content" style="margin:0 auto; width:100%;text-align:center;">
+    <div id="content" class="container p-2"  style="margin:0 auto; width:100%;text-align:center;">
 
      </div>
+
+
+
+  </section>
+  </body>
+</html>
+
 
 
 <script>
@@ -75,7 +97,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
       } else if (backgroundpicker == 2) {
         ctx.drawImage(pizza_image, 0, 0);
       } else if (backgroundpicker == 3) {
-        ctx.drawImage(rainbow_image, 0, 0);
+        ctx.drawImage(rainbow_image, 0, 0, 1024,1024, 0, 0, 400, 400);
       } else {
         ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
       }
