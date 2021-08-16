@@ -43,8 +43,10 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
 </html>
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
 <script>
+
+  Math.seedrandom('0x1cC409b5C88aA40e8725b7b133Fa24B971Cf5E6');
   var pizza_image = new Image();
   var galaxy_image = new Image();
   var rainbow_image = new Image();
@@ -62,9 +64,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     ctx.strokeStyle = "#001131";
 
     function getRandom() {
-      var array = new Uint32Array(1);
-      window.crypto.getRandomValues(array);
-      return array[0] / 2 ** 32;
+      return Math.random();
     }
 
     function getRandomEyeColor() {
