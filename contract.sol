@@ -12,6 +12,16 @@ contract ShapeFaces is Initializable, ERC721Upgradeable, OwnableUpgradeable {
     CountersUpgradeable.Counter private _tokenIdCounter;
     
     uint[]  seeds = new uint[](0);
+    
+    uint256 public tokenPrice = 29000000000000000; // 0.029 ETH
+    uint256 public maxTokens = 7777;
+
+
+   function withdraw() public onlyOwner {
+        uint balance = address(this).balance;
+        address payable sender = payable(msg.sender); // Correct since Solidity >= 0.6.0
+        sender.transfer(balance);
+    }
 
 
     function initialize() initializer public {
@@ -23,14 +33,21 @@ contract ShapeFaces is Initializable, ERC721Upgradeable, OwnableUpgradeable {
         return seeds[token_id];
     }
 
-    function safeMint(address to) public {
-        _safeMint(to, _tokenIdCounter.current());
-        seeds.push(uint(keccak256(abi.encodePacked(block.difficulty, blockhash(block.number),block.timestamp, _tokenIdCounter.current()))));
-        _tokenIdCounter.increment();
+    function mint(uint amount) public payable{
+        require(amount > 0);
+        require(amount < 11);
+        require(_tokenIdCounter.current() + amount <= maxTokens, "Purchase would exceed max supply of ShapeFaces");
+        require(tokenPrice * amount == msg.value, "Ether value sent is not correct");
+
+        for(uint index=0;index < amount; index++){
+            _safeMint(msg.sender, _tokenIdCounter.current());
+            seeds.push(uint(keccak256(abi.encodePacked(block.difficulty, blockhash(block.number),block.timestamp, _tokenIdCounter.current()))));
+            _tokenIdCounter.increment();
+            
+        }
     }
 
     function _baseURI() internal pure override returns (string memory) {
         return "https://api.shapefaces.com/";
     }
 }
-
