@@ -27,13 +27,104 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
   var galaxy_image = new Image();
   var rainbow_image = new Image();
   const line_width = 4;
-  function generate() {
+  function generate(seed) {
+    var seed = seed;
+    var gender;
+    var theFace;
+    var eyes;
+    var nose;
+    var mouth;git a 
+
+
     var c = document.createElement("canvas");
     c.height = 400;
     c.width = 400;
     var ctx = c.getContext("2d");
-    var gender = Math.floor(Math.random() * 2);
-    var pickface = Math.floor(Math.random() * 7 + 1);
+
+    function getGender(seed) {
+      if (seed > .25 ){
+        //Female
+        gender = 0;
+      }
+      else {
+       //Male
+        gender = 1;
+      }
+
+    function getFace(seed){
+      if (gender = 0){
+        if (seed < .23){
+          //Small Cirlce
+          theFace = 3
+        }
+        else {
+          //Medium Cirlce
+          theFace = 2
+        }
+      }
+      else {
+        if (seed < .45){
+          //Medium Cirlce
+          theFace = 1
+        }
+        else if (seed < .80 && seed > .45){
+          //Big Cirlce
+          theFace = 2
+        }
+        else if (seed > .80 && seed < .91){
+          //Small Cirlce
+          theFace = 3
+        }
+        else if (seed > .91 && seed < .97){
+          // Triangle
+          theFace = 4
+        }
+        else {
+          //Square
+          theFace = 5
+        }
+      }
+    }
+
+    function getEyes(seed){
+      if (gender = 0){
+        // Big Eyes Female
+        eyes = 0;
+      }
+      else{
+        // Big Eyes Male
+        eyes = 1;
+      }
+    }
+
+    function getNose(seed){
+      if (theFace ==  4 ){
+        if (seed < .166){
+          // 3D Triangle
+          nose = 4;
+        }
+      }
+      else {
+        if (seed < .05){
+          //Triangle
+          nose = 1;
+        }
+        if (seed < .52 && seed > .05){
+          //Left Pointing
+          nose = 2;
+        }
+        else{
+          //Right Pointing
+          nose = 3;
+        }
+      }
+    }
+
+    function getMouth(seed){
+
+    }
+
+
     var hat_or_hair = Math.floor(Math.random() * 2);
     var pickeyes = Math.floor(Math.random() * 6 + 1);
     ctx.lineWidth = line_width;
@@ -60,7 +151,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     }
 
     function getRandomBackground() {
-      let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
+      let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#E01B32", "#E01B32", "#01EA05"];
 
       return colors[Math.floor(Math.random() * colors.length)];
     }
@@ -70,11 +161,11 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
 
       let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
-      if (backgroundpicker == 1) {
+      if (seed < .01) {
         ctx.drawImage(galaxy_image, 0, 0);
-      } else if (backgroundpicker == 2) {
+      } else if (seed > .01 && seed < .02) {
         ctx.drawImage(pizza_image, 0, 0);
-      } else if (backgroundpicker == 3) {
+      } else if (seed > .02 && seed < .07) {
         ctx.drawImage(rainbow_image, 0, 0);
       } else {
         ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
@@ -1196,7 +1287,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     ctx.fillStyle = getRandomBackground();
     ctx.fillRect(0, 0, c.width, c.height);
 
-    const features = { face: face(ctx), left_eye: left_eyes(ctx), nose: nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx) };
+   const features = { face: face(ctx), left_eye: left_eyes(ctx), nose: nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx) };
 
       if(window.location.protocol != 'file:'){ // will throw error because of hosted images
         var canvasImage = new Image()
