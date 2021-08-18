@@ -29,6 +29,7 @@ function generate(seed) {
             //Male
             gender = 1;
         }
+    }
 
         function getFace(seed) {
             if (gender = 0) {
@@ -58,7 +59,7 @@ function generate(seed) {
                 }
             }
         }
-
+    
         function getEyes(seed) {
             if (gender = 0) {
                 // Big Eyes Female
@@ -1028,7 +1029,9 @@ function generate(seed) {
     }
 
     // Now draw!
+    ctx.fillStyle = getCrazyRandomBackground();
     ctx.fillRect(0, 0, c.width, c.height);
+    
 
     const features = {
         face: face(ctx),
@@ -1051,7 +1054,7 @@ function generate(seed) {
 
     //var pre = document.createElement("pre"); pre.innerHTML = JSON.stringify(features,undefined,2); content.appendChild(pre);
 
-}
+
 
 window.addEventListener("load", function() {
     rainbow_image.src = "./rainbow.png";
