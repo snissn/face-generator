@@ -1,15 +1,18 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.2;
 
-import "@openzeppelin/contracts-upgradeable@4.2.0/token/ERC721/ERC721Upgradeable.sol";
-import "@openzeppelin/contracts-upgradeable@4.2.0/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable@4.2.0/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable@4.2.0/utils/CountersUpgradeable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract ShapeFaces is Initializable, ERC721Upgradeable, OwnableUpgradeable {
-    using CountersUpgradeable for CountersUpgradeable.Counter;
+contract ShapeFaces is ERC721, Ownable {
 
-    CountersUpgradeable.Counter private _tokenIdCounter;
+    
+    
+        using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter;
+
     
     uint[]  seeds = new uint[](0);
     
@@ -24,10 +27,7 @@ contract ShapeFaces is Initializable, ERC721Upgradeable, OwnableUpgradeable {
     }
 
 
-    function initialize() initializer public {
-        __ERC721_init("Shape Faces", "SHAPE");
-        __Ownable_init();
-    }
+    constructor() ERC721("Shape Faces", "SHAPE") {}
 
     function getSeed(uint token_id) public view returns (uint){
         return seeds[token_id];
@@ -48,6 +48,7 @@ contract ShapeFaces is Initializable, ERC721Upgradeable, OwnableUpgradeable {
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://api.shapefaces.com/";
+        return "https://shapefaces.uc.r.appspot.com";
     }
 }
+
