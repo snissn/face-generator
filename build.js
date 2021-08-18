@@ -189,6 +189,14 @@ function generate(seed) {
 
     }
 
+    
+    getGender(seed);
+    theFace(seed);
+    getEyes(seed);
+    getNose(seed);
+    getMouth(seed);
+    getHead(seed);
+
 
     var hat_or_hair = Math.floor(Math.random() * 2);
     var pickeyes = Math.floor(Math.random() * 6 + 1);
@@ -1026,11 +1034,15 @@ function generate(seed) {
             return call(fns, ctx);
         }
     }
+    
 }
 
 // Now draw!
 ctx.fillStyle = getCrazyRandomBackground();
 ctx.fillRect(0, 0, c.width, c.height);
+
+
+
 
 
 const features = {
