@@ -27,13 +27,18 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
   var galaxy_image = new Image();
   var rainbow_image = new Image();
   const line_width = 4;
+
+
+
   function generate(seed) {
     var seed = seed;
     var gender;
     var theFace;
     var eyes;
     var nose;
-    var mouth;git a 
+    var mouth;
+    var head; 
+    var color;
 
 
     var c = document.createElement("canvas");
@@ -55,33 +60,33 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
       if (gender = 0){
         if (seed < .23){
           //Small Cirlce
-          theFace = 3
+          theFace = f 
         }
         else {
           //Medium Cirlce
-          theFace = 2
+          theFace = g 
         }
       }
       else {
         if (seed < .45){
           //Medium Cirlce
-          theFace = 1
+          theFace = a
         }
         else if (seed < .80 && seed > .45){
           //Big Cirlce
-          theFace = 2
+          theFace = b
         }
         else if (seed > .80 && seed < .91){
           //Small Cirlce
-          theFace = 3
+          theFace = c
         }
         else if (seed > .91 && seed < .97){
           // Triangle
-          theFace = 4
+          theFace = d
         }
         else {
           //Square
-          theFace = 5
+          theFace = e
         }
       }
     }
@@ -89,11 +94,20 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     function getEyes(seed){
       if (gender = 0){
         // Big Eyes Female
-        eyes = 0;
+        if (seed > .5){
+          eyes = a;
+        }
+        else {
+          eyes = b;
+        }
       }
       else{
-        // Big Eyes Male
-        eyes = 1;
+        if (seed > .5){
+          eyes = c;
+        }
+        else {
+          eyes = d;
+        }
       }
     }
 
@@ -121,6 +135,106 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     }
 
     function getMouth(seed){
+      if (seed < .02){
+          //Small Sad
+          mouth = a;
+        }
+      else  if (seed < .12 && seed > .02){
+          //Big Sad
+          mouth = b;
+        }
+      else if  (seed < .17 && seed > .12){
+          //Left Sad
+          mouth = c;
+        }
+      else  if (seed < .37 && seed > .17){
+          //Small Happy
+          mouth = d;
+        }
+      else  if (seed < .82 && seed > .37){
+          //Big  Happy
+          mouth = e;
+        }
+      else  if (seed < .97 && seed > .82){
+          //Right Happy
+          mouth = f;
+        }
+      else {
+          //Suprised
+          mouth = g;
+        }
+    }
+
+    function getHead(seed){
+
+        if (seed < .25){
+          //Left Swoop
+          if (theFace == a ){
+          head = a; }
+          else if (theFace == c ){
+          head = b;}
+          else if (theFace == b ) {
+            head = c}
+          else {
+            head = n
+          }
+          
+        }
+        else  if (seed < .455 && seed > .25){
+          //Left Swirl
+          if (theFace == a ){
+          head = d; }
+          else if (theFace == c ){
+          head = e;}
+          else if (theFace == b){
+            head = f}
+          else {
+            head = o;
+          }
+
+        }
+        else  if (seed < .705 && seed > .455){
+          //Right Swoop
+          if (theFace == a ){
+          head = a; }
+          else if (theFace == c ){
+          head = b;}
+          else if (theFace == b ) {
+            head = c}
+          else {
+            head = n
+          }
+        }
+        else  if (seed < .91 && seed > .705){
+          //Right Swirl
+          if (theFace == a ){
+          head = g; }
+          else if (theFace == c ){
+          head = h;}
+          else if (theFace == b ) {
+            head = i}
+          else {
+            head = p
+          }
+        }
+        else  if (seed < .96 && seed > .91){
+          //Fedora
+          head = j;
+        }
+        else  if (seed < .97 && seed > .96){
+          //Cheifs
+          head = k;
+        }
+        else  if (seed < .98 && seed > .97){
+          //Top Hat
+          head = l;
+        }
+        else 
+        head = m;
+
+      }
+    
+    function colors(seed){
 
     }
 
@@ -208,125 +322,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     //ctx.fill();
 
     function left_eyes(ctx) {
-      const fns = [
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
 
-          ctx.arc(150, 150, 5, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(152.5, 150);
-          ctx.strokeStyle = eyecolor;
-          //ctx.arc(150, 150, 2.5, 0, 2 * Math.PI);
-          ctx.strokeStyle = "black";
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(255, 150);
-          ctx.arc(250, 150, 5, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(252.5, 150);
-          ctx.strokeStyle = eyecolor;
-          //ctx.arc(250, 150, 2.5, 0, 2 * Math.PI);
-          ctx.strokeStyle = "black";
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Small Circle Eyes";
-        },
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.rect(140, 140, 25, 25);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(150, 150);
-          ctx.rect(150, 150, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.rect(240, 140, 25, 25);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(250, 150);
-          ctx.rect(250, 150, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Small Square Eyes";
-        }, 
-
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.arc(150, 150, 10, 0, 2 * Math.PI);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(153.5, 150);
-          ctx.arc(150, 150, 3.5, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(260, 150);
-          ctx.arc(250, 150, 10, 0, 2 * Math.PI);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(253.5, 150);
-          ctx.arc(250, 150, 3.5, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Medium Cicle Eyes";
-        },
-
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.rect(140, 140, 30, 30);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(145, 145);
-          ctx.rect(145, 145, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.rect(240, 140, 30, 30);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(245, 145);
-          ctx.rect(245, 145, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Medium Square Eyes";
-        },
-
+      const a = [
         function (ctx) {
           const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 15, 0, 2 * Math.PI);
@@ -355,8 +352,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fill();
           //ctx.stroke();
           return "Large Circle Eyes";
-        },
-
+        },];
+const b = [
         function (ctx) {
           const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 35, 35);
@@ -383,201 +380,10 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = eyecolor
           ctx.fill();
           return `Large Square Eyes`;
-        },
+        }
       ];
-      const fns1 = [
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.arc(150, 150, 5, 0, 2 * Math.PI);
-          ctx.moveTo(150, 145);
-          ctx.lineTo(150, 135);
-          ctx.moveTo(150 + 5 * Math.cos(Math.PI / 3), 150 - 5 * Math.sin(Math.PI / 3));
-          ctx.lineTo(150 + 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
-          ctx.moveTo(150 + 5 * Math.cos(Math.PI / 6), 150 - 5 * Math.sin(Math.PI / 6));
-          ctx.lineTo(150 + 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
-          ctx.moveTo(150 - 5 * Math.cos(Math.PI / 3), 150 - 5 * Math.sin(Math.PI / 3));
-          ctx.lineTo(150 - 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
-          ctx.moveTo(150 - 5 * Math.cos(Math.PI / 6), 150 - 5 * Math.sin(Math.PI / 6));
-          ctx.lineTo(150 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(151, 150);
-          //ctx.arc(150, 150, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(255, 150);
-          ctx.arc(250, 150, 5, 0, 2 * Math.PI);
-          ctx.moveTo(250, 145);
-          ctx.lineTo(250, 135);
-          ctx.moveTo(250 + 5 * Math.cos(Math.PI / 3), 150 - 5 * Math.sin(Math.PI / 3));
-          ctx.lineTo(250 + 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
-          ctx.moveTo(250 + 5 * Math.cos(Math.PI / 6), 150 - 5 * Math.sin(Math.PI / 6));
-          ctx.lineTo(250 + 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
-          ctx.moveTo(250 - 5 * Math.cos(Math.PI / 3), 150 - 5 * Math.sin(Math.PI / 3));
-          ctx.lineTo(250 - 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
-          ctx.moveTo(250 - 5 * Math.cos(Math.PI / 6), 150 - 5 * Math.sin(Math.PI / 6));
-          ctx.lineTo(250 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(251, 150);
-          //ctx.arc(250, 150, 1, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Small Female Circle Eyes";
-        },
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.rect(140, 140, 25, 25);
-          ctx.moveTo(140, 140);
-          ctx.lineTo(140, 130);
-          ctx.moveTo(146.25, 140);
-          ctx.lineTo(146.25, 130);
-          ctx.moveTo(152.5, 140);
-          ctx.lineTo(152.5, 130);
-          ctx.moveTo(158.75, 140);
-          ctx.lineTo(158.75, 130);
-          ctx.moveTo(165, 140);
-          ctx.lineTo(165, 130);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(150, 150);
-          ctx.rect(150, 150, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          // AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
-          ctx.beginPath();
-          ctx.rect(240, 140, 25, 25);
-          ctx.moveTo(240, 140);
-          ctx.lineTo(240, 130);
-          ctx.moveTo(246.25, 140);
-          ctx.lineTo(246.25, 130);
-          ctx.moveTo(252.5, 140);
-          ctx.lineTo(252.5, 130);
-          ctx.moveTo(258.75, 140);
-          ctx.lineTo(258.75, 130);
-          ctx.moveTo(265, 140);
-          ctx.lineTo(265, 130);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(250, 150);
-          ctx.rect(250, 150, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Small Female Square Eyes";
-        },
-
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.arc(150, 150, 10, 0, 2 * Math.PI);
-          ctx.moveTo(150, 140);
-          ctx.lineTo(150, 130);
-          ctx.moveTo(150 + 10 * Math.cos(Math.PI / 3), 150 - 10 * Math.sin(Math.PI / 3));
-          ctx.lineTo(150 + 20 * Math.cos(Math.PI / 3), 150 - 20 * Math.sin(Math.PI / 3));
-          ctx.moveTo(150 + 10 * Math.cos(Math.PI / 6), 150 - 10 * Math.sin(Math.PI / 6));
-          ctx.lineTo(150 + 20 * Math.cos(Math.PI / 6), 150 - 20 * Math.sin(Math.PI / 6));
-          ctx.moveTo(150 - 10 * Math.cos(Math.PI / 3), 150 - 10 * Math.sin(Math.PI / 3));
-          ctx.lineTo(150 - 20 * Math.cos(Math.PI / 3), 150 - 20 * Math.sin(Math.PI / 3));
-          ctx.moveTo(150 - 10 * Math.cos(Math.PI / 6), 150 - 10 * Math.sin(Math.PI / 6));
-          ctx.lineTo(150 - 20 * Math.cos(Math.PI / 6), 150 - 20 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(154, 150);
-          ctx.arc(150, 150, 4, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(260, 150);
-          ctx.arc(250, 150, 10, 0, 2 * Math.PI);
-          ctx.moveTo(250, 140);
-          ctx.lineTo(250, 130);
-          ctx.moveTo(250 + 10 * Math.cos(Math.PI / 3), 150 - 10 * Math.sin(Math.PI / 3));
-          ctx.lineTo(250 + 20 * Math.cos(Math.PI / 3), 150 - 20 * Math.sin(Math.PI / 3));
-          ctx.moveTo(250 + 10 * Math.cos(Math.PI / 6), 150 - 10 * Math.sin(Math.PI / 6));
-          ctx.lineTo(250 + 20 * Math.cos(Math.PI / 6), 150 - 20 * Math.sin(Math.PI / 6));
-          ctx.moveTo(250 - 10 * Math.cos(Math.PI / 3), 150 - 10 * Math.sin(Math.PI / 3));
-          ctx.lineTo(250 - 20 * Math.cos(Math.PI / 3), 150 - 20 * Math.sin(Math.PI / 3));
-          ctx.moveTo(250 - 10 * Math.cos(Math.PI / 6), 150 - 10 * Math.sin(Math.PI / 6));
-          ctx.lineTo(250 - 20 * Math.cos(Math.PI / 6), 150 - 20 * Math.sin(Math.PI / 6));
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(254, 150);
-          ctx.arc(250, 150, 4, 0, 2 * Math.PI);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Medium Female Circle Eyes";
-        },
-        function (ctx) {
-          const eyecolor = getRandomEyeColor();
-          ctx.rect(140, 140, 30, 30);
-          ctx.moveTo(140, 140);
-          ctx.lineTo(140, 130);
-          ctx.moveTo(147.5, 140);
-          ctx.lineTo(147.5, 130);
-          ctx.moveTo(155, 140);
-          ctx.lineTo(155, 130);
-          ctx.moveTo(162.5, 140);
-          ctx.lineTo(162.5, 130);
-          ctx.moveTo(170, 140);
-          ctx.lineTo(170, 130);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-
-          ctx.moveTo(145, 145);
-          ctx.rect(145, 145, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.rect(240, 140, 30, 30);
-          ctx.moveTo(240, 140);
-          ctx.lineTo(240, 130);
-          ctx.moveTo(247.5, 140);
-          ctx.lineTo(247.5, 130);
-          ctx.moveTo(255, 140);
-          ctx.lineTo(255, 130);
-          ctx.moveTo(262.5, 140);
-          ctx.lineTo(262.5, 130);
-          ctx.moveTo(270, 140);
-          ctx.lineTo(270, 130);
-          ctx.fillStyle = "white";
-          ctx.fill();
-          ctx.stroke();
-
-          ctx.beginPath();
-          ctx.moveTo(245, 145);
-          ctx.rect(245, 145, 10, 10);
-          ctx.fillStyle = eyecolor;
-          ctx.fill();
-          return "Medium Female Square Eyes";
-        },
+      
+     const c = [
         function (ctx) {
           const eyecolor = getRandomEyeColor();
           ctx.arc(150, 150, 15, 0, 2 * Math.PI);
@@ -625,7 +431,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = eyecolor;
           ctx.fill();
           return "Large Female Circle Eyes";
-        },
+        },]
+      const d = [
         function (ctx) {
           const eyecolor = getRandomEyeColor();
           ctx.rect(140, 140, 35, 35);
@@ -674,15 +481,11 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Large Female Square Eyes";
         },
       ];
-      if (pickface <=5) {
-        return call(fns, ctx);
-      } else {
-        return call(fns1, ctx);
-      }
+      return call(eyes,ctx);
     }
 
     function nose(ctx) {
-      const fns = [
+      const c = [
         function (ctx) {
           ctx.moveTo(200, 200);
           ctx.lineTo(200, 150 + line_width/2);
@@ -690,8 +493,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.lineTo(220, 200);
 
           return "small right nose";
-        },
-
+        },]
+      const a =[
         function (ctx){
           ctx.moveTo(200, 150);
           ctx.lineTo(220, 200);
@@ -705,18 +508,18 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fill();
           ctx.closePath();
           return "small triangle nose";
-        },
-        
+        },]
+       const b = [ 
         function (ctx) {
           ctx.moveTo(200, 200);
           ctx.lineTo(200, 150 + line_width/2);
           ctx.moveTo(200 + line_width/2, 200);
           ctx.lineTo(180, 200);
           return "small left nose";
-        },
-      ];
+        },]
+      
 
-      const fns1 = [
+      const d = [
       function (ctx) {
           const leftp = [194.5,192];
           const rightp = [207.5,192];
@@ -744,12 +547,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "small 3D triangle nose";
         }
       ]
-      var d3 = Math.floor(Math.random() * 25 + 1);  
-      if (d3 == 1){
-        return call(fns1,ctx)
-      } else{
-      return call(fns, ctx);
-      }
+      return call(nose,ctx);
     }
 
     function brow_left(ctx) {
@@ -802,7 +600,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
     }
 
     function face(ctx) {
-      const fns1 = [
+      const c = [
         function (ctx) {
           ctx.fillStyle = getRandomBackground();
           ctx.arc(200, 200, 115, 0, 2 * Math.PI);
@@ -810,7 +608,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Small Face";
         }
       ];
-      const fns6 = [
+      const g = [
         function (ctx) {
           ctx.fillStyle = getRandomHairColor();
           ctx.rect(50, 30, 300,260);
@@ -827,7 +625,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           
         }
       ];
-      const fns2 = [
+      const a = [
         function (ctx) {
           ctx.arc(200, 200, 140, 0, 2 * Math.PI);
           ctx.fillStyle = getRandomBackground();
@@ -837,7 +635,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
         },
       ];
 
-      const fns7 = [
+      const f = [
         function (ctx) {
 
           ctx.fillStyle = getRandomHairColor();
@@ -854,7 +652,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Medium Female Face";
         },
       ];
-      const fns3 = [
+      const b = [
         function (ctx) {
           ctx.arc(200, 200, 165, 0, 2 * Math.PI);
           //ctx.fillStyle = getRandomBackground();
@@ -864,7 +662,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Large Face";
         },
       ];
-      const fns4 = [
+      const d = [
         function (ctx) {
           ctx.moveTo(5, 25);
           ctx.lineTo(395, 25);
@@ -880,7 +678,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Pizza Face";
         },
       ];
-      const fns5 = [
+      const e = [
         function (ctx) {
           ctx.moveTo(25, 25);
           ctx.rect(25, 25, 350, 350);
@@ -896,26 +694,12 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Square Face";
         },
       ];
-      if (pickface == 1) {
-        return call(fns1, ctx);
-      } else if (pickface == 2) {
-        return call(fns2, ctx);
-      } else if (pickface == 3) {
-        return call(fns3, ctx);
-      } else if (pickface == 4) {
-        return call(fns4, ctx);
-      } else if (pickface == 5) {
-        return call(fns5, ctx);
-      } else if (pickface == 6){
-         return call(fns6,ctx);
-       }else {
-         return call(fns7,ctx);
-       }
+      return call(theFace,ctx);
 
     }
 
-    function hat(ctx) {
-      const fns = [
+    function headItem(ctx) {
+const l = [
         function (ctx) {
           ctx.fillStyle = getRandomBackground();
 
@@ -935,8 +719,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fill();
 
           return "top hat";
-        },
-
+        },]
+const j = [
         function (ctx) {
           ctx.fillStyle = getRandomBackground();
 
@@ -956,8 +740,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fill();
 
           return "fedora";
-        },
-
+        },]
+const k = [
         function (ctx) {
           ctx.fillStyle = "white";
 
@@ -973,19 +757,14 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fill();
 
           return "chef's hat";
-        },
+        },]
+const m = [
 
         function (ctx) {
           return "no hat";
         },
       ];
-      const fns1 = [
-        function (ctx) {
-          // Hair 1.1
-          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 85 + 20 * Math.sin(0.4 * Math.PI));
-          ctx.arc(215, 85, 20, 0.4 * Math.PI, Math.PI);
-          return "single hair";
-        },
+const i = [
         function (ctx) {
           //Hair 2.1
           ctx.moveTo(200, 85);
@@ -998,7 +777,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
             ctx.lineTo(210.5 + x, 105 + y);
           }
           return "right squigle";
-        },
+        },]
+const f = [
         function (ctx) {
           //Hair 3.1
           ctx.moveTo(200, 85);
@@ -1013,13 +793,15 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "left squigle";
         },
       ];
-      const fns2 = [
+const c = [
         function (ctx) {
-          //Hair 1.2
-          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 60 + 20 * Math.sin(0.4 * Math.PI));
-          ctx.arc(215, 60, 20, 0.4 * Math.PI, Math.PI);
-          return "single hair";
-        },
+          // Hair 1.1
+          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 85 + 20 * Math.sin(0.4 * Math.PI));
+          ctx.arc(215, 85, 20, 0.4 * Math.PI, Math.PI);
+          return "swoop hair";
+        },]
+
+const g = [
         function (ctx) {
           //Hair 2.2
           ctx.moveTo(200, 60);
@@ -1032,7 +814,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
             ctx.lineTo(210.5 + x, 80 + y);
           }
           return "right squigle";
-        },
+        },]
+const d = [
         function (ctx) {
           //Hair 3.2
           ctx.moveTo(200, 60);
@@ -1045,15 +828,15 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
             ctx.lineTo(189 + x, 80 + y);
           }
           return "left squigle";
-        },
-      ];
-      const fns3 = [
+        },];
+const a = [
         function (ctx) {
-          // Hair 1.3
-          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 35 + 20 * Math.sin(0.4 * Math.PI));
-          ctx.arc(215, 35, 20, 0.4 * Math.PI, Math.PI);
-          return "single hair";
-        },
+          //Hair 1.2
+          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 60 + 20 * Math.sin(0.4 * Math.PI));
+          ctx.arc(215, 60, 20, 0.4 * Math.PI, Math.PI);
+          return "swoop hair";
+        },]
+const h = [
         function (ctx) {
           //Hair 2.3
           ctx.moveTo(200, 35);
@@ -1066,7 +849,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
             ctx.lineTo(210.5 + x, 55 + y);
           }
           return "right squigle";
-        },
+        },]
+const e = [
         function (ctx) {
           // //Hair 3.3
           ctx.moveTo(200, 35);
@@ -1081,13 +865,14 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "left squigle";
         },
       ];
-      const fns4 = [
+const b = [
         function (ctx) {
-          //Hair 1.4
-          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 25 + 20 * Math.sin(0.4 * Math.PI));
-          ctx.arc(215, 25, 20, 0.4 * Math.PI, Math.PI);
-          return "single hair";
-        },
+          // Hair 1.3
+          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 35 + 20 * Math.sin(0.4 * Math.PI));
+          ctx.arc(215, 35, 20, 0.4 * Math.PI, Math.PI);
+          return "swoop hair";
+        },]
+const p = [ 
         function (ctx) {
           // Hair 2.4
           ctx.moveTo(200, 25);
@@ -1100,7 +885,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
             ctx.lineTo(210.5 + x, 45 + y);
           }
           return "right squigle";
-        },
+        },]
+const o = [
         function (ctx) {
           //Hair 3.4
           ctx.moveTo(200, 25);
@@ -1113,38 +899,20 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
             ctx.lineTo(189 + x, 45 + y);
           }
           return "left squigle";
-        },
-      ];
-
-      const fns5 = [
-        function(ctx){
-          return "Female Hair";
-        }
-      ];
-      if (pickface == 6 || pickface == 7){
-        return call(fns5,ctx);
+        },]
+const n = [
+        function (ctx) {
+          //Hair 1.4
+          ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 25 + 20 * Math.sin(0.4 * Math.PI));
+          ctx.arc(215, 25, 20, 0.4 * Math.PI, Math.PI);
+          return "single hair";
+        },]
+        return call(head,ctx);
       }
-
-      if (hat_or_hair == 1) {
-        if (pickface == 1) {
-          return call(fns1, ctx);
-        }
-        if (pickface == 2) {
-          return call(fns2, ctx);
-        }
-
-        if (pickface == 3) {
-          return call(fns3, ctx);
-        } else {
-          return call(fns4, ctx);
-        }
-      } else {
-        return call(fns, ctx);
-      }
-    }
+      
 
     function mouth(ctx) {
-      const fns = [
+const c = [
         function (ctx) {
           ctx.arc(190, 275, 50, 10, 2 * Math.PI);
           ctx.moveTo(190+((50 + line_width/2) * Math.cos(10)),275+ ((50 + line_width/2) * Math.sin(10)));
@@ -1152,17 +920,18 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return " Left Side Sad Mouth";
-        },
+        }]
 
+const f = [
         function (ctx) {
           ctx.arc(210, 235, 50,2 * Math.PI,2.5658958);
           ctx.moveTo(210+((50 + line_width/2) * Math.cos(2.5658958)),235+ ((50 + line_width/2) * Math.sin(2.5658958)));
           ctx.lineTo(260 + line_width/2 ,235 + line_width/2 - .5);
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
-          return "Left Side Happy Mouth";
-        },
-
+          return "Right Side Happy Mouth";
+        },]
+const b = [
         function (ctx) {
           ctx.arc(200, 295, 50, 1 * Math.PI, 2 * Math.PI, 0 * Math.PI);
           ctx.moveTo(150- line_width/2,295);
@@ -1170,8 +939,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "Center Sad Mouth";
-        },
-
+        },]
+const e = [
         function (ctx) {
           ctx.arc(200, 255, 50, Math.PI, 2 * Math.PI, 1 * Math.PI);
           ctx.moveTo(150- line_width/2,255);
@@ -1179,8 +948,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "Center Happy Mouth";
-        },
-
+        },]
+const a = [
         function (ctx) {
           ctx.arc(200, 255, 10, Math.PI, 2 * Math.PI);
           ctx.moveTo(190- line_width/2,255);
@@ -1188,8 +957,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "small sad mouth";
-        },
-
+        },]
+const d = [
         function (ctx) {
           ctx.arc(200, 255, 10, 2 * Math.PI, Math.PI);
           ctx.moveTo(190 - line_width/2,255);
@@ -1197,8 +966,8 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           ctx.fillStyle = getRandomBackground();
           ctx.fill();
           return "small happy mouth";
-        },
-
+        },]
+const g = [
         function (ctx) {
           ctx.arc(200, 255, 10, 0, 2 * Math.PI);
           ctx.fillStyle = getRandomBackground();
@@ -1206,7 +975,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
           return "Suprised Mouth";
         },
       ];
-      return call(fns, ctx);
+      return call(mouth,ctx);
     }
 
     function mustashe(ctx) {
@@ -1282,12 +1051,13 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
         return call(fns, ctx);
       }
     }
+  }
 
     // Now draw!
     ctx.fillStyle = getRandomBackground();
     ctx.fillRect(0, 0, c.width, c.height);
 
-   const features = { face: face(ctx), left_eye: left_eyes(ctx), nose: nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx) };
+  const features = { face: face(ctx), left_eye: left_eyes(ctx), nose: nose(ctx), mouth: mouth(ctx), mustashe: mustashe(ctx), brow_left: brow_left(ctx), brow_right: brow_right(ctx), hat: hat(ctx) };
 
       if(window.location.protocol != 'file:'){ // will throw error because of hosted images
         var canvasImage = new Image()
@@ -1308,9 +1078,10 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
       galaxy_image.addEventListener("load", (e) => {
         pizza_image.src = "./pizza.jpeg";
         pizza_image.addEventListener("load", (e) => {
-          for (var i = 0; i < 50; i++) {
-            generate();
-          }
+         // for (var i = 0; i < 1; i++) {
+          var userSeed = window.prompt("What would you like the seed to be (0<n<1): ");
+  	      generate(userSeed);
+         // }
         });
       });
     });
