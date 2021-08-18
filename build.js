@@ -1035,7 +1035,7 @@ function generate(seed) {
         }
     }
     
-}
+
 
 // Now draw!
 ctx.fillStyle = getCrazyRandomBackground();
@@ -1055,6 +1055,8 @@ const features = {
     brow_right: brow_right(ctx),
     hat: hat(ctx)
 };
+
+}
 
 if (window.location.protocol != 'file:') { // will throw error because of hosted images
     var canvasImage = new Image()
