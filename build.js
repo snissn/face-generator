@@ -1056,7 +1056,6 @@ const features = {
     hat: hat(ctx)
 };
 
-}
 
 if (window.location.protocol != 'file:') { // will throw error because of hosted images
     var canvasImage = new Image()
@@ -1066,6 +1065,7 @@ if (window.location.protocol != 'file:') { // will throw error because of hosted
     content.appendChild(c);
 }
 
+}
 //var pre = document.createElement("pre"); pre.innerHTML = JSON.stringify(features,undefined,2); content.appendChild(pre);
 
 
