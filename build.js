@@ -35,27 +35,27 @@ function generate(seed) {
         if (gender = 0) {
             if (seed < .23) {
                 //Small Cirlce
-                theFace = f
+                theFace = "f"
             } else {
                 //Medium Cirlce
-                theFace = g
+                theFace = "g"
             }
         } else {
             if (seed < .45) {
                 //Medium Cirlce
-                theFace = a
+                theFace = "a"
             } else if (seed < .80 && seed > .45) {
                 //Big Cirlce
-                theFace = b
+                theFace = "b"
             } else if (seed > .80 && seed < .91) {
                 //Small Cirlce
-                theFace = c
+                theFace = "c"
             } else if (seed > .91 && seed < .97) {
                 // Triangle
-                theFace = d
+                theFace = "d"
             } else {
                 //Square
-                theFace = e
+                theFace = "e"
             }
         }
     }
@@ -64,36 +64,36 @@ function generate(seed) {
         if (gender = 0) {
             // Big Eyes Female
             if (seed > .5) {
-                eyes = a;
+                eyes = "a";
             } else {
-                eyes = b;
+                eyes = "b";
             }
         } else {
             if (seed > .5) {
-                eyes = c;
+                eyes = "c";
             } else {
-                eyes = d;
+                eyes = "d";
             }
         }
     }
 
     function getNose(seed) {
-        if (theFace == 4) {
+        if (theFace == "d") {
             if (seed < .166) {
                 // 3D Triangle
-                nose = 4;
+                nose = "d";
             }
         } else {
             if (seed < .05) {
                 //Triangle
-                nose = 1;
+                nose = "a";
             }
             if (seed < .52 && seed > .05) {
                 //Left Pointing
-                nose = 2;
+                nose = "b";
             } else {
                 //Right Pointing
-                nose = 3;
+                nose = "c";
             }
         }
     }
@@ -101,25 +101,25 @@ function generate(seed) {
     function getMouth(seed) {
         if (seed < .02) {
             //Small Sad
-            mouth = a;
+            mouth = "a";
         } else if (seed < .12 && seed > .02) {
             //Big Sad
-            mouth = b;
+            mouth = "b";
         } else if (seed < .17 && seed > .12) {
             //Left Sad
-            mouth = c;
+            mouth = "c";
         } else if (seed < .37 && seed > .17) {
             //Small Happy
-            mouth = d;
+            mouth = "d";
         } else if (seed < .82 && seed > .37) {
             //Big  Happy
-            mouth = e;
+            mouth = "e";
         } else if (seed < .97 && seed > .82) {
             //Right Happy
-            mouth = f;
+            mouth = "f";
         } else {
             //Suprised
-            mouth = g;
+            mouth = "g";
         }
     }
 
@@ -127,61 +127,61 @@ function generate(seed) {
 
         if (seed < .25) {
             //Left Swoop
-            if (theFace == a) {
-                head = a;
-            } else if (theFace == c) {
-                head = b;
-            } else if (theFace == b) {
-                head = c
+            if (theFace == "a") {
+                head = "a";
+            } else if (theFace == "c") {
+                head = "b";
+            } else if (theFace == "b") {
+                head = "c"
             } else {
-                head = n
+                head = "n"
             }
 
         } else if (seed < .455 && seed > .25) {
             //Left Swirl
-            if (theFace == a) {
-                head = d;
-            } else if (theFace == c) {
+            if (theFace == "a") {
+                head = "d";
+            } else if (theFace == "c") {
                 head = e;
-            } else if (theFace == b) {
-                head = f
+            } else if (theFace == "b") {
+                head = "f"
             } else {
-                head = o;
+                head = "o";
             }
 
         } else if (seed < .705 && seed > .455) {
             //Right Swoop
-            if (theFace == a) {
-                head = a;
-            } else if (theFace == c) {
+            if (theFace == "a") {
+                head = "a";
+            } else if (theFace == "c") {
                 head = b;
-            } else if (theFace == b) {
-                head = c
+            } else if (theFace == "b") {
+                head = "c"
             } else {
-                head = n
+                head = "n"
             }
         } else if (seed < .91 && seed > .705) {
             //Right Swirl
-            if (theFace == a) {
-                head = g;
-            } else if (theFace == c) {
-                head = h;
-            } else if (theFace == b) {
-                head = i
+            if (theFace == "a") {
+                head = "g";
+            } else if (theFace == "c") {
+                head = "h";
+            } else if (theFace == "b") {
+                head = "i"
             } else {
-                head = p
+                head = "p"
             }
         } else if (seed < .96 && seed > .91) {
             //Fedora
-            head = j;
+            head = "j";
         } else if (seed < .97 && seed > .96) {
             //Cheifs
-            head = k;
+            head = "k";
         } else if (seed < .98 && seed > .97) {
             //Top Hat
-            head = l;
+            head = "l";
         } else
-            head = m;
+            head = "m";
 
     }
 
@@ -191,7 +191,7 @@ function generate(seed) {
 
     
     getGender(seed);
-    theFace(seed);
+    getFace(seed);
     getEyes(seed);
     getNose(seed);
     getMouth(seed);
@@ -282,7 +282,8 @@ function generate(seed) {
 
     function left_eyes(ctx) {
 
-        const a = [
+        if (eyes == "a" ){
+            return(
             function(ctx) {
                 const eyecolor = getRandomEyeColor();
                 ctx.arc(150, 150, 15, 0, 2 * Math.PI);
@@ -311,8 +312,8 @@ function generate(seed) {
                 ctx.fill();
                 //ctx.stroke();
                 return "Large Circle Eyes";
-            },
-        ];
+            })
+        };
         const b = [
             function(ctx) {
                 const eyecolor = getRandomEyeColor();
@@ -442,7 +443,7 @@ function generate(seed) {
                 return "Large Female Square Eyes";
             },
         ];
-        return call(eyes, ctx);
+       // return call(eyes, ctx);
     }
 
     function nose(ctx) {
@@ -456,7 +457,8 @@ function generate(seed) {
                 return "small right nose";
             },
         ]
-        const a = [
+        if (nose == a) {
+            return (
             function(ctx) {
                 ctx.moveTo(200, 150);
                 ctx.lineTo(220, 200);
@@ -470,8 +472,8 @@ function generate(seed) {
                 ctx.fill();
                 ctx.closePath();
                 return "small triangle nose";
-            },
-        ]
+            })
+        };
         const b = [
             function(ctx) {
                 ctx.moveTo(200, 200);
@@ -511,7 +513,7 @@ function generate(seed) {
                 return "small 3D triangle nose";
             }
         ]
-        return call(nose, ctx);
+       // return call(nose, ctx);
     }
 
     function brow_left(ctx) {
@@ -536,7 +538,7 @@ function generate(seed) {
                 return "suprised left eyebrow";
             },
         ];
-        return call(fns, ctx);
+      //  return call(fns, ctx);
     }
 
     function brow_right(ctx) {
@@ -560,7 +562,7 @@ function generate(seed) {
                 return "suprised right eyebrow";
             },
         ];
-        return call(fns, ctx);
+     //   return call(fns, ctx);
     }
 
     function face(ctx) {
@@ -599,7 +601,8 @@ function generate(seed) {
             },
         ];
 
-        const f = [
+        if (theFace == "f"){
+           return (
             function(ctx) {
 
                 ctx.fillStyle = getRandomHairColor();
@@ -614,8 +617,8 @@ function generate(seed) {
                 ctx.fill();
 
                 return "Medium Female Face";
-            },
-        ];
+            })
+        };
         const b = [
             function(ctx) {
                 ctx.arc(200, 200, 165, 0, 2 * Math.PI);
@@ -658,7 +661,7 @@ function generate(seed) {
                 return "Square Face";
             },
         ];
-        return call(theFace, ctx);
+        //return call(theFace, ctx);
 
     }
 
@@ -800,14 +803,15 @@ function generate(seed) {
                 return "left squigle";
             },
         ];
-        const a = [
+        if (head == a) {
+            return(
             function(ctx) {
                 //Hair 1.2
                 ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 60 + 20 * Math.sin(0.4 * Math.PI));
                 ctx.arc(215, 60, 20, 0.4 * Math.PI, Math.PI);
                 return "swoop hair";
-            },
-        ]
+            })
+        };
         const h = [
             function(ctx) {
                 //Hair 2.3
@@ -884,7 +888,7 @@ function generate(seed) {
                 return "single hair";
             },
         ]
-        return call(head, ctx);
+     //   return call(head, ctx);
     }
 
 
@@ -930,7 +934,8 @@ function generate(seed) {
                 return "Center Happy Mouth";
             },
         ]
-        const a = [
+        if (mouth == a){
+            return(
             function(ctx) {
                 ctx.arc(200, 255, 10, Math.PI, 2 * Math.PI);
                 ctx.moveTo(190 - line_width / 2, 255);
@@ -938,8 +943,8 @@ function generate(seed) {
                 ctx.fillStyle = getRandomBackground();
                 ctx.fill();
                 return "small sad mouth";
-            },
-        ]
+            })
+        };
         const d = [
             function(ctx) {
                 ctx.arc(200, 255, 10, 2 * Math.PI, Math.PI);
@@ -958,7 +963,7 @@ function generate(seed) {
                 return "Suprised Mouth";
             },
         ];
-        return call(mouth, ctx);
+   //     return call(mouth, ctx);
     }
 
     function mustashe(ctx) {
