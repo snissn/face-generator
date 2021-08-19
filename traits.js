@@ -25,7 +25,8 @@ function build_traits(seed){
   data['Nose'] = build_nose(data)
   data['Left Eyebrow'] = build_left_eyebrow()
   data['Right Eyebrow'] = build_right_eyebrow(data['Left Eyebrow'])
-  data['Polygon Sides'] = build_face_polygon();
+  data['Polygon Face Sides'] = build_face_polygon();
+  data['Polygon Eyes Sides'] = build_face_polygon();
 
 
   data['Eye Color'] = getRandomEyeColor()
@@ -187,8 +188,13 @@ function build_male_face(){
 
 function build_mouth(){
   const randnum = random();
-  if(randnum < 0.45){
+  // if (randnum > 0){
+  //   return "Trapazoid"
+  //}
+   if(randnum < 0.45){
     return "Big Happy"
+  }else if (randnum >=.42 && randnum <.45){
+      return "Trapazoid"
   }else if(randnum >= 0.45 && randnum < 0.65){
     return "Small Happy"
   }else if(randnum >= 0.65 && randnum < 0.80){
@@ -208,8 +214,10 @@ function build_eye(){
   const randnum = random();
   if(randnum < 0.5){
     return "Circle"
-  }else if (randnum >=.5 && randnum < .75){
+  }else if (randnum >=.5 && randnum < .52){
     return "Hexagon"
+  }else if (randnum >=.52 && randnum < .75){
+      return "Polygon"
   }else{
     return "Square"
   }

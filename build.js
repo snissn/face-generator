@@ -542,10 +542,66 @@ function generate() {
             draw_hexagon_eyes(color)
             }
         }
+        if(eyes == "Polygon"){
+            draw_polygon_eyes(color)
+        }
     }
+
+    function draw_polygon_eyes(color){
+        const sides = traits['Polygon Eyes Sides']
+        var numberOfSides = sides,
+        size = 20,
+        Xcenter = 150,
+        Ycenter = 150;
+    
+        ctx.beginPath();
+        ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
+    
+        for (var i = 1; i <= numberOfSides; i += 1) {
+            ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+        }
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.moveTo(157.5, 150);
+        ctx.beginPath();
+        ctx.arc(150, 150, 7.5, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = color
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+
+        size = 20,
+        Xcenter = 250,
+        Ycenter = 150;
+    
+        ctx.beginPath();
+        ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
+    
+        for (var i = 1; i <= numberOfSides; i += 1) {
+            ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+        }
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.moveTo(253, 150);
+        ctx.beginPath();
+        ctx.arc(250, 150, 7.5, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke()
+        ctx.closePath();
+        }
+
     function draw_square_eyes(color){
         ctx.rect(122.5, 140, 35, 35);
-        ctx.fillStyle = 'white'; //
+        ctx.fillStyle = 'white'; 
         ctx.fill();
         ctx.stroke();
         ctx.beginPath();
@@ -682,10 +738,23 @@ function generate() {
             small_sad_mouth()
 
         }
+        if(mouth == "Trapazoid"){
+            trapazoid_mouth()
+
+        }
         ctx.stroke()
         ctx.fill()
     }
-
+    function trapazoid_mouth(){
+      ctx.stroke();
+       ctx.moveTo(135,255);
+       ctx.lineTo(265,255);
+       ctx.lineTo(225,290);
+       ctx.lineTo(175,290);
+       ctx.lineTo(135,255);
+       ctx.lineTo(265,255);
+       ctx.stroke();
+    }
     function left_sad_mouth(){
         ctx.arc(190, 275, 50, 10, 2 * Math.PI);
         ctx.fill()
@@ -916,7 +985,7 @@ function generate() {
 
         content.appendChild(c);
     function polygon_face(color){ 
-        const sides = traits['Polygon Sides']
+        const sides = traits['Polygon Face Sides']
         var numberOfSides = sides,
         size = 140,
         Xcenter = 200,
