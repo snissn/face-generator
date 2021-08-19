@@ -7,16 +7,14 @@ var pizza_image = new Image();
 var galaxy_image = new Image();
 var rainbow_image = new Image();
 const line_width = 4;
+var c;
+var ctx;
+var rowLength;
+const startTime = performance.now();
 
-function generate() {
-    const traits = build_traits(seed)
-    console.log(traits)
-
-    var c = document.createElement("canvas");
-    c.height = 400;
-    c.width = 400;
-    var ctx = c.getContext("2d");
+function generate(traits) {
     ctx.lineWidth = line_width;
+    rowLength = canvas.width * 4
     ctx.strokeStyle = "#001131";
     draw_background()
     if(traits['Gender'] == "Male"){
@@ -179,6 +177,76 @@ function generate() {
 
         }
     }
+
+
+    function drawRipple(color) {
+        // licensed via creative commons from awesome js developer https://www.bryanbraun.com/projects/
+        let r,g,b;
+        const rgbcolor = hexToRgb(color)
+        r=rgbcolor.r/255;
+        g=rgbcolor.g/255;
+        b=rgbcolor.b/255;
+        /*
+        if(color == "Red"){
+            r=1;
+            g=0;
+            b=0;
+        }else if(color == "Yellow"){
+            r=1;g=1;b=0
+        }else if (color == "Blue"){
+            r=0;g=0;b=1;
+        }else if (color == "Green"){
+            r=0;g=1;b=1;
+        }else if(color =="Purple"){
+            r=1;g=0;b=1;
+        }*/
+
+        let elapsedTimeSeconds = (performance.now() - startTime) / 1000;
+        const nextPixelData = ctx.createImageData(c.width, c.height);
+        // 200x200 means 40,000 pixels, x4 values per pixel = 160,000 elements to loop over.
+        // If a single row has 200 pixels, x4 values per pixel, every 800 values is a new row.
+        for (let i = 0; i < nextPixelData.data.length; i += 4) {
+          // calculate the current x and y (canvas cooridnates)
+          let x = Math.floor(i / 4) % c.width;
+          let y = Math.floor(i / rowLength);
+      
+          // calculate the alternative x and y, if the origin were in the center
+          let reIndexedX = -((c.width - x) - (c.width / 2));
+          let reIndexedY = (c.height - y) - (c.height / 2);
+          
+          let radialX = hypotenuseLength(reIndexedX, reIndexedY);
+          let waveHeight = sineFunction(radialX, elapsedTimeSeconds);
+          let scaledHeight = (waveHeight * 60) + (255/2);
+          
+          // FOR LOGGING. PRINTS ONCE PER "FRAME".
+          if (reIndexedX === 0 && reIndexedY == 0) {
+            console.log(`elapsed time: ${elapsedTimeSeconds}`);
+            console.log(`wave height: ${scaledHeight}`);
+          }
+      
+          // Write new pixel values
+          nextPixelData.data[i]     = scaledHeight*r; // red
+          nextPixelData.data[i + 1] = scaledHeight*g; // green
+          nextPixelData.data[i + 2] = scaledHeight*b; // blue
+          nextPixelData.data[i + 3] = 255; // opacity
+        }
+        
+        ctx.putImageData(nextPixelData, 0, 0);
+      }
+      
+      function hypotenuseLength(x, y) {
+        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+      }
+      
+      function sineFunction(x, t) {
+        let frequencyConstant = 8;
+        let scaledTime = t * 20;
+      
+        // For reference, see https://www.desmos.com/calculator/bp9t79pfa0
+        return Math.sin((x - scaledTime) / frequencyConstant);
+      }
+      
+      
 
     function draw_fedora(color){
         ctx.fillStyle = color
@@ -650,7 +718,15 @@ function generate() {
     ctx.stroke();
     }
 
-
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16)
+        } : null;
+      }
+      
 
     function draw_mouth(){
         const mouth = traits['Mouth']
@@ -825,6 +901,8 @@ function generate() {
 
         } else if (background == "Rainbow") {
             ctx.drawImage(rainbow_image, 0, 0, 1024, 1024, 0, 0, 400, 400);
+        }else if (background == "Ripple"){
+            drawRipple(traits['Ripple Color']);
         } else {
             ctx.fillStyle = background
             ctx.fillRect(0, 0, c.width, c.height);
@@ -915,7 +993,6 @@ function generate() {
     }
     
 
-        content.appendChild(c);
     function polygon_face(color){ 
         const sides = traits['Polygon Sides']
         var numberOfSides = sides,
@@ -944,6 +1021,8 @@ function generate() {
   */
 
   return;
+
+
 }
 
 function removeJS() {
@@ -967,9 +1046,15 @@ window.addEventListener("load", function() {
         galaxy_image.addEventListener("load", (e) => {
             pizza_image.src = "./pizza.jpeg";
             pizza_image.addEventListener("load", (e) => {
-                for (var i = 0; i < 1; i++) {
-                    generate();
-                }
+                    c = document.getElementById("canvas");
+                    ctx = c.getContext("2d");
+                    const traits = build_traits(seed)
+
+                  const anim = () => {
+                        generate(traits);
+                        requestAnimationFrame(anim);
+                    }
+                    anim();
             });
         });
     });

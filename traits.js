@@ -35,6 +35,9 @@ function build_traits(seed){
     data['Nose Color'] = getRandomBackground()
   }
   data['Background Color'] = getCrazyRandomBackground()
+  if(data['Background Color'] == "Ripple"){
+    data['Ripple Color'] = getRandomBackground();
+  }
   return data
   
 }
@@ -109,15 +112,16 @@ function build_right_eyebrow(left){
 function getCrazyRandomBackground() {
     var backgroundpicker = Math.floor(random() * 25 + 1);
 
-    let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
-
+    let colors = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
     if (backgroundpicker == 1) {
       return "Galaxy"
     } else if (backgroundpicker == 2) {
       return "Pizza"
     } else if (backgroundpicker == 3) {
       return "Rainbow"
-    } else {
+    } else if(backgroundpicker == 4){
+      return "Ripple"
+    }else{
         return colors[Math.floor(random() * colors.length)];
     }
 }
@@ -131,7 +135,7 @@ function getRandomEyeColor() {
 }
 
 function getRandomBackground() {
-    let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
+    let colors = ["#FFFFFF", "#FFFFFF", "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
     return colors[Math.floor(random() * colors.length)];
 }
