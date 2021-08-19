@@ -21,6 +21,95 @@ function generate() {
         draw_face_female()
     }
     draw_nose()
+    draw_mouth()
+    function draw_mouth(){
+        const mouth = traits['Mouth']
+        const color = traits['Mouth Color']
+        ctx.beginPath()
+        ctx.fillStyle = color
+        if(mouth == "Big Happy"){
+            draw_big_happy_mouth()
+        }
+        if(mouth == "Small Happy"){
+            small_happy_mouth()
+        }
+        if(mouth ==  "Right Happy"){
+            right_happy_mouth()
+        }
+        if(mouth == "Big Sad"){
+            big_sad_mouth()
+
+        }
+        if(mouth == "Left Sad"){
+            left_sad_mouth()
+
+        }
+        if(mouth == "Suprised"){
+            suprised_mouth()
+
+        }
+        if(mouth == "Small Sad"){
+            small_sad_mouth()
+
+        }
+        ctx.stroke()
+        ctx.fill()
+    }
+
+    function left_sad_mouth(){
+        ctx.arc(190, 275, 50, 10, 2 * Math.PI);
+        ctx.fill()
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(190 + ((50 + line_width / 2) * Math.cos(10)), 275 + ((50 + line_width / 2) * Math.sin(10)));
+        ctx.lineTo(240 + line_width / 2 - .5, 275 + line_width / 2 - .5);
+    }
+    function suprised_mouth(){
+        ctx.arc(200, 255, 10, 0, 2 * Math.PI);
+    }
+    function small_sad_mouth(){
+        ctx.arc(200, 255, 10, Math.PI, 2 * Math.PI);
+        ctx.fill()
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(190 - line_width / 2, 255);
+        ctx.lineTo(210 + line_width / 2, 255);
+    }
+    function right_happy_mouth(){
+        ctx.arc(210, 235, 50, 2 * Math.PI, 2.5658958);
+        ctx.fill()
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(210 + ((50 + line_width / 2) * Math.cos(2.5658958)), 235 + ((50 + line_width / 2) * Math.sin(2.5658958)));
+        ctx.lineTo(260 + line_width / 2, 235 + line_width / 2 - .5);
+    }
+    function big_sad_mouth(){
+        ctx.arc(200, 295, 50, 1 * Math.PI, 2 * Math.PI, 0 * Math.PI);
+        ctx.fill()
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(150 - line_width / 2, 295);
+        ctx.lineTo(250 + line_width / 2, 295)
+    }
+
+    function small_happy_mouth(){
+        ctx.arc(200, 255, 10, 2 * Math.PI, Math.PI);
+        ctx.fill()
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(190 - line_width / 2, 255);
+        ctx.lineTo(210 + line_width / 2, 255);
+    }
+
+    function draw_big_happy_mouth(){
+        ctx.arc(200, 255, 50, Math.PI, 2 * Math.PI, 1 * Math.PI);
+        ctx.fill()
+        ctx.stroke()
+        ctx.beginPath()
+        ctx.moveTo(150 - line_width / 2, 255);
+        ctx.lineTo(250 + line_width / 2, 255);
+    }
+
 
     function draw_nose(){
         const nose = traits['Nose']
