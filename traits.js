@@ -212,11 +212,13 @@ function build_mouth(){
 
 function build_eye(){
   const randnum = random();
-  if(randnum < 0.5){
+   if(randnum < 0.5){
     return "Circle"
   }else if (randnum >=.5 && randnum < .52){
     return "Hexagon"
-  }else if (randnum >=.52 && randnum < .75){
+  }else if (randnum >=.52 && randnum < .54){
+    return "Hearts"
+  }else if (randnum >=.524 && randnum < .75){
       return "Polygon"
   }else{
     return "Square"

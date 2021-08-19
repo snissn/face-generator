@@ -422,7 +422,7 @@ function generate() {
         if(eyes == "Circle"){
             draw_circle_eyes_female(color)
         }
-        if(eyes == "Square" || eyes == "Hexagon"){
+        if(eyes == "Square" || eyes == "Hexagon" || eyes == "Polygon" || eyes == "Hearts"){
             draw_square_eyes_female(color)
         }
     }
@@ -545,10 +545,17 @@ function generate() {
         if(eyes == "Polygon"){
             draw_polygon_eyes(color)
         }
+        if(eyes == "Hearts"){
+            newColor = "white";
+            if (color == "#001131"){
+                draw_heart_eyes(newColor)
+            }else{
+            draw_heart_eyes(color)
+            }
+        }
     }
-
     function draw_polygon_eyes(color){
-        const sides = traits['Polygon Eyes Sides']
+        const sides = traits['Polygon Face Sides']
         var numberOfSides = sides,
         size = 20,
         Xcenter = 150,
@@ -556,25 +563,20 @@ function generate() {
     
         ctx.beginPath();
         ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
-    
+        
         for (var i = 1; i <= numberOfSides; i += 1) {
             ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
         }
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.stroke();
-
-        ctx.moveTo(157.5, 150);
+        
+        ctx.moveTo(253, 150);
         ctx.beginPath();
         ctx.arc(150, 150, 7.5, 0, 2 * Math.PI);
         ctx.fillStyle = color;
         ctx.fill();
         ctx.stroke();
-        ctx.fillStyle = color
-        ctx.fill();
-        ctx.stroke();
-        ctx.closePath();
-
 
         size = 20,
         Xcenter = 250,
@@ -582,21 +584,58 @@ function generate() {
     
         ctx.beginPath();
         ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
-    
+        
         for (var i = 1; i <= numberOfSides; i += 1) {
             ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
         }
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.stroke();
-
         ctx.moveTo(253, 150);
         ctx.beginPath();
         ctx.arc(250, 150, 7.5, 0, 2 * Math.PI);
         ctx.fillStyle = color;
         ctx.fill();
-        ctx.stroke()
-        ctx.closePath();
+        ctx.stroke();
+    }
+    function draw_heart_eyes(color){
+        var w = 45, h = 45;
+        var d = Math.min(w, h);
+        var k = 150;
+        var y = -10
+        var x = -30
+
+        ctx.moveTo(k+x, (k + d / 4)+y);
+        ctx.quadraticCurveTo(k+x, k+y, (k + d / 4)+x, k+y);
+        ctx.quadraticCurveTo((k + d / 2)+x, k+y, (k + d / 2)+x, (k + d / 4)+y);
+        ctx.quadraticCurveTo((k + d / 2)+x, k+y, (k + d * 3/4)+x, k+y);
+        ctx.quadraticCurveTo((k + d)+x, k+y, (k + d)+x, (k + d / 4)+y);
+        ctx.quadraticCurveTo((k + d)+x, (k + d / 2)+y, (k + d * 3/4)+x, (k + d * 3/4)+y);
+        ctx.lineTo((k + d / 2)+x, k + d+y);
+        ctx.lineTo((k + d / 4)+x, (k + d * 3/4)+y);
+        ctx.quadraticCurveTo(k+x, (k + d / 2)+y, k+x, (k + d / 4)+y);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+
+        var w = 45, h = 45;
+        var d = Math.min(w, h);
+        var k = 250;
+        var y = -110
+        var x = -15
+
+        ctx.moveTo(k+x, (k + d / 4)+y);
+        ctx.quadraticCurveTo(k+x, k+y, (k + d / 4)+x, k+y);
+        ctx.quadraticCurveTo((k + d / 2)+x, k+y, (k + d / 2)+x, (k + d / 4)+y);
+        ctx.quadraticCurveTo((k + d / 2)+x, k+y, (k + d * 3/4)+x, k+y);
+        ctx.quadraticCurveTo((k + d)+x, k+y, (k + d)+x, (k + d / 4)+y);
+        ctx.quadraticCurveTo((k + d)+x, (k + d / 2)+y, (k + d * 3/4)+x, (k + d * 3/4)+y);
+        ctx.lineTo((k + d / 2)+x, k + d+y);
+        ctx.lineTo((k + d / 4)+x, (k + d * 3/4)+y);
+        ctx.quadraticCurveTo(k+x, (k + d / 2)+y, k+x, (k + d / 4)+y);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
         }
 
     function draw_square_eyes(color){
@@ -1001,6 +1040,7 @@ function generate() {
     ctx.fillStyle = color;
     ctx.fill();
     ctx.stroke();
+    
     }
   /*
     if (window.location.protocol != 'file:') { // will throw error because of hosted images
