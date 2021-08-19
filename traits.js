@@ -141,8 +141,10 @@ function build_female_face(){
 
 function build_male_face(){
   const randnum = random();
-  if(randnum < 0.45){
+  if(randnum < 0.35){
     return "Medium Circle"
+  } else if (randnum >= .35 && randnum <.45){
+    return "Dodecagon"
   }else if(randnum >= 0.45 && randnum < 0.80){
     return "Big Circle"
   }else if(randnum >= 0.80 && randnum < 0.91){
