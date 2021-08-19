@@ -1,4 +1,7 @@
 var seed = document.location.hash.split("#")[1]
+if(seed === undefined){
+  seed = window.location.search.split("?seed=")[1]
+}
 
 var pizza_image = new Image();
 var galaxy_image = new Image();
