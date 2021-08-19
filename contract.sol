@@ -18,6 +18,11 @@ contract ShapeFaces is ERC721, Ownable {
     
     uint256 public tokenPrice = 29000000000000000; // 0.029 ETH
     uint256 public maxTokens = 7777;
+    string public baseURI = "https://shapefaces.uc.r.appspot.com/";
+    
+    function setURI(string memory url) public onlyOwner {
+        baseURI = url;
+    }
 
 
    function withdraw() public onlyOwner {
@@ -47,8 +52,9 @@ contract ShapeFaces is ERC721, Ownable {
         }
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://shapefaces.uc.r.appspot.com";
+    function _baseURI() internal view override returns (string memory) {
+        return baseURI;
     }
 }
+
 
