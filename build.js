@@ -219,10 +219,11 @@ function generate(traits) {
           let scaledHeight = (waveHeight * 60) + (255/2);
           
           // FOR LOGGING. PRINTS ONCE PER "FRAME".
-          if (reIndexedX === 0 && reIndexedY == 0) {
+        /*  if (reIndexedX === 0 && reIndexedY == 0) {
             console.log(`elapsed time: ${elapsedTimeSeconds}`);
             console.log(`wave height: ${scaledHeight}`);
           }
+          */
       
           // Write new pixel values
           nextPixelData.data[i]     = scaledHeight*r; // red
@@ -876,10 +877,13 @@ function generate(traits) {
         ctx.lineTo(180, 200);
         ctx.lineTo(220, 200);
         ctx.fill();
+
         ctx.closePath();
+        ctx.stroke()
+
         ctx.rect(195, 198, 1, 1);
         ctx.rect(204, 198, 1, 1);
-
+        ctx.stroke()
         ctx.moveTo(180, 200);
         ctx.lineTo(leftp[0], leftp[1]);
         ctx.moveTo(220, 200);
@@ -889,6 +893,7 @@ function generate(traits) {
         ctx.lineTo(200, 150);
         ctx.moveTo(rightp[0], rightp[1]);
         ctx.lineTo(200, 150);
+        ctx.stroke()
         ctx.lineWidth = 4;
     }
 
