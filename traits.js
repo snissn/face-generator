@@ -1,7 +1,11 @@
 
+
+let r;
 function build_traits(seed){
+  var seed = parseInt(seed.slice(0, 16), 16);
   const data = {}
-  Math.seedrandom(seed);
+  r = new RND(seed);
+
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
     data['Head'] = "Big Hair"
@@ -32,8 +36,12 @@ function build_traits(seed){
   return data
 }
 
+function random(){
+  return r.rb(0, 1);
+}
+
 function build_left_eyebrow(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum<0.6667){
     return "Normal"
   }else if(randnum< 0.833){
@@ -43,7 +51,7 @@ function build_left_eyebrow(){
   }
 }
 function build_right_eyebrow(left){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum<0.6667){
     return left;
   }else if(randnum< 0.833){
@@ -71,7 +79,7 @@ function build_right_eyebrow(left){
 }
 
 function getCrazyRandomBackground() {
-    var backgroundpicker = Math.floor(Math.random() * 25 + 1);
+    var backgroundpicker = Math.floor(random() * 25 + 1);
 
     let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
@@ -82,7 +90,7 @@ function getCrazyRandomBackground() {
     } else if (backgroundpicker == 3) {
       return "Rainbow"
     } else {
-        return colors[Math.floor(Math.random() * colors.length)];
+        return colors[Math.floor(random() * colors.length)];
     }
 }
 
@@ -97,13 +105,13 @@ function getRandomEyeColor() {
 function getRandomBackground() {
     let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
-    return colors[Math.floor(Math.random() * colors.length)];
+    return colors[Math.floor(random() * colors.length)];
 }
 
 
 function build_nose(data){
   if(data['Face'] == "Triangle"){
-    const randnum = Math.random();
+    const randnum = random();
     if(randnum < 0.06){
       return "3D Triangle"
     }
@@ -112,7 +120,7 @@ function build_nose(data){
 }
 
 function build_nose_normal(data){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.06){
     return "Triangle";
   }else if(randnum >= 0.06 && randnum < 0.53){
@@ -123,7 +131,7 @@ function build_nose_normal(data){
 }
 
 function build_female_face(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.20){
     return "Small Circle"
   }else{
@@ -132,7 +140,7 @@ function build_female_face(){
 }
 
 function build_male_face(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.45){
     return "Medium Circle"
   }else if(randnum >= 0.45 && randnum < 0.80){
@@ -148,7 +156,7 @@ function build_male_face(){
 
 
 function build_mouth(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.45){
     return "Big Happy"
   }else if(randnum >= 0.45 && randnum < 0.65){
@@ -167,7 +175,7 @@ function build_mouth(){
 }
 
 function build_eye(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.5){
     return "Circle"
   }else if (randnum >=.5 && randnum < .75){
@@ -178,7 +186,7 @@ function build_eye(){
 }
 
 function build_gender(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.25){
     return "Female"
   }else{
@@ -187,7 +195,7 @@ function build_gender(){
 }
 
 function build_male_hair(){
-  const randnum = Math.random();
+  const randnum = random();
   if(randnum < 0.25){
     return "Left Swoop"
   }else if(randnum >= 0.25 && randnum < 0.5){
@@ -206,3 +214,18 @@ function build_male_hair(){
     return "Bald"
   }
 }
+class RND {
+     constructor(seed) {
+          this.seed = seed
+     }
+     rd() {
+          this.seed ^= this.seed << 13
+          this.seed ^= this.seed >> 17
+          this.seed ^= this.seed << 5
+          return ((this.seed < 0 ? ~this.seed + 1 : this.seed) % 1000) / 1000
+     }
+     rb(a, b) {
+          return a + (b - a) * this.rd()
+     }
+}
+
