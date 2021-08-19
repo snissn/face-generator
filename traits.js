@@ -170,6 +170,8 @@ function build_eye(){
   const randnum = Math.random();
   if(randnum < 0.5){
     return "Circle"
+  }else if (randnum >=.5 && randnum < .75){
+    return "Hexagon"
   }else{
     return "Square"
   }
