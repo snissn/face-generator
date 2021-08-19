@@ -1,5 +1,4 @@
 var seed = document.location.hash.split("#")[1]
-Math.seedrandom(seed);
 
 var pizza_image = new Image();
 var galaxy_image = new Image();
@@ -7,86 +6,20 @@ var rainbow_image = new Image();
 const line_width = 4;
 
 function generate() {
+    const traits = build_traits(seed)
+
     var c = document.createElement("canvas");
     c.height = 400;
     c.width = 400;
     var ctx = c.getContext("2d");
-    var genderRand = Math.random()
-    if(genderRand < 0.25){
-      const gender = 0
-    }else{
-      const gender = 1
-    }
-
-    var pickface = Math.floor(Math.random() * 7 + 1);
-    var hat_or_hair = Math.floor(Math.random() * 2);
-    var pickeyes = Math.floor(Math.random() * 6 + 1);
     ctx.lineWidth = line_width;
     ctx.strokeStyle = "#001131";
-
-    function getRandom() {
-        return Math.random();
+    draw_background()
+    if(traits['Gender'] == "Male"){
+        draw_face_male()
+    }else{
+        draw_face_female()
     }
-
-    function getRandomEyeColor() {
-        let ret = getRandomBackground()
-        if (ret == "white") {
-            return "#001131";
-        }
-        return ret;
-    }
-
-    function getRandomHairColor() {
-        let colors = ["#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
-
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function getRandomBackground() {
-        let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
-
-        return colors[Math.floor(Math.random() * colors.length)];
-    }
-
-    function getCrazyRandomBackground() {
-        var backgroundpicker = Math.floor(Math.random() * 25 + 1);
-
-        let colors = ["white", "white", "white", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
-
-        if (backgroundpicker == 1) {
-            ctx.drawImage(galaxy_image, 0, 0);
-        } else if (backgroundpicker == 2) {
-            ctx.drawImage(pizza_image, 0, 0);
-        } else if (backgroundpicker == 3) {
-            ctx.drawImage(rainbow_image, 0, 0, 1024, 1024, 0, 0, 400, 400);
-        } else {
-            ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
-        }
-    }
-
-    /*function getRandomColor(){
-	random = Math.floor(Math.random()* 3);
-	if (random == 0){
-		return "white";
-	}
-
-	else if (random == 1){
-		//return "black";
-		return 'white';
-	}
-
-	else{
-		var letters = '0123456789ABCDEF';
-  		var color = '#';
-  		for (var i = 0; i < 6; i++) {
-    		color += letters[Math.floor(Math.random() * 16)];
-  		}
-	
-  return color;
-  //return 'white';
-
-	}
-} */
 
     function call(fns, ctx) {
         ctx.beginPath();
@@ -95,9 +28,110 @@ function generate() {
         return ret;
     }
 
-    ctx.fillStyle = "blue";
-    ctx.rect(10, 10, 30, 30);
-    //ctx.fill();
+    function draw_background(){
+        const background = traits['Background Color']
+        if (background == "Galaxy") {
+            ctx.drawImage(galaxy_image, 0, 0);
+        } else if (background == "Pizza") {
+            ctx.drawImage(pizza_image, 0, 0, 800,800, 0, 0, 400, 400);
+
+        } else if (background == "Rainbow") {
+            ctx.drawImage(rainbow_image, 0, 0, 1024, 1024, 0, 0, 400, 400);
+        } else {
+            ctx.fillStyle = background
+            ctx.fillRect(0, 0, c.width, c.height);
+        }
+    }
+    function draw_face_female(){
+        ctx.beginPath();
+        if(traits['Face'] == "Small Circle"){
+            small_female_face()
+        }else if(traits['Face'] == 'Medium Circle'){
+            medium_female_face()
+        }
+    }
+    function small_female_face(){
+        ctx.fillStyle = traits['Hair Color']
+        ctx.rect(50, 30, 300, 260);
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.fillStyle = traits['Face Color']
+        ctx.arc(200, 200, 115, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+    }
+    function medium_female_face(){
+        ctx.fillStyle = traits['Hair Color']
+        ctx.rect(25, 20, 350, 285);
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.stroke();
+        ctx.arc(200, 200, 140, 0, 2 * Math.PI);
+        ctx.fillStyle = traits['Face Color']
+        ctx.fill();
+        ctx.stroke();
+    }
+
+    function draw_face_male(){
+        const face = traits['Face']
+        const color = traits['Face Color']
+        ctx.beginPath()
+        ctx.fillStyle = color
+
+        if(face == "Medium Circle"){
+            medium_circle_face(color)
+        }
+        if(face == "Big Circle"){
+            big_circle_face(color)
+
+        }
+        if(face == "Small Circle"){
+            small_circle_face(color)
+        }
+        if(face == "Triangle"){
+            triangle_face(color)
+        }
+        if(face == "Square"){
+            square_face(color)
+        }
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+    }
+
+    function medium_circle_face(color){
+        ctx.arc(200, 200, 140, 0, 2 * Math.PI);
+    }
+    function big_circle_face(color){
+        ctx.arc(200, 200, 165, 0, 2 * Math.PI);
+    }
+    function small_circle_face(color){
+        ctx.arc(200, 200, 115, 0, 2 * Math.PI);
+    }
+    function triangle_face(color){
+        ctx.moveTo(5, 25);
+        ctx.lineTo(395, 25);
+        ctx.lineTo(200, 400);
+        ctx.lineTo(5, 25);
+    }
+    function square_face(color){
+        ctx.rect(25, 25, 350, 350);
+    }
+
+    if (window.location.protocol != 'file:') { // will throw error because of hosted images
+        var canvasImage = new Image()
+        canvasImage.src = c.toDataURL('image/png');
+        content.appendChild(canvasImage);
+    } else {
+        content.appendChild(c);
+    }
+
+  return;
+
+
+
 
     function left_eyes(ctx) {
         const fns = [
@@ -1189,15 +1223,6 @@ function generate() {
         brow_right: brow_right(ctx),
         hat: hat(ctx)
     };
-
-    if (window.location.protocol != 'file:') { // will throw error because of hosted images
-        var canvasImage = new Image()
-        canvasImage.src = c.toDataURL('image/png');
-        content.appendChild(canvasImage);
-    } else {
-        content.appendChild(c);
-    }
-
     //var pre = document.createElement("pre"); pre.innerHTML = JSON.stringify(features,undefined,2); content.appendChild(pre);
 
 }

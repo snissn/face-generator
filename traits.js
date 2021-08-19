@@ -1,11 +1,13 @@
 
 function build_traits(seed){
   const data = {}
-  Math.seedrandom(seed);
+//  Math.seedrandom(seed);
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
     data['Head'] = "Big Hair"
     data['Face'] = build_female_face()
+    data['Hair Color'] = getRandomEyeColor()
+
   }else{
     data['Head'] = build_male_hair()
     data['Face'] = build_male_face()
