@@ -865,6 +865,7 @@ function generate() {
     function draw_face_male(){
         const face = traits['Face']
         const color = traits['Face Color']
+        
         ctx.beginPath()
         ctx.fillStyle = color
 
@@ -883,6 +884,9 @@ function generate() {
         }
         if(face == "Square"){
             square_face(color)
+        }
+        if(face == "Polygon"){
+            polygon_face(color)
         }
         
         ctx.fill();
@@ -912,6 +916,23 @@ function generate() {
     
 
         content.appendChild(c);
+    function polygon_face(color){ 
+        const sides = traits['Polygon Sides']
+        var numberOfSides = sides,
+        size = 140,
+        Xcenter = 200,
+        Ycenter = 200;
+    
+    ctx.beginPath();
+    ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
+    
+    for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+    }
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
+    }
   /*
     if (window.location.protocol != 'file:') { // will throw error because of hosted images
         var canvasImage = new Image()
