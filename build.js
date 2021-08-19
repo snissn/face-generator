@@ -7,6 +7,7 @@ const line_width = 4;
 
 function generate() {
     const traits = build_traits(seed)
+    console.log(traits)
 
     var c = document.createElement("canvas");
     c.height = 400;
@@ -22,6 +23,78 @@ function generate() {
     }
     draw_nose()
     draw_mouth()
+    draw_eyes()
+
+    function draw_eyes(){
+        const eyes = traits['Eye']
+        const color = traits['Eye Color']
+        ctx.beginPath()
+        ctx.fillStyle = color
+
+        if(eyes == "Circle"){
+            draw_circle_eyes(color)
+        }
+        if(eyes == "Square"){
+            draw_square_eyes(color)
+        }
+    }
+    function draw_square_eyes(color){
+        ctx.rect(140, 140, 35, 35);
+        ctx.fillStyle = 'white'; //
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+
+        ctx.moveTo(147.5, 147.4);
+        ctx.rect(147.5, 147.5, 10, 10);
+        ctx.fillStyle = color
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(240, 140, 35, 35);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.stroke();
+        ctx.moveTo(247.5, 147.4);
+
+        ctx.beginPath();
+        ctx.rect(247.5, 147.5, 10, 10);
+        ctx.fillStyle = color
+        ctx.fill();
+        ctx.stroke()
+    }
+
+    function draw_circle_eyes(color){
+        ctx.arc(150, 150, 15, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+
+        ctx.moveTo(157.5, 150);
+        ctx.arc(150, 150, 7.5, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(265, 150);
+        ctx.arc(250, 150, 15, 0, 2 * Math.PI);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.moveTo(253, 150);
+        ctx.beginPath();
+        ctx.arc(250, 150, 7.5, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke()
+    }
+
+
+
     function draw_mouth(){
         const mouth = traits['Mouth']
         const color = traits['Mouth Color']
@@ -66,6 +139,9 @@ function generate() {
     }
     function suprised_mouth(){
         ctx.arc(200, 255, 10, 0, 2 * Math.PI);
+        ctx.stroke()
+        ctx.beginPath()
+
     }
     function small_sad_mouth(){
         ctx.arc(200, 255, 10, Math.PI, 2 * Math.PI);
