@@ -20,12 +20,78 @@ function generate() {
     }else{
         draw_face_female()
     }
+    draw_nose()
 
-    function call(fns, ctx) {
-        ctx.beginPath();
-        const ret = fns[Math.floor(getRandom() * fns.length)](ctx);
-        ctx.stroke();
-        return ret;
+    function draw_nose(){
+        const nose = traits['Nose']
+        ctx.beginPath()
+        if(nose ==  "Left Pointing"){
+           return draw_left_nose()
+        }
+        if(nose ==  "Right Pointing"){
+            return draw_right_nose()
+        }
+
+        const color = traits['Nose Color']
+        ctx.fillStyle=color
+        if(nose == "Triangle"){
+            draw_triangle_nose()
+        }
+        if(nose == "3D Triangle"){
+            draw_3d_triangle_nose()
+        }
+    }
+    function draw_left_nose(){
+        ctx.moveTo(200, 200);
+        ctx.lineTo(200, 150 + line_width / 2);
+        ctx.moveTo(200 + line_width / 2, 200);
+        ctx.lineTo(180, 200);
+        ctx.stroke()
+    }
+
+    function draw_right_nose(){
+        ctx.moveTo(200, 200);
+        ctx.lineTo(200, 150 + line_width / 2);
+        ctx.moveTo(200 - line_width / 2, 200);
+        ctx.lineTo(220, 200);
+        ctx.stroke()
+
+    }
+
+    function draw_triangle_nose(){
+        ctx.moveTo(200, 150);
+        ctx.lineTo(220, 200);
+        ctx.lineTo(200, 150);
+        ctx.lineTo(180, 200);
+        ctx.lineTo(220, 200);
+        ctx.fill();
+        ctx.closePath();
+        ctx.stroke()
+
+    }
+    function draw_3d_triangle_nose(){
+        const leftp = [194.5, 192];
+        const rightp = [207.5, 192];
+        ctx.moveTo(200, 150);
+        ctx.lineTo(220, 200);
+        ctx.lineTo(200, 150);
+        ctx.lineTo(180, 200);
+        ctx.lineTo(220, 200);
+        ctx.fill();
+        ctx.closePath();
+        ctx.rect(195, 198, 1, 1);
+        ctx.rect(204, 198, 1, 1);
+
+        ctx.moveTo(180, 200);
+        ctx.lineTo(leftp[0], leftp[1]);
+        ctx.moveTo(220, 200);
+        ctx.lineTo(rightp[0], rightp[1]);
+        ctx.lineTo(leftp[0] - line_width / 2, leftp[1])
+        ctx.lineWidth = 1;
+        ctx.lineTo(200, 150);
+        ctx.moveTo(rightp[0], rightp[1]);
+        ctx.lineTo(200, 150);
+        ctx.lineWidth = 4;
     }
 
     function draw_background(){
