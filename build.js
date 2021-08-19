@@ -18,14 +18,165 @@ function generate() {
     draw_background()
     if(traits['Gender'] == "Male"){
         draw_face_male()
+        draw_eyes_male()
+        draw_head_male()
+
     }else{
         draw_face_female()
+        draw_eyes_female()
     }
     draw_nose()
     draw_mouth()
-    draw_eyes()
 
-    function draw_eyes(){
+    function draw_head_male(){
+        const head = traits['Head']
+        if(head == "Left Swoop"){
+            draw_left_swoop()
+        }
+        if(head == "Right Swoop"){
+            draw_right_swoop();
+        }
+        if(head== "Left Swirl"){
+            draw_left_swirl();
+        }
+        if(head ==  "Right Swirl"){
+
+        }
+        if(head ==  "Fedora"){
+            draw_fedora()
+        }
+        if(head == "Chefs Hat"){
+            draw_chefs_hat()
+        }
+        if(head == "Top Hat"){
+            draw_top_hat()
+
+        }
+        if(head == "Bald"){
+
+        }
+    }
+
+    function draw_left_swoop(){
+
+    }
+
+    function draw_right_swoop(){
+        
+    }
+
+
+
+    function draw_eyes_female(){
+        const eyes = traits['Eye']
+        const color = traits['Eye Color']
+        ctx.beginPath()
+        ctx.fillStyle = color
+
+        if(eyes == "Circle"){
+            draw_circle_eyes_female(color)
+        }
+        if(eyes == "Square"){
+            draw_square_eyes_female(color)
+        }
+    }
+
+    function draw_square_eyes_female(color){
+        ctx.rect(140, 140, 35, 35);
+        ctx.moveTo(140, 140);
+        ctx.lineTo(140, 130);
+        ctx.moveTo(149, 140);
+        ctx.lineTo(149, 130);
+        ctx.moveTo(158, 140);
+        ctx.lineTo(158, 130);
+        ctx.moveTo(167, 140);
+        ctx.lineTo(167, 130);
+        ctx.moveTo(175, 140);
+        ctx.lineTo(175, 130);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+
+        ctx.moveTo(147.5, 147.4);
+        ctx.rect(147.5, 147.5, 10, 10);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(240, 140, 35, 35);
+        ctx.moveTo(240, 140);
+        ctx.lineTo(240, 130);
+        ctx.moveTo(249, 140);
+        ctx.lineTo(249, 130);
+        ctx.moveTo(258, 140);
+        ctx.lineTo(258, 130);
+        ctx.moveTo(267, 140);
+        ctx.lineTo(267, 130);
+        ctx.moveTo(275, 140);
+        ctx.lineTo(275, 130);
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(247.5, 147.4);
+        ctx.rect(247.5, 147.5, 10, 10);
+        ctx.fillStyle = color;
+        ctx.fill();     
+        ctx.stroke()   
+    }
+
+    function draw_circle_eyes_female(color){
+        ctx.arc(150, 150, 15, 0, 2 * Math.PI);
+        ctx.moveTo(150, 135);
+        ctx.lineTo(150, 125);
+        ctx.moveTo(150 + 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
+        ctx.lineTo(150 + 25 * Math.cos(Math.PI / 3), 150 - 25 * Math.sin(Math.PI / 3));
+        ctx.moveTo(150 + 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
+        ctx.lineTo(150 + 25 * Math.cos(Math.PI / 6), 150 - 25 * Math.sin(Math.PI / 6));
+        ctx.moveTo(150 - 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
+        ctx.lineTo(150 - 25 * Math.cos(Math.PI / 3), 150 - 25 * Math.sin(Math.PI / 3));
+        ctx.moveTo(150 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
+        ctx.lineTo(150 - 25 * Math.cos(Math.PI / 6), 150 - 25 * Math.sin(Math.PI / 6));
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+
+        ctx.moveTo(156, 150);
+        ctx.arc(150, 150, 6, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(265, 150);
+        ctx.arc(250, 150, 15, 0, 2 * Math.PI);
+        ctx.moveTo(250, 135);
+        ctx.lineTo(250, 125);
+        ctx.moveTo(250 + 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
+        ctx.lineTo(250 + 25 * Math.cos(Math.PI / 3), 150 - 25 * Math.sin(Math.PI / 3));
+        ctx.moveTo(250 + 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
+        ctx.lineTo(250 + 25 * Math.cos(Math.PI / 6), 150 - 25 * Math.sin(Math.PI / 6));
+        ctx.moveTo(250 - 15 * Math.cos(Math.PI / 3), 150 - 15 * Math.sin(Math.PI / 3));
+        ctx.lineTo(250 - 25 * Math.cos(Math.PI / 3), 150 - 25 * Math.sin(Math.PI / 3));
+        ctx.moveTo(250 - 15 * Math.cos(Math.PI / 6), 150 - 15 * Math.sin(Math.PI / 6));
+        ctx.lineTo(250 - 25 * Math.cos(Math.PI / 6), 150 - 25 * Math.sin(Math.PI / 6));
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(256, 150);
+        ctx.arc(250, 150, 6, 0, 2 * Math.PI);
+        ctx.fillStyle = color;
+        ctx.fill();        
+        ctx.stroke()
+    }
+
+    function draw_eyes_male(){
         const eyes = traits['Eye']
         const color = traits['Eye Color']
         ctx.beginPath()
