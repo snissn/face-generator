@@ -845,6 +845,8 @@ function generate() {
         ctx.rect(25, 25, 350, 350);
     }
 
+        content.appendChild(c);
+  /*
     if (window.location.protocol != 'file:') { // will throw error because of hosted images
         var canvasImage = new Image()
         canvasImage.src = c.toDataURL('image/png');
@@ -852,6 +854,7 @@ function generate() {
     } else {
         content.appendChild(c);
     }
+  */
 
   return;
 
