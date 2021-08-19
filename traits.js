@@ -2,9 +2,10 @@
 
 let r;
 function build_traits(seed){
-  var seed = parseInt(seed.slice(0, 16), 16);
   const data = {}
-  r = new RND(seed);
+  if(seed != "random"){
+    r = new RND(parseInt(seed.slice(0, 16), 16))
+  }
 
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
@@ -37,6 +38,9 @@ function build_traits(seed){
 }
 
 function random(){
+  if(r === undefined){
+    return Math.random()
+  }
   return r.rb(0, 1);
 }
 
