@@ -51,8 +51,8 @@ function generate() {
     }
 
     function draw_normal_right_eyebrow(){
-        ctx.moveTo(240, 125);
-        ctx.lineTo(260, 125);
+        ctx.moveTo(240, 115);
+        ctx.lineTo(260, 115);
 
     }
     function draw_angry_right_eyebrow(){
@@ -89,8 +89,8 @@ function generate() {
 
 
     function draw_normal_left_eyebrow(){
-        ctx.moveTo(140, 125);
-        ctx.lineTo(160, 125);
+        ctx.moveTo(140, 115);
+        ctx.lineTo(160, 115);
     }
     function draw_angry_left_eyebrow(){
         ctx.moveTo(160, 105);
@@ -422,7 +422,7 @@ function generate() {
         if(eyes == "Circle"){
             draw_circle_eyes_female(color)
         }
-        if(eyes == "Square"){
+        if(eyes == "Square" || eyes == "Hexagon"){
             draw_square_eyes_female(color)
         }
     }
@@ -534,16 +534,24 @@ function generate() {
         if(eyes == "Square"){
             draw_square_eyes(color)
         }
+        if(eyes == "Hexagon"){
+            newColor = "white";
+            if (color == "#001131"){
+                draw_hexagon_eyes(newColor)
+            }else{
+            draw_hexagon_eyes(color)
+            }
+        }
     }
     function draw_square_eyes(color){
-        ctx.rect(140, 140, 35, 35);
+        ctx.rect(122.5, 140, 35, 35);
         ctx.fillStyle = 'white'; //
         ctx.fill();
         ctx.stroke();
         ctx.beginPath();
 
-        ctx.moveTo(147.5, 147.4);
-        ctx.rect(147.5, 147.5, 10, 10);
+        ctx.moveTo(130, 147.4);
+        ctx.rect(130, 147.5, 10, 10);
         ctx.fillStyle = color
         ctx.fill();
         ctx.stroke();
@@ -588,6 +596,58 @@ function generate() {
         ctx.fillStyle = color;
         ctx.fill();
         ctx.stroke()
+    }
+
+    function draw_hexagon_eyes(color){
+        var numberOfSides = 6,
+        size = 20,
+        Xcenter = 150,
+        Ycenter = 150;
+    
+    ctx.beginPath();
+    ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
+    
+    for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+    }
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.stroke();
+    size = 10;
+    ctx.moveTo(160, 150);
+    
+    for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(Xcenter + size * Math.cos(i * 1 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 1 * Math.PI / numberOfSides));
+    }
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
+    
+    
+    var numberOfSides = 6,
+        size = 20,
+        Xcenter = 250,
+        Ycenter = 150;
+    
+    ctx.beginPath();
+    ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
+    
+    for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
+    }
+    ctx.fillStyle = "white";
+    ctx.fill();
+    ctx.stroke();
+    size = 10;
+    ctx.moveTo(260, 150);
+    
+    for (var i = 1; i <= numberOfSides; i += 1) {
+        ctx.lineTo(Xcenter + size * Math.cos(i * 1 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 1 * Math.PI / numberOfSides));
+    }
+    
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
     }
 
 
@@ -824,6 +884,7 @@ function generate() {
         if(face == "Square"){
             square_face(color)
         }
+        
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
@@ -847,6 +908,7 @@ function generate() {
     function square_face(color){
         ctx.rect(25, 25, 350, 350);
     }
+    
 
         content.appendChild(c);
   /*
