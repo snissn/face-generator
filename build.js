@@ -977,6 +977,7 @@ function generate() {
         ctx.lineTo(395, 25);
         ctx.lineTo(200, 400);
         ctx.lineTo(5, 25);
+        ctx.closePath();
     }
     function square_face(color){
         ctx.rect(25, 25, 350, 350);
