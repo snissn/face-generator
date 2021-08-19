@@ -129,7 +129,7 @@ function getCrazyRandomBackground() {
 
 function getRandomEyeColor() {
     let ret = getRandomBackground()
-    if (ret == "white") {
+    if (ret == "#FFFFFF") {
         return "#001131";
     }
     return ret;
