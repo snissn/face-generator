@@ -1,7 +1,7 @@
 
 function build_traits(seed){
   const data = {}
-//  Math.seedrandom(seed);
+  Math.seedrandom(seed);
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
     data['Head'] = "Big Hair"
@@ -10,11 +10,16 @@ function build_traits(seed){
 
   }else{
     data['Head'] = build_male_hair()
+    if(data['Head'] == "Fedora" || data['Head'] == "Top Hat"){
+      data['Hat Color'] = getRandomBackground()
+    }
     data['Face'] = build_male_face()
   }
   data['Eye'] = build_eye()
   data['Mouth'] = build_mouth()
   data['Nose'] = build_nose(data)
+  data['Left Eyebrow'] = build_left_eyebrow()
+  data['Right Eyebrow'] = build_right_eyebrow(data['Left Eyebrow'])
 
 
   data['Eye Color'] = getRandomEyeColor()
@@ -25,6 +30,44 @@ function build_traits(seed){
   }
   data['Background Color'] = getCrazyRandomBackground()
   return data
+}
+
+function build_left_eyebrow(){
+  const randnum = Math.random();
+  if(randnum<0.6667){
+    return "Normal"
+  }else if(randnum< 0.833){
+    return "Angry"
+  }else{
+    return "Suprised"
+  }
+}
+function build_right_eyebrow(left){
+  const randnum = Math.random();
+  if(randnum<0.6667){
+    return left;
+  }else if(randnum< 0.833){
+    if(left == "Normal"){
+      return "Angry";
+    }
+    if(left == "Angry"){
+      return "Suprised"
+    }
+    if(left == "Suprised"){
+      return "Normal"
+    }
+
+  }else{
+    if(left == "Normal"){
+      return "Suprised";
+    }
+    if(left == "Angry"){
+      return "Normal"
+    }
+    if(left == "Suprised"){
+      return "Angry"
+    }
+  }
 }
 
 function getCrazyRandomBackground() {

@@ -28,28 +28,148 @@ function generate() {
     draw_nose()
     draw_mouth()
 
+    draw_left_eyebrow()
+    draw_right_eyebrow()
+
+
+    function draw_right_eyebrow(){
+        const eyebrow = traits['Right Eyebrow']
+        ctx.beginPath()
+        if(eyebrow == "Normal"){
+            draw_normal_right_eyebrow()
+        }
+        if(eyebrow == "Angry"){
+            draw_angry_right_eyebrow()
+        }
+        if(eyebrow == "Suprised"){
+            draw_suprised_right_eyebrow()
+        }
+        ctx.stroke()
+    }
+
+    function draw_normal_right_eyebrow(){
+        ctx.moveTo(240, 125);
+        ctx.lineTo(260, 125);
+
+    }
+    function draw_angry_right_eyebrow(){
+        ctx.moveTo(220, 125);
+        ctx.lineTo(240, 105);
+
+     }
+    function draw_suprised_right_eyebrow(){
+        ctx.moveTo(240, 105);
+        ctx.lineTo(260, 105);
+
+     }
+
+
+
+
+
+
+
+    function draw_left_eyebrow(){
+        const eyebrow = traits['Left Eyebrow']
+        ctx.beginPath()
+        if(eyebrow == "Normal"){
+            draw_normal_left_eyebrow()
+        }
+        if(eyebrow == "Angry"){
+            draw_angry_left_eyebrow()
+        }
+        if(eyebrow == "Suprised"){
+            draw_suprised_left_eyebrow()
+        }
+        ctx.stroke()
+    }
+
+
+    function draw_normal_left_eyebrow(){
+        ctx.moveTo(140, 125);
+        ctx.lineTo(160, 125);
+    }
+    function draw_angry_left_eyebrow(){
+        ctx.moveTo(160, 105);
+        ctx.lineTo(180, 125);
+    }
+    function draw_suprised_left_eyebrow(){
+        ctx.moveTo(140, 105);
+        ctx.lineTo(160, 105);
+    }
+
+
     function draw_head_male(){
-        const head = traits['Head']
+        var head = traits['Head']
+        const face = traits['Face']
+        ctx.beginPath()
         if(head == "Left Swoop"){
-            draw_left_swoop()
+            if(face == "Small Circle"){
+                draw_left_swoop_small_circle()
+            }
+            if(face == "Medium Circle"){
+                draw_left_swoop_medium_circle()
+            }
+            if(face == "Big Circle"){
+                draw_left_swoop_big_circle()
+            }
+            if(face == "Triangle" || face == "Square"){
+                draw_left_swoop_other()
+            }
         }
         if(head == "Right Swoop"){
-            draw_right_swoop();
+            if(face == "Small Circle"){
+                draw_right_swoop_small_circle()
+            }
+            if(face == "Medium Circle"){
+                draw_right_swoop_medium_circle()
+            }
+            if(face == "Big Circle"){
+                draw_right_swoop_big_circle()
+            }
+            if(face == "Triangle" || face == "Square"){
+                draw_right_swoop_other()
+            }
         }
+
         if(head== "Left Swirl"){
-            draw_left_swirl();
+            if(face == "Small Circle"){
+                draw_left_swirl_small_circle()
+            }
+            if(face == "Medium Circle"){
+                draw_left_swirl_medium_circle()
+            }
+            if(face == "Big Circle"){
+                draw_left_swirl_big_circle()
+            }
+            if(face == "Triangle" || face == "Square"){
+                draw_left_swirl_other()
+            }
         }
+
         if(head ==  "Right Swirl"){
+            if(face == "Small Circle"){
+                draw_right_swirl_small_circle()
+            }
+            if(face == "Medium Circle"){
+                draw_right_swirl_medium_circle()
+            }
+            if(face == "Big Circle"){
+                draw_right_swirl_big_circle()
+            }
+            if(face == "Triangle" || face == "Square"){
+                draw_right_swirl_other()
+            }
 
         }
         if(head ==  "Fedora"){
-            draw_fedora()
+            draw_fedora(traits["Hat Color"])
         }
         if(head == "Chefs Hat"){
             draw_chefs_hat()
         }
         if(head == "Top Hat"){
-            draw_top_hat()
+            draw_top_hat(traits["Hat Color"])
 
         }
         if(head == "Bald"){
@@ -57,12 +177,235 @@ function generate() {
         }
     }
 
-    function draw_left_swoop(){
+    function draw_fedora(color){
+        ctx.fillStyle = color
+
+        ctx.beginPath();
+        ctx.ellipse(200, 85, 45, 10, 00, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(175, 70, 50, 18);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.ellipse(200, 70, 25, 5, 00, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
 
     }
 
-    function draw_right_swoop(){
-        
+    function draw_chefs_hat(){
+        ctx.fillStyle = "white";
+        ctx.beginPath()
+        ctx.moveTo(170, 85);
+        ctx.lineTo(230, 85);
+        ctx.lineTo(230, 55);
+        ctx.moveTo(170, 85);
+        ctx.lineTo(170, 55);
+        ctx.arc(170, 45, 10, 0.5 * Math.PI, 1.5 * Math.PI);
+        ctx.arc(230, 45, 10, 1.5 * Math.PI, 0.5 * Math.PI);
+        ctx.moveTo(170, 75);
+        ctx.lineTo(230, 75);
+        ctx.fill();
+        ctx.stroke()
+
+    }
+    function draw_top_hat(color){
+        ctx.fillStyle = color
+
+        ctx.beginPath();
+        ctx.ellipse(200, 88, 35, 12, 00, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(185, 35, 30, 54);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.ellipse(200, 35, 15, 5, 00, 0, 2 * Math.PI);
+        ctx.fill();     
+        ctx.stroke();
+   
+    }
+
+
+    function draw_left_swirl_small_circle(){
+        ctx.moveTo(200, 85);
+                ctx.lineTo(200, 105);
+                ctx.moveTo(190, 105);
+                for (i = 0; i < 100; i += 1) {
+                    angle = 0.1 * i;
+                    x = (1 + angle) * Math.sin(angle - 20.75);
+                    y = (1 + angle) * Math.cos(angle - 20.75);
+                    ctx.lineTo(189 + x, 105 + y);
+                } 
+
+        ctx.stroke()
+    }
+
+    function draw_left_swirl_medium_circle(){
+        ctx.moveTo(200, 60);
+                ctx.lineTo(200, 80);
+                ctx.moveTo(190, 80);
+                for (i = 0; i < 100; i += 1) {
+                    angle = 0.1 * i;
+                    x = (1 + angle) * Math.sin(angle - 20.75);
+                    y = (1 + angle) * Math.cos(angle - 20.75);
+                    ctx.lineTo(189 + x, 80 + y);
+                }
+
+        ctx.stroke()
+
+
+    }
+    function draw_left_swirl_big_circle(){
+        ctx.moveTo(200, 35);
+        ctx.lineTo(200, 55);
+        ctx.moveTo(190, 55);
+        for (i = 0; i < 100; i += 1) {
+            angle = 0.1 * i;
+            x = (1 + angle) * Math.sin(angle - 20.75);
+            y = (1 + angle) * Math.cos(angle - 20.75);
+            ctx.lineTo(189 + x, 55 + y);
+        }
+
+        ctx.stroke()
+
+
+    }
+    function draw_left_swirl_other(){
+        ctx.moveTo(200, 25);
+                ctx.lineTo(200, 45);
+                ctx.moveTo(190, 45);
+                for (i = 0; i < 100; i += 1) {
+                    angle = 0.1 * i;
+                    x = (1 + angle) * Math.sin(angle - 20.75);
+                    y = (1 + angle) * Math.cos(angle - 20.75);
+                    ctx.lineTo(189 + x, 45 + y);
+                }
+
+        ctx.stroke()
+    }
+
+
+
+    function draw_left_swoop_small_circle(){
+        ctx.moveTo(180 + 20 * Math.cos(2 * Math.PI), 85 + 20 * Math.sin(2 * Math.PI));
+        ctx.arc(180, 85, 20, 2 * Math.PI, 0.6 * Math.PI);
+        ctx.stroke()
+    }
+
+    function draw_left_swoop_medium_circle(){
+        ctx.moveTo(180 + 20 * Math.cos(2 * Math.PI), 60 + 20 * Math.sin(2 * Math.PI));
+        ctx.arc(180, 60, 20, 2 * Math.PI, 0.6 * Math.PI);
+        ctx.stroke()
+
+
+    }
+    function draw_left_swoop_big_circle(){
+        ctx.moveTo(180 + 20 * Math.cos(2 * Math.PI), 35 + 20 * Math.sin(2 * Math.PI));
+        ctx.arc(180, 35, 20, 2 * Math.PI, 0.6 * Math.PI);
+        ctx.stroke()
+
+
+    }
+    function draw_left_swoop_other(){
+        ctx.moveTo(180 + 20 * Math.cos(2 * Math.PI), 25 + 20 * Math.sin(2 * Math.PI));
+        ctx.arc(180, 25, 20, 2 * Math.PI, 0.6 * Math.PI);
+        ctx.stroke()
+    }
+
+
+
+
+    function draw_right_swirl_small_circle(){
+        ctx.moveTo(200, 85);
+        ctx.lineTo(200, 105);
+        ctx.moveTo(210, 105);
+        for (i = 0; i < 100; i += 1) {
+            angle = 0.1 * i;
+            x = (1 + angle) * Math.cos(angle - 19);
+            y = (1 + angle) * Math.sin(angle - 19);
+            ctx.lineTo(210.5 + x, 105 + y);
+        }
+
+        ctx.stroke()
+    }
+
+    function draw_right_swirl_medium_circle(){
+        ctx.moveTo(200, 60);
+        ctx.lineTo(200, 80);
+        ctx.moveTo(210, 80);
+        for (i = 0; i < 100; i += 1) {
+            angle = 0.1 * i;
+            x = (1 + angle) * Math.cos(angle - 19);
+            y = (1 + angle) * Math.sin(angle - 19);
+            ctx.lineTo(210.5 + x, 80 + y);
+        }
+
+        ctx.stroke()
+
+
+    }
+    function draw_right_swirl_big_circle(){
+        ctx.moveTo(200, 35);
+        ctx.lineTo(200, 55);
+        ctx.moveTo(210, 55);
+        for (i = 0; i < 100; i += 1) {
+            angle = 0.1 * i;
+            x = (1 + angle) * Math.cos(angle - 19);
+            y = (1 + angle) * Math.sin(angle - 19);
+            ctx.lineTo(210.5 + x, 55 + y);
+        }
+
+        ctx.stroke()
+    }
+    function draw_right_swirl_other(){
+        ctx.moveTo(200, 25);
+        ctx.lineTo(200, 45);
+        ctx.moveTo(210, 45);
+        for (i = 0; i < 100; i += 1) {
+            angle = 0.1 * i;
+            x = (1 + angle) * Math.cos(angle - 19);
+            y = (1 + angle) * Math.sin(angle - 19);
+            ctx.lineTo(210.5 + x, 45 + y);
+        }
+
+        ctx.stroke()
+    }
+
+
+    function draw_right_swoop_small_circle(){
+        ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 85 + 20 * Math.sin(0.4 * Math.PI));
+        ctx.arc(215, 85, 20, 0.4 * Math.PI, Math.PI);
+
+        ctx.stroke()
+    }
+
+    function draw_right_swoop_medium_circle(){
+        ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 60 + 20 * Math.sin(0.4 * Math.PI));
+                ctx.arc(215, 60, 20, 0.4 * Math.PI, Math.PI);
+
+        ctx.stroke()
+
+
+    }
+    function draw_right_swoop_big_circle(){
+        ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 35 + 20 * Math.sin(0.4 * Math.PI));
+                ctx.arc(215, 35, 20, 0.4 * Math.PI, Math.PI);
+
+        ctx.stroke()
+    }
+    function draw_right_swoop_other(){
+        ctx.moveTo(215 + 20 * Math.cos(0.4 * Math.PI), 25 + 20 * Math.sin(0.4 * Math.PI));
+                ctx.arc(215, 25, 20, 0.4 * Math.PI, Math.PI);
+
+        ctx.stroke()
     }
 
 
