@@ -865,6 +865,7 @@ function generate() {
     function draw_face_male(){
         const face = traits['Face']
         const color = traits['Face Color']
+        
         ctx.beginPath()
         ctx.fillStyle = color
 
@@ -884,8 +885,8 @@ function generate() {
         if(face == "Square"){
             square_face(color)
         }
-        if(face == "Dodecagon"){
-            dodecagon_face(color)
+        if(face == "Polygon"){
+            polygon_face(color)
         }
         
         ctx.fill();
@@ -914,8 +915,9 @@ function generate() {
     
 
         content.appendChild(c);
-    function dodecagon_face(color){
-        var numberOfSides = 12,
+    function polygon_face(color){ 
+        const sides = traits['Polygon Sides']
+        var numberOfSides = sides,
         size = 140,
         Xcenter = 200,
         Ycenter = 200;

@@ -25,6 +25,7 @@ function build_traits(seed){
   data['Nose'] = build_nose(data)
   data['Left Eyebrow'] = build_left_eyebrow()
   data['Right Eyebrow'] = build_right_eyebrow(data['Left Eyebrow'])
+  data['Polygon Sides'] = build_face_polygon();
 
 
   data['Eye Color'] = getRandomEyeColor()
@@ -35,6 +36,7 @@ function build_traits(seed){
   }
   data['Background Color'] = getCrazyRandomBackground()
   return data
+  
 }
 
 function random(){
@@ -42,6 +44,28 @@ function random(){
     return Math.random()
   }
   return r.rb(0, 1);
+}
+
+function  build_face_polygon(){
+  const randnum = random();
+  if (randnum < (1/8)){
+    return 5;
+  }else if (randnum < (2/8) && randnum > (1/8)){
+    return 6;
+  } else if (randnum < (3/8) && randnum > (2/8)){
+    return 7;
+  }else if (randnum < (4/8) && randnum > (3/8)){
+    return 8;
+  }else if (randnum < (5/8) && randnum > (4/8)){
+    return 9;
+  }else if (randnum < (6/8) && randnum > (5/8)){
+    return 10;
+  }else if (randnum < (7/8) && randnum > (6/8)){
+    return 11;
+  }else {
+    return 12;
+  }
+
 }
 
 function build_left_eyebrow(){
@@ -148,7 +172,7 @@ function build_male_face(){
   if(randnum < 0.35){
     return "Medium Circle"
   } else if (randnum >= .35 && randnum <.45){
-    return "Dodecagon"
+    return "Polygon"
   }else if(randnum >= 0.45 && randnum < 0.80){
     return "Big Circle"
   }else if(randnum >= 0.80 && randnum < 0.91){
