@@ -1,4 +1,5 @@
 var seed = document.location.hash.split("#")[1]
+var cheese = false;
 if(seed === undefined){
   seed = window.location.search.split("?seed=")[1]
 }
@@ -1134,6 +1135,10 @@ function generate(traits) {
     }
   */
 
+    if(!cheese){
+    div=document.createElement("div");div.id="url2png-cheese";document.body.appendChild(div)
+      cheese= true;
+    }
   return;
 
 
