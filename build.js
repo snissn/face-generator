@@ -15,6 +15,7 @@ const startTime = performance.now();
 
 function generate(traits) {
     ctx.lineWidth = line_width;
+    var animate = false
     rowLength = canvas.width * 4
     ctx.strokeStyle = "#001131";
     draw_background()
@@ -1017,6 +1018,7 @@ function generate(traits) {
             ctx.drawImage(rainbow_image, 0, 0, 1024, 1024, 0, 0, 400, 400);
         }else if (background == "Ripple"){
             drawRipple(traits['Ripple Color']);
+            animate=true
         } else {
             ctx.fillStyle = background
             ctx.fillRect(0, 0, c.width, c.height);
@@ -1139,7 +1141,7 @@ function generate(traits) {
     div=document.createElement("div");div.id="url2png-cheese";document.body.appendChild(div)
       cheese= true;
     }
-  return;
+  return animate;
 
 
 }
@@ -1158,6 +1160,19 @@ window.addEventListener("load", function() {
     }, 1000);
 });
 
+
+var stop = false;
+var frameCount = 0;
+var fps, fpsInterval, now, then, elapsed;
+
+startAnimating(30);
+
+function startAnimating(fps) {
+    fpsInterval = 1000 / fps;
+    then = performance.now();
+}
+
+
 window.addEventListener("load", function() {
     rainbow_image.src = "./rainbow.png";
     rainbow_image.addEventListener("load", (e) => {
@@ -1168,10 +1183,26 @@ window.addEventListener("load", function() {
                     c = document.getElementById("canvas");
                     ctx = c.getContext("2d");
                     const traits = build_traits(seed)
+                    var animate = generate(traits);
 
                   const anim = () => {
-                        generate(traits);
+                        if(animate){
+
+    now = performance.now();
+    elapsed = now - then;
+    console.log(now,elapsed)
+    if (elapsed > fpsInterval) {
+        
+
+        // Get ready for next frame by setting then=now, but...
+        // Also, adjust for fpsInterval not being multiple of 16.67
+        then = now - (elapsed % fpsInterval);
+
+                            generate(traits);
+                        }
                         requestAnimationFrame(anim);
+
+                    }
                     }
                     anim();
             });
