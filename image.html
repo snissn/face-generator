@@ -6,9 +6,9 @@
     <title>Shape Faces</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
-  <body style="">
+  <body>
   <style>
-*{color: #001131}
+*{color: #001131; overflow: hidden;}
 pre{
   text-align:left;
   margin:0 auto;
@@ -16,13 +16,11 @@ pre{
 }
 
 canvas,img{border:5px solid #001131;}</style>
-    <div id="content" class=""  style="text-align:center;">
+    <div id="content" class=""  style=" text-align:center;">
+      <canvas id="canvas" height=400 width=400></canvas>
      </div>
   </body>
 </html>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
 <script src="traits.js">
 </script>
 <script src="build.js">
