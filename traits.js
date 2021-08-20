@@ -1,4 +1,5 @@
 
+    let colors = [  "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
 let r;
 function build_traits(seed){
@@ -113,7 +114,6 @@ function build_right_eyebrow(left){
 function getCrazyRandomBackground() {
     var backgroundpicker = Math.floor(random() * 25 + 1);
 
-    let colors = [  "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
     if (backgroundpicker == 1) {
       return "Galaxy"
     } else if (backgroundpicker == 2) {
@@ -136,7 +136,6 @@ function getRandomEyeColor() {
 }
 
 function getRandomBackground() {
-    let colors = [  "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
 
     return colors[Math.floor(random() * colors.length)];
 }
