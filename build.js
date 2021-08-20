@@ -1165,7 +1165,7 @@ var stop = false;
 var frameCount = 0;
 var fps, fpsInterval, now, then, elapsed;
 
-startAnimating(30);
+startAnimating(20);
 
 function startAnimating(fps) {
     fpsInterval = 1000 / fps;
@@ -1190,7 +1190,6 @@ window.addEventListener("load", function() {
 
     now = performance.now();
     elapsed = now - then;
-    console.log(now,elapsed)
     if (elapsed > fpsInterval) {
         
 
