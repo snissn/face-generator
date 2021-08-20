@@ -38,6 +38,10 @@ contract ShapeFaces is ERC721, Ownable {
         return seeds[token_id];
     }
 
+    function getMintCount() public view returns (uint){
+        return _tokenIdCounter.current();
+    }
+    
     function mint(uint amount) public payable{
         require(amount > 0);
         require(amount < 11);
@@ -56,5 +60,6 @@ contract ShapeFaces is ERC721, Ownable {
         return baseURI;
     }
 }
+
 
 
