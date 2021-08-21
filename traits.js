@@ -21,14 +21,24 @@ function build_traits(seed){
     }
     data['Face'] = build_male_face()
   }
+
+  if (data["Face"] != "Polygon"){
+    data['Polygon Face Sides'] = build_face_polygon();
+   }
+
+
   data['Eye'] = build_eye()
+  if (data["Eye"] != "Polygon"){
+    data['Polygon Eyes Sides'] = build_face_polygon();
+    }
+  
+
   data['Mouth'] = build_mouth()
   data['Nose'] = build_nose(data)
   data['Left Eyebrow'] = build_left_eyebrow()
   data['Right Eyebrow'] = build_right_eyebrow(data['Left Eyebrow'])
-  data['Polygon Face Sides'] = build_face_polygon();
-  data['Polygon Eyes Sides'] = build_face_polygon();
-
+ 
+ 
 
   data['Eye Color'] = getRandomEyeColor()
   data['Mouth Color'] = getRandomBackground()
