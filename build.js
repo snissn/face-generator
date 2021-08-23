@@ -864,8 +864,10 @@ function generate(traits) {
         ctx.fill()
     }
     function trapezoid_mouth(color){
-       ctx.moveTo(135,255);
+       ctx.moveTo(135,255); //Big
        ctx.lineTo(265,255);
+
+
        ctx.lineTo(225,290);
        ctx.lineTo(175,290);
        ctx.lineTo(135,255);
@@ -1098,22 +1100,24 @@ function generate(traits) {
         ctx.closePath();
     }
     function trapezoid_face_opposite(color){
-        ctx.moveTo(340,380);
-        ctx.lineTo(340,20);
+        ctx.moveTo(340,360);
+        ctx.lineTo(340,40);
 
-        ctx.lineTo(80,100);
-        ctx.lineTo(80,300);
+        ctx.lineTo(60,70);
+        ctx.lineTo(60,330);
 
-        ctx.lineTo(340,380);
+        ctx.lineTo(340,360);
+        ctx.closePath();
     }
     function trapezoid_face(color) {
-        ctx.moveTo(60,380);
-        ctx.lineTo(60,20);
+        ctx.moveTo(60,360);
+        ctx.lineTo(60,40);
 
-        ctx.lineTo(320,100);
-        ctx.lineTo(320,300);
+        ctx.lineTo(340,70);
+        ctx.lineTo(340,330);
 
-        ctx.lineTo(60,380)
+        ctx.lineTo(60,360)
+        ctx.closePath();
     }   
     function medium_circle_face(color){
         ctx.arc(200, 200, 140, 0, 2 * Math.PI);
