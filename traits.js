@@ -201,10 +201,7 @@ function build_male_face(){
 
 function build_mouth(){
   const randnum = random();
-  // if (randnum > 0){
-  //   return "Trapazoid"
-  //}
-   if(randnum < 0.45){
+  if(randnum < 0.42){
     return "Big Happy"
   }else if (randnum >=.42 && randnum <.45){
       return "Trapazoid"

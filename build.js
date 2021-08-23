@@ -857,21 +857,23 @@ function generate(traits) {
 
         }
         if(mouth == "Trapazoid"){
-            trapazoid_mouth()
+            trapazoid_mouth(color)
 
         }
         ctx.stroke()
         ctx.fill()
     }
-    function trapazoid_mouth(){
-      ctx.stroke();
+    function trapazoid_mouth(color){
        ctx.moveTo(135,255);
        ctx.lineTo(265,255);
        ctx.lineTo(225,290);
        ctx.lineTo(175,290);
        ctx.lineTo(135,255);
        ctx.lineTo(265,255);
+       ctx.fill();
        ctx.stroke();
+       ctx.beginPath();
+
     }
     function left_sad_mouth(){
         ctx.arc(190, 275, 50, 10, 2 * Math.PI);
