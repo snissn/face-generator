@@ -183,9 +183,11 @@ function build_female_face(){
 
 function build_male_face(){
   const randnum = random();
-  if(randnum < 0.35){
+   if(randnum < 0.35){
     return "Medium Circle"
-  } else if (randnum >= .35 && randnum <.45){
+  } else if(randnum >= .33 && randnum > .35){
+    return "Trapezoid"
+  }else if (randnum >= .35 && randnum <.45){
     return "Polygon"
   }else if(randnum >= 0.45 && randnum < 0.80){
     return "Big Circle"
@@ -204,7 +206,7 @@ function build_mouth(){
   if(randnum < 0.42){
     return "Big Happy"
   }else if (randnum >=.42 && randnum <.45){
-      return "Trapazoid"
+      return "Trapezoid"
   }else if(randnum >= 0.45 && randnum < 0.65){
     return "Small Happy"
   }else if(randnum >= 0.65 && randnum < 0.80){

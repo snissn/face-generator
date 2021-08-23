@@ -856,14 +856,14 @@ function generate(traits) {
             small_sad_mouth()
 
         }
-        if(mouth == "Trapazoid"){
-            trapazoid_mouth(color)
+        if(mouth == "Trapezoid"){
+            trapezoid_mouth(color)
 
         }
         ctx.stroke()
         ctx.fill()
     }
-    function trapazoid_mouth(color){
+    function trapezoid_mouth(color){
        ctx.moveTo(135,255);
        ctx.lineTo(265,255);
        ctx.lineTo(225,290);
@@ -1084,12 +1084,37 @@ function generate(traits) {
         if(face == "Polygon"){
             polygon_face(color)
         }
+        if(face == "Trapezoid"){
+        var side = Math.floor(Math.random() * 2);
+        if (side == 1){
+            trapezoid_face(color)
+        }else {
+            trapezoid_face_opposite(color);
+        }
+        }
         
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
     }
+    function trapezoid_face_opposite(color){
+        ctx.moveTo(340,380);
+        ctx.lineTo(340,20);
 
+        ctx.lineTo(80,100);
+        ctx.lineTo(80,300);
+
+        ctx.lineTo(340,380);
+    }
+    function trapezoid_face(color) {
+        ctx.moveTo(60,380);
+        ctx.lineTo(60,20);
+
+        ctx.lineTo(320,100);
+        ctx.lineTo(320,300);
+
+        ctx.lineTo(60,380)
+    }   
     function medium_circle_face(color){
         ctx.arc(200, 200, 140, 0, 2 * Math.PI);
     }
