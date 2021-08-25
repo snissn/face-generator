@@ -1112,13 +1112,12 @@ function generate(traits) {
             polygon_face(color)
         }
         if(face == "Trapezoid"){
-        var side = Math.floor(Math.random() * 2);
-        if (side == 1){
             trapezoid_face(color)
-        }else {
+        }
+        if (face == "Trapezoid Opp") {
             trapezoid_face_opposite(color);
         }
-        }
+        
         
         ctx.fill();
         ctx.stroke();

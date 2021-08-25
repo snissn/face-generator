@@ -208,8 +208,13 @@ function build_male_face(){
   const randnum = random();
   if(randnum < 0.35){
     return "Medium Circle"
-  } else if(randnum >= .33 && randnum > .35){
-    return "Trapezoid"
+  } else if(randnum >= .33 && randnum < .35){
+    var side = Math.floor(Math.random() * 2);
+    if (side == 1){
+      return "Trapezoid"
+    }else {
+     return "Trapezoid Opp"
+  }
   }else if (randnum >= .35 && randnum <.45){
     return "Polygon"
   }else if(randnum >= 0.45 && randnum < 0.80){
