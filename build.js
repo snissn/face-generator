@@ -4,14 +4,34 @@ if(seed === undefined){
   seed = window.location.search.split("?seed=")[1]
 }
 
-var pizza_image = new Image();
-var galaxy_image = new Image();
-var rainbow_image = new Image();
+var background_image = new Image();
+
+var images = {
+    "Worm Hole" : "Images/wormhole.png",
+    "Money" : "Images/money/money_small.jpg",
+    "Saturn" : "Images/saturn.jpg",
+    "Moon Landing" : "Images/space-station.jpg",
+    "Cryptos" : "Images/business.jpg",
+    "Space Lambo" : "Images/milky-way.jpg",
+    "Railway" : "Images/railway/railway_small.jpg",
+    "Bitcoin" : "Images/bitcoin.jpg",
+    "American Flag" : "Images/american-flag.png",
+    "Mount Rushmore" : "Images/mount-rushmore/mount-rushmore_small.jpg",
+    "George Washington Bridge" : "Images/george-washington-bridge/george-washington-bridge_small.jpg",
+    "Bokeh" : "Images/bokeh/bokeh_small.jpg",
+    "Rainbow" : "Images/rainbow.png",
+    "Galaxy" : "Images/galaxy.png",
+    "Pizza" : "Images/pizza.jpeg"
+}
+
 const line_width = 4;
 var c;
 var ctx;
 var rowLength;
 const startTime = performance.now();
+
+var canvas_width=400
+var canvas_height=400
 
 function generate(traits) {
     ctx.lineWidth = line_width;
@@ -1013,13 +1033,18 @@ function generate(traits) {
 
     function draw_background(){
         const background = traits['Background Color']
-        if (background == "Galaxy") {
-            ctx.drawImage(galaxy_image, 0, 0);
-        } else if (background == "Pizza") {
-            ctx.drawImage(pizza_image, 0, 0, 800,800, 0, 0, 400, 400);
+        if(images[background]) {
+            const width = background_image.width
+            const height = background_image.height
 
-        } else if (background == "Rainbow") {
-            ctx.drawImage(rainbow_image, 0, 0, 1024, 1024, 0, 0, 400, 400);
+            var hRatio = canvas_width  / width    ;
+            var vRatio =  canvas_height / height  ;
+            var ratio  = Math.max ( hRatio, vRatio );
+            var centerShift_x = ( canvas_width - width*ratio ) / 2;
+            var centerShift_y = ( canvas_height - height*ratio ) / 2;  
+            ctx.drawImage(background_image, 0,0, width, height,
+                               centerShift_x,centerShift_y,width*ratio, height*ratio);  
+         
         }else if (background == "Ripple"){
             drawRipple(traits['Ripple Color']);
             animate=true
@@ -1204,38 +1229,31 @@ function startAnimating(fps) {
 }
 
 
-window.addEventListener("load", function() {
-    rainbow_image.src = "./rainbow.png";
-    rainbow_image.addEventListener("load", (e) => {
-        galaxy_image.src = "./galaxy.png";
-        galaxy_image.addEventListener("load", (e) => {
-            pizza_image.src = "./pizza.jpeg";
-            pizza_image.addEventListener("load", (e) => {
-                    c = document.getElementById("canvas");
-                    ctx = c.getContext("2d");
-                    const traits = build_traits(seed)
-                    var animate = generate(traits);
+const traits = build_traits(seed)
+c = document.getElementById("canvas");
+ctx = c.getContext("2d");
 
-                  const anim = () => {
-                        if(animate){
+const background_color = traits['Background Color']
+if(images[background_color]){
+    background_image.src=images[background_color]
+    background_image.addEventListener("load", (e) => {
+        generate(traits)
+    })
+}else if(background_color == "Ripple"){
+    var animate = generate(traits);
+    const anim = () => {
+        now = performance.now();
+        elapsed = now - then;
+        if (elapsed > fpsInterval) {
+            then = now - (elapsed % fpsInterval);
 
-    now = performance.now();
-    elapsed = now - then;
-    if (elapsed > fpsInterval) {
-        
+            generate(traits);
+        }
+        requestAnimationFrame(anim);
 
-        // Get ready for next frame by setting then=now, but...
-        // Also, adjust for fpsInterval not being multiple of 16.67
-        then = now - (elapsed % fpsInterval);
+    }
+    anim();    
+}else{
+    generate(traits)
 
-                            generate(traits);
-                        }
-                        requestAnimationFrame(anim);
-
-                    }
-                    }
-                    anim();
-            });
-        });
-    });
-});
+}

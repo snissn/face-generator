@@ -122,19 +122,42 @@ function build_right_eyebrow(left){
 }
 
 function getCrazyRandomBackground() {
-    var backgroundpicker = Math.floor(random() * 25 + 1);
-
-    if (backgroundpicker == 1) {
-      return "Galaxy"
-    } else if (backgroundpicker == 2) {
-      return "Pizza"
-    } else if (backgroundpicker == 3) {
-      return "Rainbow"
-    } else if(backgroundpicker == 4){
-      return "Ripple"
-    }else{
-        return colors[Math.floor(random() * colors.length)];
-    }
+  const randnum = random(); 
+  if(randnum < 0.001){
+    return "Worm Hole"
+  }else if( randnum < 0.0035){
+    return "Money"
+  }else if( randnum < 0.006){
+    return "Saturn"
+  }else if( randnum < 0.0085){
+    return "Moon Landing"
+  }else if( randnum < 0.0135){
+    return "Cryptos"
+  }else if( randnum < 0.0185){
+    return "Space Lambo"
+  }else if( randnum < 0.0235){
+    return "Railway"
+  }else if( randnum < 0.031){
+    return "Bitcoin"
+  }else if( randnum < 0.0385){
+    return "American Flag"
+  }else if( randnum < 0.046){
+    return "Mount Rushmore"
+  }else if( randnum < 0.056){
+    return "George Washington Bridge"
+  }else if( randnum < 0.066){
+    return "Bokeh"
+  }else if( randnum < 0.076){
+    return "Rainbow"
+  }else if( randnum < 0.106){
+    return "Galaxy"
+  }else if( randnum < 0.136){
+    return "Pizza"
+  }else if( randnum < 0.166){
+    return "Ripple"
+  }else {
+    return getRandomBackground();
+  }
 }
 
 function getRandomEyeColor() {
