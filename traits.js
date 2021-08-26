@@ -206,11 +206,9 @@ function build_female_face(){
 
 function build_male_face(){
   const randnum = random();
-  if (randnum > 0){
-    return "Trapezoid"
-}else if(randnum < 0.35){
+  if(randnum < 0.35){
     return "Medium Circle"
-  } else if(randnum >= .33 && randnum > .35){
+  } else if(randnum >= .33 && randnum < .35){
     return "Trapezoid"
   }else if (randnum >= .35 && randnum <.45){
     return "Polygon"
