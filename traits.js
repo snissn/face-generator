@@ -155,6 +155,8 @@ function getCrazyRandomBackground() {
     return "Pizza"
   }else if( randnum < 0.166){
     return "Ripple"
+  }else if ( randnum < 0.171){ // half a percent
+    return "Matrix"
   }else {
     return getRandomBackground();
   }

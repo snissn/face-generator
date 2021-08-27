@@ -21,7 +21,8 @@ var images = {
     "Bokeh" : "Images/bokeh/bokeh_small.jpg",
     "Rainbow" : "Images/rainbow.png",
     "Galaxy" : "Images/galaxy.png",
-    "Pizza" : "Images/pizza.jpeg"
+    "Pizza" : "Images/pizza.jpeg",
+    "Matrix" : "Images/matrix.jpg"
 }
 
 const line_width = 4;
