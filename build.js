@@ -1117,12 +1117,16 @@ function generate(traits) {
         if (face == "Trapezoid Opp") {
             trapezoid_face_opposite(color);
         }
+        if(face == "No Face"){
+            no_face()
+        } 
         
         
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
     }
+    function no_face(){}
     function trapezoid_face_opposite(color){
         ctx.moveTo(340,360);
         ctx.lineTo(340,40);
