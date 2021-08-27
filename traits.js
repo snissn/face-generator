@@ -21,14 +21,14 @@ function build_traits(seed){
     }
     data['Face'] = build_male_face()
   }
-
-  if (data["Face"] != "Polygon"){
+  data['Eye'] = build_eye()
+  if (data["Face"] == "Polygon"){
     data['Polygon Face Sides'] = build_face_polygon();
    }
 
 
-  data['Eye'] = build_eye()
-  if (data["Eye"] != "Polygon"){
+  
+  if (data['Eye'] == "Polygon"){
     data['Polygon Eyes Sides'] = build_face_polygon();
     }
   
@@ -258,7 +258,7 @@ function build_eye(){
     return "Hexagon"
   }else if (randnum >=.52 && randnum < .54){
     return "Hearts"
-  }else if (randnum >=.524 && randnum < .75){
+  }else if (randnum >=.54 && randnum < .75){
       return "Polygon"
   }else{
     return "Square"

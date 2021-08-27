@@ -646,7 +646,7 @@ function generate(traits) {
         }
     }
     function draw_polygon_eyes(color){
-        const sides = traits['Polygon Face Sides']
+        const sides = traits['Polygon Eyes Sides']
         var numberOfSides = sides,
         size = 20,
         Xcenter = 150,
