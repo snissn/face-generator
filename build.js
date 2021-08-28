@@ -1230,6 +1230,7 @@ function startAnimating(fps) {
 
 
 const traits = build_traits(seed)
+console.log(traits)
 c = document.getElementById("canvas");
 ctx = c.getContext("2d");
 
