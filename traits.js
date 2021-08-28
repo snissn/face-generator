@@ -1,12 +1,56 @@
 
-    let colors = [  "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"];
+    let color_probabilities ={ "BSOD" :  1,
+        "Melon" :  1,
+        "RGB" :  1,
+        "Apple" :  1,
+        "Blue and Gold" :  1,
+        "Dark" :  1,
+        "Emerald" : 1,
+        "Gold" :  1,
+        "Light" :  1,
+        "Monochrome" :  1,
+        "Neon": 1,
+        "Purp" :  1,
+        "Ruby" :  1,
+        "Sunshine" :  1,
+        "Tokenhost" : 1 ,
+        "Alien" :  1,
+        "Zombie" :  1,
+        "Ape" :  1,
+        "Pizza" :  1
+    }
+let colors_palletes = {
+  "Tokenhost" : [  "#FFFFFF", "#0528F2", "#4CB1F7", "#FFC700", "#6B1CEB", "#E01B32", "#01EA05"],
+  "Alien": ["#c7fbfa", "#9be0e0", "#75bdbd"],
+  "Zombie": ["#7da269","#5e7153"], // zombie
+  "Ape": ['#a88c6b','#6a563f','#846f56'],//ape
+  "Pizza": ['#feeab6','#c84e31','#fe9650','#ffb508'],//pizza
+  "BSOD":[  "#0511F2", "#030BA6", "#0424D9", "#03178C", "#021373"],
+  "Melon": [  "#A34747", "#FFA1A1", "#F08080", "#36A355", "#80F0A0"],
+  "RGB":[  "#0554F2", "#076DF2", "#7ED93D", "#F21905"],
+  "Apple": [  "5EBD3E", "FFB900", "F78200", "E23838", "973999", "009CDF"],
+  "Blue and Gold": [  "#023AA8", "#0056FF", "#001D57", "#FFB000", "#FFD16B"],
+  "Dark":[  "#FF6600", "#363E40", "#5E6D70", "#424E4F", "#1B1D1E"],
+  "Emerald": [  "#04D94F", "#02590F", "#99F280", "#6CBF45", "#F2F2F2"],
+  "Gold":[  "#F2CE1B", "#D9A91A", "#BF8211", "#D9B36C", "#A6600A"],
+  "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF", "#321070"],
+  "Monochrome":[  "#595956", "#8C8C88", "#F2F2F2", "#D9D8D7", "#A3A3A3"],
+  "Neon": [  "#F23869", "#F249D6", "#45C2D3", "#170973", "#3621BF"],
+  "Purp": [  "#A75CF2", "#C4A2F2", "#280673", "#4B1DF2", "#2C0AA6"],
+  "Ruby": [  "#F21B2D", "#BF414C", "#F20C0C", "#8C0707", "#F2F2F2"],
+  "Sunshine":[  "#F2CB05", "#F2B705", "#F2D680", "#F29F05", "#F28705"]
+}
 
 let r;
+let colors
 function build_traits(seed){
   const data = {}
   if(seed != "random"){
     r = new RND(parseInt(seed.slice(0, 16), 16))
   }
+
+  data['Color Palette'] = getColorPalette()
+  colors = colors_palletes[data['Color Palette']]
 
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
@@ -121,6 +165,28 @@ function build_right_eyebrow(left){
   }
 }
 
+
+function sum_probabilities(weights){
+  var sum = 0;
+  for(var i in weights){
+    sum+=weights[i]
+  }
+  return sum
+}
+
+function getColorPalette() {
+  const total = sum_probabilities(color_probabilities)
+  const randnum = random(); 
+  let probability_index = 0
+  for(var key in color_probabilities){
+    probability_index += color_probabilities[key] / total
+    if(randnum < probability_index){
+      return key;
+    }
+  }
+}
+
+
 function getCrazyRandomBackground() {
   const randnum = random(); 
   if(randnum < 0.001){
@@ -158,6 +224,7 @@ function getCrazyRandomBackground() {
   }else if ( randnum < 0.171){ // half a percent
     return "Matrix"
   }else {
+    //return "Normal"
     return getRandomBackground();
   }
 }
@@ -171,7 +238,6 @@ function getRandomEyeColor() {
 }
 
 function getRandomBackground() {
-
     return colors[Math.floor(random() * colors.length)];
 }
 
