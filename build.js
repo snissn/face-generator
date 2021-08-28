@@ -663,6 +663,7 @@ function generate(traits) {
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.stroke();
+        ctx.closePath();
         
         ctx.moveTo(253, 150);
         ctx.beginPath();
@@ -684,6 +685,8 @@ function generate(traits) {
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.stroke();
+        ctx.closePath();
+        
         ctx.moveTo(253, 150);
         ctx.beginPath();
         ctx.arc(250, 150, 7.5, 0, 2 * Math.PI);
