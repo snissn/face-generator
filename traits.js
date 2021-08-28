@@ -274,7 +274,7 @@ function build_female_face(){
 
 function build_male_face(){
   const randnum = random();
-  if(randnum < 0.35){
+if(randnum < 0.35){
     return "Medium Circle"
   } else if(randnum >= .33 && randnum < .35){
     var side = Math.floor(Math.random() * 2);
@@ -285,8 +285,10 @@ function build_male_face(){
   }
   }else if (randnum >= .35 && randnum <.45){
     return "Polygon"
-  }else if(randnum >= 0.45 && randnum < 0.80){
+  }else if(randnum >= 0.45 && randnum < 0.79){
     return "Big Circle"
+  }else if(randnum >= 0.79 && randnum < 0.80){
+    return "No Face"
   }else if(randnum >= 0.80 && randnum < 0.91){
     return "Small Circle"
   }else if(randnum >= 0.91 && randnum < 0.97){

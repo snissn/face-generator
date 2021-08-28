@@ -520,24 +520,25 @@ function generate(traits) {
     }
 
     function draw_square_eyes_female(color){
-        ctx.rect(140, 140, 35, 35);
-        ctx.moveTo(140, 140);
-        ctx.lineTo(140, 130);
-        ctx.moveTo(149, 140);
-        ctx.lineTo(149, 130);
-        ctx.moveTo(158, 140);
-        ctx.lineTo(158, 130);
-        ctx.moveTo(167, 140);
-        ctx.lineTo(167, 130);
-        ctx.moveTo(175, 140);
-        ctx.lineTo(175, 130);
+        var x = -17.5;
+        ctx.rect(140 + x, 140, 35, 35);
+        ctx.moveTo(140 + x, 140);
+        ctx.lineTo(140 + x, 130);
+        ctx.moveTo(149 + x, 140);
+        ctx.lineTo(149 + x, 130);
+        ctx.moveTo(158 + x, 140);
+        ctx.lineTo(158 + x, 130);
+        ctx.moveTo(167 + x, 140);
+        ctx.lineTo(167 + x, 130);
+        ctx.moveTo(175 + x, 140);
+        ctx.lineTo(175 + x, 130);
         ctx.fillStyle = "white";
         ctx.fill();
         ctx.stroke();
         ctx.beginPath();
 
-        ctx.moveTo(147.5, 147.4);
-        ctx.rect(147.5, 147.5, 10, 10);
+        ctx.moveTo(147.5 + x, 147.4);
+        ctx.rect(147.5 + x, 147.5, 10, 10);
         ctx.fillStyle = color;
         ctx.fill();
         ctx.stroke();
@@ -1118,12 +1119,16 @@ function generate(traits) {
         if (face == "Trapezoid Opp") {
             trapezoid_face_opposite(color);
         }
+        if(face == "No Face"){
+            no_face()
+        } 
         
         
         ctx.fill();
         ctx.stroke();
         ctx.closePath();
     }
+    function no_face(){}
     function trapezoid_face_opposite(color){
         ctx.moveTo(340,360);
         ctx.lineTo(340,40);
