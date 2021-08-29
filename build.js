@@ -969,6 +969,12 @@ function generate(traits) {
         if(nose ==  "Right Pointing"){
             return draw_right_nose()
         }
+        if(nose ==  "Right Pointing Angle"){
+          return draw_right_nose_angled()
+        }
+        if(nose == "Left Pointing Angle"){
+            return draw_left_nose_angled()
+        }
 
         const color = traits['Nose Color']
         ctx.fillStyle=color
@@ -979,11 +985,25 @@ function generate(traits) {
             draw_3d_triangle_nose()
         }
     }
-    function draw_left_nose(){
-        ctx.moveTo(200, 200);
-        ctx.lineTo(200, 150 + line_width / 2);
-        ctx.moveTo(200 + line_width / 2, 200);
+    function draw_left_nose_angled(){
+        ctx.moveTo(200, 150 + line_width / 2);
+        ctx.lineTo(220, 200);
+        ctx.lineTo(200, 200);
+        ctx.stroke()
+    }
+
+   function draw_left_nose(){
+       ctx.moveTo(200, 200);
+       ctx.lineTo(200, 150 + line_width / 2);
+       ctx.moveTo(200 + line_width / 2, 200);
+       ctx.lineTo(180, 200);
+       ctx.stroke()
+   }
+
+    function draw_right_nose_angled(){
+        ctx.moveTo(200, 150 + line_width / 2);
         ctx.lineTo(180, 200);
+        ctx.lineTo(200, 200);
         ctx.stroke()
     }
 
@@ -993,7 +1013,6 @@ function generate(traits) {
         ctx.moveTo(200 - line_width / 2, 200);
         ctx.lineTo(220, 200);
         ctx.stroke()
-
     }
 
     function draw_triangle_nose(){
@@ -1236,6 +1255,10 @@ function startAnimating(fps) {
     then = performance.now();
 }
 
+  var animation_frame
+
+function run(seed){
+
 
 const traits = build_traits(seed)
 console.log(traits)
@@ -1258,11 +1281,27 @@ if(images[background_color]){
 
             generate(traits);
         }
-        requestAnimationFrame(anim);
+        animation_frame = requestAnimationFrame(anim);
 
     }
     anim();    
 }else{
     generate(traits)
 
+}
+}
+
+
+if(seed=="homepage"){
+    run("random")
+   setInterval(function(){ 
+     if(!!animation_frame){
+       cancelAnimationFrame(animation_frame);
+       animation_frame=undefined
+     }
+      run("random")
+   }, 1000);
+
+}else{
+  run(seed)
 }

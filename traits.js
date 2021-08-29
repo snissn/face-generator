@@ -28,21 +28,21 @@ let colors_palletes = {
   "BSOD":[  "#0511F2", "#030BA6", "#0424D9", "#03178C", "#021373"],
   "Melon": [  "#A34747", "#FFA1A1", "#F08080", "#36A355", "#80F0A0"],
   "RGB":[  "#0554F2", "#076DF2", "#7ED93D", "#F21905"],
-  "Apple": [  "5EBD3E", "FFB900", "F78200", "E23838", "973999", "009CDF"],
+  "Apple": [  "#5EBD3E", "#FFB900", "#F78200", "#E23838", "#973999", "#009CDF"],
   "Blue and Gold": [  "#023AA8", "#0056FF", "#001D57", "#FFB000", "#FFD16B"],
   "Dark":[  "#FF6600", "#363E40", "#5E6D70", "#424E4F", "#1B1D1E"],
   "Emerald": [  "#04D94F", "#02590F", "#99F280", "#6CBF45", "#F2F2F2"],
   "Gold":[  "#F2CE1B", "#D9A91A", "#BF8211", "#D9B36C", "#A6600A"],
   "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF", "#321070"],
   "Monochrome":[  "#595956", "#8C8C88", "#F2F2F2", "#D9D8D7", "#A3A3A3"],
-  "Neon": [  "#F23869", "#F249D6", "#45C2D3", "#170973", "#3621BF"],
+  "Neon": ["#4deeea", "#74ee15", '#fcfc35',"#f000ff", '#009fff','#0eff06','#40feff'],
   "Purp": [  "#A75CF2", "#C4A2F2", "#280673", "#4B1DF2", "#2C0AA6"],
   "Ruby": [  "#F21B2D", "#BF414C", "#F20C0C", "#8C0707", "#F2F2F2"],
   "Sunshine":[  "#F2CB05", "#F2B705", "#F2D680", "#F29F05", "#F28705"]
 }
 
 let r;
-let colors
+var colors
 function build_traits(seed){
   const data = {}
   if(seed != "random"){
@@ -84,7 +84,11 @@ function build_traits(seed){
  
  
 
-  data['Eye Color'] = getRandomEyeColor()
+  if( data['Color Palette'] == "Zombie" ){
+    data['Eye Color'] = "#FF0000";
+  }else{
+    data['Eye Color'] = getRandomEyeColor()
+  }
   data['Mouth Color'] = getRandomBackground()
   data['Face Color'] = getRandomBackground()
   if(data['Nose'] == 'Triangle' || data['Nose'] == "3D Triangle"){
@@ -242,6 +246,15 @@ function getRandomBackground() {
 }
 
 
+
+let nose_probabilities = {
+  "Triangle":6,
+  "Left Pointing":20,
+  "Right Pointing":20,
+  "Left Pointing Angle":15,
+  "Right Pointing Angle":15
+}
+
 function build_nose(data){
   if(data['Face'] == "Triangle"){
     const randnum = random();
@@ -253,15 +266,17 @@ function build_nose(data){
 }
 
 function build_nose_normal(data){
+  const total = sum_probabilities(nose_probabilities)
   const randnum = random();
-  if(randnum < 0.06){
-    return "Triangle";
-  }else if(randnum >= 0.06 && randnum < 0.53){
-    return "Left Pointing"
-  }else if(randnum >= 0.53 ){
-    return "Right Pointing"
+  let probability_index = 0
+  for(var key in nose_probabilities){
+    probability_index += nose_probabilities[key] / total
+    if(randnum < probability_index){
+      return key;
+    }
   }
 }
+
 
 function build_female_face(){
   const randnum = random();
