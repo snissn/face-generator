@@ -84,7 +84,11 @@ function build_traits(seed){
  
  
 
-  data['Eye Color'] = getRandomEyeColor()
+  if( data['Color Palette'] == "Zombie" ){
+    data['Eye Color'] = "#FF0000";
+  }else{
+    data['Eye Color'] = getRandomEyeColor()
+  }
   data['Mouth Color'] = getRandomBackground()
   data['Face Color'] = getRandomBackground()
   if(data['Nose'] == 'Triangle' || data['Nose'] == "3D Triangle"){
