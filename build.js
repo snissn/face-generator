@@ -17,7 +17,7 @@ var images = {
     "Bitcoin" : "Images/bitcoin.jpg",
     "American Flag" : "Images/american-flag.png",
     "Mount Rushmore" : "Images/mount-rushmore/mount-rushmore_small.jpg",
-    "George Washington Bridge" : "Images/george-washington-bridge/george-washington-bridge_small.jpg",
+    "Brooklyn Bridge" : "Images/brooklyn-bridge/brooklyn-bridge_small.jpg",
     "Bokeh" : "Images/bokeh/bokeh_small.jpg",
     "Rainbow" : "Images/rainbow.png",
     "Galaxy" : "Images/galaxy.png",

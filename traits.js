@@ -215,7 +215,7 @@ function getCrazyRandomBackground() {
   }else if( randnum < 0.046){
     return "Mount Rushmore"
   }else if( randnum < 0.056){
-    return "George Washington Bridge"
+    return "Brooklyn Bridge"
   }else if( randnum < 0.066){
     return "Bokeh"
   }else if( randnum < 0.076){
