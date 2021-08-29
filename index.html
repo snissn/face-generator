@@ -7,6 +7,113 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
   <body>
+
+      <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
+
+    <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+  <div class="container">
+
+    <!-- logo or branding image on left side -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      </a>
+      <div class="navbar-burger"  data-target="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- children of navbar-menu must be navbar-start and/or navbar-end -->
+    <div class="navbar-menu" id="navbar-menu">
+      <!-- navbar items | left side -->
+      <div class="navbar-start">
+        <a class="
+      navbar-item bd-navbar-item bd-navbar-item-base bd-navbar-item-documentation
+
+      is-active
+    " href="https://bulma.io/documentation">
+    <span class="icon has-text-primary">
+      <i class="fas fa-home has-text-primary"></i>
+    </span>
+    <span class="is-hidden-tablet-only is-hidden-desktop-only has-text-primary">
+      Home
+    </span>
+    <span class="is-hidden-mobile is-hidden-widescreen">
+      Docs
+    </span>
+  </a>
+        <a class="navbar-item" href="#">About</a>
+        <a class="navbar-item" href="#">Projects</a>
+        <a class="navbar-item" href="#">Contact</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Docs</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="#">Overview</a>
+              <a class="navbar-item" href="#">Elements</a>
+              <a class="navbar-item" href="#">Components</a>
+              <hr class="navbar-divider">
+              <div class="navbar-item"> Version 0.1.0</div>
+            </div>
+          </div>
+      </div>
+
+      <!-- navbar items | right side -->
+      <div class="navbar-end">
+        <a class="bd-navbar-icon navbar-item" href="https://discord.gg/6TuQZynuQj" target="_blank">
+        <span class="icon" style="color: var(--github);">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+        </a>
+        <a class="bd-navbar-icon navbar-item" href="https://twitter.com/shapefacesnft/" target="_blank">
+        <span class="icon" style="color: var(--github);">
+          <i class="fab fa-lg fa-twitter"></i>
+        </span>
+        </a>
+        <a class="bd-navbar-icon navbar-item"  href="./mint.html">
+          <span class=" button is-primary ">
+          <span class="icon">
+            <i class="fas fa-bolt"></i>
+          </span>
+          <span>Mint</span>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Get all "navbar-burger" elements
+      var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+          $el.addEventListener('click', function () {
+
+            // Get the target from the "data-target" attribute
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+
+            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+            $el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    });
+  </script>
+
+
   <section class="section">
 
 
