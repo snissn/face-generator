@@ -1,22 +1,23 @@
 
-    let color_probabilities ={ "BSOD" :  1,
-        "Melon" :  1,
-        "RGB" :  1,
-        "Apple" :  1,
-        "Blue and Gold" :  1,
-        "Dark" :  1,
+    let color_probabilities ={ 
+     "BSOD" :  1,
+       "Melon" :  1,
+       "RGB" :  1,
+       "Apple" :  1,
+       "Blue and Gold" :  1,
+       "Dark" :  1,
         "Emerald" : 1,
-        "Gold" :  1,
-        "Light" :  1,
-        "Monochrome" :  1,
+       "Gold" :  1,
+       "Light" :  1,
+       "Monochrome" :  1,
         "Neon": 1,
         "Purp" :  1,
-        "Ruby" :  1,
-        "Sunshine" :  1,
-        "Tokenhost" : 1 ,
-        "Alien" :  1,
-        "Zombie" :  1,
-        "Ape" :  1,
+       "Ruby" :  1,
+       "Sunshine" :  1,
+       "Tokenhost" : 1 ,
+       "Alien" :  1,
+       "Zombie" :  1,
+       "Ape" :  1,
         "Pizza" :  1
     }
 let colors_palletes = {
@@ -289,7 +290,7 @@ function build_female_face(){
 
 function build_male_face(){
   const randnum = random();
-if(randnum < 0.35){
+   if(randnum < 0.35){
     return "Medium Circle"
   } else if(randnum >= .33 && randnum < .35){
     var side = Math.floor(Math.random() * 2);
@@ -337,7 +338,7 @@ function build_mouth(){
 
 function build_eye(){
   const randnum = random();
-   if(randnum < 0.5){
+  if(randnum < 0.5){
     return "Circle"
   }else if (randnum >=.5 && randnum < .52){
     return "Hexagon"
