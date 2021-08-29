@@ -1252,6 +1252,10 @@ function startAnimating(fps) {
     then = performance.now();
 }
 
+  var animation_frame
+
+function run(seed){
+
 
 const traits = build_traits(seed)
 console.log(traits)
@@ -1274,11 +1278,27 @@ if(images[background_color]){
 
             generate(traits);
         }
-        requestAnimationFrame(anim);
+        animation_frame = requestAnimationFrame(anim);
 
     }
     anim();    
 }else{
     generate(traits)
 
+}
+}
+
+
+if(seed=="homepage"){
+    run("random")
+   setInterval(function(){ 
+     if(!!animation_frame){
+       cancelAnimationFrame(animation_frame);
+       animation_frame=undefined
+     }
+      run("random")
+   }, 500);
+
+}else{
+  run(seed)
 }
