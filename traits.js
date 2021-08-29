@@ -35,7 +35,7 @@ let colors_palletes = {
   "Gold":[  "#F2CE1B", "#D9A91A", "#BF8211", "#D9B36C", "#A6600A"],
   "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF", "#321070"],
   "Monochrome":[  "#595956", "#8C8C88", "#F2F2F2", "#D9D8D7", "#A3A3A3"],
-  "Neon": [  "#F23869", "#F249D6", "#45C2D3", "#170973", "#3621BF"],
+  "Neon": ["#4deeea", "#74ee15", '#fcfc35',"#f000ff", '#009fff','#0eff06','#40feff'],
   "Purp": [  "#A75CF2", "#C4A2F2", "#280673", "#4B1DF2", "#2C0AA6"],
   "Ruby": [  "#F21B2D", "#BF414C", "#F20C0C", "#8C0707", "#F2F2F2"],
   "Sunshine":[  "#F2CB05", "#F2B705", "#F2D680", "#F29F05", "#F28705"]
