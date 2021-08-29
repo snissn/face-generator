@@ -42,7 +42,7 @@ let colors_palletes = {
 }
 
 let r;
-let colors
+var colors
 function build_traits(seed){
   const data = {}
   if(seed != "random"){
@@ -242,6 +242,15 @@ function getRandomBackground() {
 }
 
 
+
+let nose_probabilities = {
+  "Triangle":6,
+  "Left Pointing":20,
+  "Right Pointing":20,
+  "Left Pointing Angle":15,
+  "Right Pointing Angle":15
+}
+
 function build_nose(data){
   if(data['Face'] == "Triangle"){
     const randnum = random();
@@ -253,15 +262,17 @@ function build_nose(data){
 }
 
 function build_nose_normal(data){
+  const total = sum_probabilities(nose_probabilities)
   const randnum = random();
-  if(randnum < 0.06){
-    return "Triangle";
-  }else if(randnum >= 0.06 && randnum < 0.53){
-    return "Left Pointing"
-  }else if(randnum >= 0.53 ){
-    return "Right Pointing"
+  let probability_index = 0
+  for(var key in nose_probabilities){
+    probability_index += nose_probabilities[key] / total
+    if(randnum < probability_index){
+      return key;
+    }
   }
 }
+
 
 function build_female_face(){
   const randnum = random();
