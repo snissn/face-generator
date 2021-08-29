@@ -290,7 +290,7 @@ function build_female_face(){
 
 function build_male_face(){
   const randnum = random();
-if(randnum < 0.35){
+   if(randnum < 0.35){
     return "Medium Circle"
   } else if(randnum >= .33 && randnum < .35){
     var side = Math.floor(Math.random() * 2);
@@ -338,7 +338,7 @@ function build_mouth(){
 
 function build_eye(){
   const randnum = random();
-   if(randnum < 0.5){
+  if(randnum < 0.5){
     return "Circle"
   }else if (randnum >=.5 && randnum < .52){
     return "Hexagon"
