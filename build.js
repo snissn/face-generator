@@ -1297,7 +1297,7 @@ if(seed=="homepage"){
        animation_frame=undefined
      }
       run("random")
-   }, 500);
+   }, 1000);
 
 }else{
   run(seed)
