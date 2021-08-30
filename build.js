@@ -661,9 +661,9 @@ function generate(traits) {
             ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
         }
         ctx.fillStyle = "white";
+        ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.closePath();
         
         ctx.moveTo(253, 150);
         ctx.beginPath();
@@ -683,9 +683,9 @@ function generate(traits) {
             ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
         }
         ctx.fillStyle = "white";
+        ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.closePath();
         
         ctx.moveTo(253, 150);
         ctx.beginPath();
@@ -795,12 +795,13 @@ function generate(traits) {
         Xcenter = 150,
         Ycenter = 150;
     
-    ctx.beginPath();
     ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0));
     
+    ctx.beginPath();
     for (var i = 1; i <= numberOfSides; i += 1) {
         ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
     }
+      ctx.closePath()
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
@@ -829,6 +830,7 @@ function generate(traits) {
     ctx.fillStyle = "white";
     ctx.fill();
     ctx.stroke();
+      ctx.closePath()
     size = 10;
     ctx.moveTo(260, 150);
     
