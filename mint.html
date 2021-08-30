@@ -1,33 +1,114 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
+<!-- saved from url=(0027)https://www.shapefaces.com/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shape Faces</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   </head>
   <body>
-    <script src="https://cdn.ethers.io/lib/ethers-5.1.umd.min.js" type="text/javascript">
-</script>
 
+      <link rel="stylesheet" href="https://bulma.io/vendor/fontawesome-free-5.15.2-web/css/all.min.css">
 
-  <script src="mint.js"></script>
+    <nav class="navbar has-shadow is-max-desktop" role="navigation" aria-label="main navigation">
+  <div class="container is-max-desktop">
+
+    <!-- logo or branding image on left side -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="./">
+        <img src="logo.png"  width="28" height="28">
+        Shape Faces
+      </a>
+      <div class="navbar-burger"  data-target="navbar-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- children of navbar-menu must be navbar-start and/or navbar-end -->
+    <div class="navbar-menu" id="navbar-menu">
+      <!-- navbar items | left side -->
+      <div class="navbar-start">
+  <a class="navbar-item" href="./team.html">Team</a>
+        <a class="navbar-item" href="./rarities.html">Traits and Rarities</a>
+        <a class="navbar-item" href="./roadmap.html">Roadmap</a>
+      </div>
+
+      <!-- navbar items | right side -->
+      <div class="navbar-end">
+        <a class="bd-navbar-icon navbar-item" href="https://discord.gg/6TuQZynuQj" target="_blank">
+        <span class="icon" style="color: var(--github);">
+          <i class="fab fa-lg fa-discord"></i>
+        </span>
+        </a>
+        <a class="bd-navbar-icon navbar-item" href="https://twitter.com/shapefacesnft/" target="_blank">
+        <span class="icon" style="color: var(--github);">
+          <i class="fab fa-lg fa-twitter"></i>
+        </span>
+        </a>
+        <a class="bd-navbar-icon navbar-item"  href="./mint.html">
+          <span class=" button is-primary ">
+          <span class="icon">
+            <i class="fas fa-bolt"></i>
+          </span>
+          <span>Mint</span>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Get all "navbar-burger" elements
+      var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+          $el.addEventListener('click', function () {
+
+            // Get the target from the "data-target" attribute
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+
+            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+            $el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    });
+  </script>
+
 
   <section class="section">
 
 
   <style>
-*{color: #001131}
+.content *{color: #001131}
 pre{
   text-align:left;
   margin:0 auto;
     width:300px;
 }
 
-canvas,img{margin:15px;border:5px solid #001131;}</style>
+.content canvas,.content img{margin:15px;border:5px solid #001131;}</style>
 
 
-      <div class="container is-max-desktop">
+      <div class="container content is-max-desktop">
+
+
+        Minting Coming Soon
+        <!--
 
             <h1 class="title p-2"> Shape Faces NFT</h1>
             <p class="subtitle p-2">
@@ -70,7 +151,7 @@ canvas,img{margin:15px;border:5px solid #001131;}</style>
 </div>
       </div>
         </form>
-
+        -->
     </div>
     </div>
 

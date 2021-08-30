@@ -1303,7 +1303,7 @@ if(seed=="homepage"){
        animation_frame=undefined
      }
       run("random")
-   }, 5000);
+   }, 3500);
 
 }else{
   run(seed)
