@@ -1208,6 +1208,7 @@ function generate(traits) {
         ctx.lineTo(Xcenter + size * Math.cos(i * 2 * Math.PI / numberOfSides), Ycenter + size * Math.sin(i * 2 * Math.PI / numberOfSides));
     }
     ctx.fillStyle = color;
+      ctx.closePath()
     ctx.fill();
     ctx.stroke();
     
