@@ -1,7 +1,7 @@
     let animation_probabilities ={ 
      "Escalator" :  2,
-     "None" :  92,
-      "Pac Man":2,
+     "None" :  86,
+      "Pac Man":6,
      "Screen Saver" :  4,
      "Elevator" :  2,
     }
@@ -15,9 +15,9 @@
        "Dark" :  2,
         "Emerald" : 6,
        "Gold" :  2,
-       "Light" :  4,
-       "Monochrome" :  3,
-        "Neon": 10,
+       "Light" :  8,
+       "Monochrome" :  10,
+        "Neon": 15,
         "Purp" :  6,
        "Ruby" :  2,
        "Sunshine" :  6,

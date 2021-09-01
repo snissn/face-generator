@@ -310,16 +310,6 @@ function generate(traits) {
 
 
 
-    function draw_halo(color) {
-        ctx.fillStyle = 'yellow';
-        ctx.beginPath();
-        ellipse(200, 65, 135, 5, 00, 0, 2 * Math.PI,false);
-        ctx.fill();
-        ctx.stroke();
-
-
-    }
-
     function draw_fedora(color){
         ctx.fillStyle = color
 
