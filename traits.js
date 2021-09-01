@@ -1,10 +1,9 @@
     let animation_probabilities ={ 
+     "Escalator" :  2,
      "None" :  92,
+      "Pac Man":2,
      "Screen Saver" :  4,
-     "Elevator Up" :  1,
-     "Elevator Down" :  1,
-     "Escalator Up" :  1,
-     "Escalator Down" :  1,
+     "Elevator" :  2,
     }
 
     let color_probabilities ={ 
@@ -107,14 +106,38 @@ function build_traits(seed){
   if(data['Background Color'] == "Ripple"){
     data['Ripple Color'] = getRandomBackground();
   }
+  
   const animation =  get_probabilities(animation_probabilities);
   if(animation != "None"){
     data['Animation'] =animation;
+    if(animation == "Screen Saver"){
+      data[ 'x_speed'] = get_speed()
+      data[ 'y_speed'] = get_speed()
+    }else if(animation == "Elevator"){
+      data[ 'x_speed'] = 0;
+      data[ 'y_speed'] = get_speed()
+    }else if( animation == "Pac Man"){
+      data[ 'y_speed'] = 0;
+      data[ 'x_speed'] = get_speed()
+    }else if (animation == "Escalator"){
+      data[ 'y_speed'] = get_speed()
+      data[ 'x_speed'] = Math.abs( data[ 'y_speed'] )
+    }
   }
   return data
   
 }
 
+function get_speed(){
+  let speed= (random() - 0.5) * 5
+  if(speed > 0 && speed < 1){
+    return 1+random()/10;
+  }
+  if(speed < 0 && speed > -1){
+    return -1+random()/10;
+  }
+  return speed;
+}
 function random(){
   if(r === undefined){
     return Math.random()

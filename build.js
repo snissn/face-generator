@@ -33,9 +33,9 @@ var c;
 var ctx;
 
 var x_delta = 0
-var x_speed = (Math.random() - 0.5) * 5
 var y_delta = 0
-var y_speed = (Math.random() - 0.5) * 5
+var x_speed =0;
+var y_speed = 0;
 
 function ellipse(a, b, c, d, e, f, g) {
     ctx.ellipse(a + x_delta, b + y_delta, c, d, e, f, g);
@@ -43,7 +43,7 @@ function ellipse(a, b, c, d, e, f, g) {
 
 
 function quadraticCurveTo(a, b, c, d) {
-    ctx.quadraticCurveTo(a, b, c + x_delta, d + y_delta);
+    ctx.quadraticCurveTo(a+x_delta, b+y_delta, c + x_delta, d + y_delta);
 }
 
 function rect(a, b, c, d) {
@@ -310,7 +310,17 @@ function generate(traits) {
 
 
 
-    function draw_fedora(color) {
+    function draw_halo(color) {
+        ctx.fillStyle = 'yellow';
+        ctx.beginPath();
+        ellipse(200, 65, 135, 5, 00, 0, 2 * Math.PI,false);
+        ctx.fill();
+        ctx.stroke();
+
+
+    }
+
+    function draw_fedora(color){
         ctx.fillStyle = color
 
         ctx.beginPath();
@@ -1332,13 +1342,8 @@ function startAnimating(fps) {
 
 var animation_frame
 
-function run(seed) {
 
 
-    const traits = build_traits(seed)
-    console.log(traits)
-    c = document.getElementById("canvas");
-    ctx = c.getContext("2d");
 
     function minimize_drift(number, max) {
         if (number > max) {
@@ -1351,62 +1356,124 @@ function run(seed) {
     }
 
 
+function screen_saver(){
+    if(x_delta > 95 || x_delta < -95){
+      x_speed *= -1
+    }
+    if(y_delta > 95 || y_delta < -95){
+      y_speed *= -1
+    }
+    x_delta += x_speed
+    y_delta += y_speed
+}
 
-    /*
-              if(x_delta > 75 || x_delta < -75){
-                x_speed *= -1
-              }
-              if(y_delta > 75 || y_delta < -75){
-                y_speed *= -1
-              }
+function pacman(){
+    if(x_delta > 380){
+      x_delta = -380;
+    }
+    if(x_delta < -380){
+      x_delta = 380;
+    }
+    x_delta += x_speed
+}
 
-              x_delta += x_speed
-              y_delta += y_speed
-    */
+function elevator(){
+    if(y_delta > 350){
+      y_speed*=-1
+    }
+    if(y_delta < -350){
+      y_speed*=-1
+    }
+    y_delta += y_speed
+}
+function escalator(){
+    x_delta += x_speed
+    y_delta += y_speed
+    if(x_delta > 350 || x_delta < -350){
+      x_speed*=-1
+      y_speed*=-1
+    }
+}
+function run_animate(traits){
+  generate(traits);
+  const anim = () => {
+      now = performance.now();
+      elapsed = now - then;
+      if (elapsed > fpsInterval) {
+          then = now - (elapsed % fpsInterval);
 
 
-    function loop() {
-        var animate = generate(traits);
-        const anim = () => {
-            now = performance.now();
-            elapsed = now - then;
-            if (elapsed > fpsInterval) {
-                then = now - (elapsed % fpsInterval);
-                generate(traits);
-            }
-            animation_frame = requestAnimationFrame(anim);
+          if(traits['Animation'] == "Screen Saver"){
+            screen_saver()
+          }else if (traits['Animation'] == "Elevator"){
+            elevator()
+          }else if(traits['Animation'] == "Escalator"){
+            escalator()
+          }else if(traits['Animation'] == "Pac Man"){
+            pacman()
+          }
 
-        }
-        anim();
+
+
+          generate(traits);
+
+
+
+
+
+      }
+      animation_frame = requestAnimationFrame(anim);
+  }
+  anim();
+}
+
+function run(seed) {
+
+
+  const traits = build_traits(seed)
+  console.log(traits)
+  c = document.getElementById("canvas");
+  ctx = c.getContext("2d");
+
+  const background_color = traits['Background Color']
+  if(background_color == "Ripple" || traits['Animation']){
+      x_speed =traits['x_speed']
+      y_speed = traits['y_speed']
+    if(traits['Animation'] == "Escalator"){ // TODO make conditional on screenshot
+      x_delta = -350
+      y_delta =-350* traits['y_speed'] / Math.abs(traits['y_speed'])
     }
 
+      if (images[background_color]) {
+          background_image.src = images[background_color]
+          background_image.addEventListener("load", (e) => {
+              run_animate(traits)
+          })
+  
 
+  }else{
+      run_animate(traits)
 
-    const background_color = traits['Background Color']
+  }
+}else{
+  if (images[background_color]) {
+      background_image.src = images[background_color]
+      background_image.addEventListener("load", (e) => {
+          generate(traits)
+      })
+  } else {
+      generate(traits)
 
+  }
+}
 
 }
-    function go(seed) {
-        if (images[background_color]) {
-            background_image.src = images[background_color]
-            background_image.addEventListener("load", (e) => {
-                if (background_color == "Ripple" || traits['Animation']) {
-                    loop()
-                } else {
-                    generate(traits)
-                }
-            })
-        } else {
-            if (background_color == "Ripple" || traits['Animation']) {
-                loop()
-            } else {
-                generate(traits)
-            }
-
-        }
-    }
 
 
+
+
+    /*
+    */
 
 if (seed == "homepage") {
     run("random")
