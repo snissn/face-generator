@@ -1384,7 +1384,7 @@ function escalator(){
       y_speed*=-1
     }
 }
-function run_animate(traits){
+function run_animate(traits, homepage_loop_inner){
   generate(traits);
   const anim = () => {
       now = performance.now();
@@ -1412,12 +1412,14 @@ function run_animate(traits){
 
 
       }
+    if(homepage_loop_inner == homepage_loop){
       animation_frame = requestAnimationFrame(anim);
+    }
   }
   anim();
 }
 
-function run(seed) {
+function run(seed, homepage_loop_inner) {
 
 
   const traits = build_traits(seed)
@@ -1437,12 +1439,12 @@ function run(seed) {
       if (images[background_color]) {
           background_image.src = images[background_color]
           background_image.addEventListener("load", (e) => {
-              run_animate(traits)
+              run_animate(traits, homepage_loop_inner)
           })
   
 
   }else{
-      run_animate(traits)
+      run_animate(traits, homepage_loop_inner)
 
   }
 }else{
@@ -1465,16 +1467,22 @@ function run(seed) {
     /*
     */
 
+var homepage_loop=0;
 if (seed == "homepage") {
-    run("random")
+    run("random", homepage_loop)
     setInterval(function() {
+      homepage_loop += 1
+        x_delta = 0
+        y_delta = 0
+        x_speed =0;
+        y_speed = 0;
         if (!!animation_frame) {
             cancelAnimationFrame(animation_frame);
             animation_frame = undefined
         }
-        run("random")
-    }, 750);
+        run("random", homepage_loop)
+    }, 2*750);
 
 } else {
-    run(seed)
+    run(seed,0)
 }
