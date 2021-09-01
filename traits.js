@@ -108,8 +108,8 @@ function build_traits(seed){
   }
   
   const animation =  get_probabilities(animation_probabilities);
+  data['Animation'] =animation;
   if(animation != "None"){
-    data['Animation'] =animation;
     if(animation == "Screen Saver"){
       data[ 'x_speed'] = get_speed()
       data[ 'y_speed'] = get_speed()
