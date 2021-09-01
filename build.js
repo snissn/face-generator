@@ -1429,7 +1429,7 @@ function run(seed) {
   if(background_color == "Ripple" || traits['Animation']){
       x_speed =traits['x_speed']
       y_speed = traits['y_speed']
-    if(traits['Animation'] == "Escalator"){ // TODO make conditional on screenshot
+    if(traits['Animation'] == "Escalator" && !window.screen_shot){ // TODO make conditional on screenshot
       x_delta = -350
       y_delta =-350* traits['y_speed'] / Math.abs(traits['y_speed'])
     }
