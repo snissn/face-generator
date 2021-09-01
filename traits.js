@@ -1,11 +1,3 @@
-    let animation_probabilities ={
-     "None" :  90,
-     "Screen Saver" :  6,
-     "Elevator Up" :  1,
-     "Elevator Down" :  1,
-     "Escalator Up" :  1,
-     "Escalator Down" :  1,
-    }
 
     let color_probabilities ={ 
      "BSOD" :  4,
@@ -42,7 +34,7 @@ let colors_palletes = {
   "Dark":[  "#FF6600", "#363E40", "#5E6D70", "#424E4F", "#1B1D1E"],
   "Emerald": [  "#04D94F", "#02590F", "#99F280", "#6CBF45", "#F2F2F2"],
   "Gold":[  "#F2CE1B", "#D9A91A", "#BF8211", "#D9B36C", "#A6600A"],
-    "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF", "#9F6EFA"],
+  "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF", "#321070"],
   "Monochrome":[  "#595956", "#8C8C88", "#F2F2F2", "#D9D8D7", "#A3A3A3"],
   "Neon": ["#4deeea", "#74ee15", '#fcfc35',"#f000ff", '#009fff','#0eff06','#40feff'],
   "Purp": [  "#A75CF2", "#C4A2F2", "#280673", "#4B1DF2", "#2C0AA6"],
@@ -106,10 +98,6 @@ function build_traits(seed){
   data['Background Color'] = getCrazyRandomBackground()
   if(data['Background Color'] == "Ripple"){
     data['Ripple Color'] = getRandomBackground();
-  }
-   const animation =  get_probabilities(animation_probabilities);
-  if(animation != "None"){
-    data['Animation'] =animation;
   }
   return data
   
@@ -191,19 +179,16 @@ function sum_probabilities(weights){
   return sum
 }
 
-function get_probabilities(probabilities){
-  const total = sum_probabilities(probabilities)
-  const randnum = random();
+function getColorPalette() {
+  const total = sum_probabilities(color_probabilities)
+  const randnum = random(); 
   let probability_index = 0
-  for(var key in probabilities){
-    probability_index += probabilities[key] / total
+  for(var key in color_probabilities){
+    probability_index += color_probabilities[key] / total
     if(randnum < probability_index){
       return key;
     }
   }
-}
-function getColorPalette() {
-  return get_probabilities(color_probabilities);
 }
 
 
@@ -282,7 +267,15 @@ function build_nose(data){
 }
 
 function build_nose_normal(data){
-    return get_probabilities(nose_probabilities);
+  const total = sum_probabilities(nose_probabilities)
+  const randnum = random();
+  let probability_index = 0
+  for(var key in nose_probabilities){
+    probability_index += nose_probabilities[key] / total
+    if(randnum < probability_index){
+      return key;
+    }
+  }
 }
 
 
