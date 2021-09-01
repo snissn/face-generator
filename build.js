@@ -1295,21 +1295,6 @@ function startAnimating(fps) {
 
 var animation_frame
 
-function run_animate(traits){
-    generate(traits);
-    const anim = () => {
-        now = performance.now();
-        elapsed = now - then;
-        if (elapsed > fpsInterval) {
-            then = now - (elapsed % fpsInterval);
-
-            generate(traits);
-        }
-        animation_frame = requestAnimationFrame(anim);
-    }
-    anim();
-}
-
 function run(seed) {
 
 
@@ -1319,31 +1304,29 @@ function run(seed) {
     ctx = c.getContext("2d");
 
     const background_color = traits['Background Color']
-    if(background_color == "Ripple" || traits['Animation']){
-
-        if (images[background_color]) {
-            background_image.src = images[background_color]
-            background_image.addEventListener("load", (e) => {
-                run_animate(traits)
-            })
-    
-
-    }else{
-        run_animate(traits)
-
-    }
-}else{
     if (images[background_color]) {
         background_image.src = images[background_color]
         background_image.addEventListener("load", (e) => {
             generate(traits)
         })
+    } else if (background_color == "Ripple") {
+        var animate = generate(traits);
+        const anim = () => {
+            now = performance.now();
+            elapsed = now - then;
+            if (elapsed > fpsInterval) {
+                then = now - (elapsed % fpsInterval);
+
+                generate(traits);
+            }
+            animation_frame = requestAnimationFrame(anim);
+
+        }
+        anim();
     } else {
         generate(traits)
 
     }
-}
-
 }
 
 
