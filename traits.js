@@ -102,10 +102,10 @@ function build_traits(seed){
   if(data['Nose'] == 'Triangle' || data['Nose'] == "3D Triangle"){
     data['Nose Color'] = getRandomBackground()
   }
-  data['Background Color'] = getCrazyRandomBackground()
-  if(data['Background Color'] == "Ripple"){
-    data['Ripple Color'] = getRandomBackground();
-  }
+  data['Background'] = get_probabilities(backgrounds)
+  data['Ripple Color'] = getRandomBackground();
+  data['background_rand_1'] = random()
+  data['background_rand_2'] = random()
   
   const animation =  get_probabilities(animation_probabilities);
   data['Animation'] =animation;

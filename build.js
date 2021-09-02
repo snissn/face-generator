@@ -5,8 +5,6 @@ if (seed === undefined) {
 }
 
 
-      let circle_distance =15+ 40*Math.random();
-      let circle_radius = 15+40*Math.random();
 
       let triangle_distance =15+ 40*Math.random();
       let triangle_radius = 15+40*Math.random();
@@ -1153,7 +1151,9 @@ function generate(traits) {
       }
             ctx.lineWidth = line_width;
     }
-    function draw_circles(){
+    function draw_circles(rand1,rand2){
+      let circle_distance =15+ 40*rand1
+      let circle_radius = 15+40*rand2
             ctx.lineWidth = 1;
           ctx.beginPath()
           ctx.arc(200,200,circle_radius, 0*Math.PI,2*Math.PI)
@@ -1176,10 +1176,28 @@ function generate(traits) {
       }
             ctx.lineWidth = line_width;
     }
-    function draw_grid(){
+    function draw_grid(rand1,rand2){
             ctx.lineWidth = 1;
-            var line_distance = 20
-          var skew = 100;
+            var line_distance = rand1*100+5
+          var skew = 0
+            for(var x = -skew ; x < 400+skew; x += line_distance){
+              ctx.beginPath()
+              ctx.moveTo(x,0)
+              ctx.lineTo(x+skew,400)
+              ctx.stroke()
+              ctx.closePath()
+              ctx.beginPath()
+              ctx.moveTo(0,x)
+              ctx.lineTo(400,x+skew)
+              ctx.stroke()
+              ctx.closePath()
+            }
+            ctx.lineWidth = line_width;
+    }
+    function draw_rhombus(rand1,rand2){
+            ctx.lineWidth = 1;
+            var line_distance = rand1*50+10
+          var skew = 20+300*rand2
             for(var x = -skew ; x < 400+skew; x += line_distance){
               ctx.beginPath()
               ctx.moveTo(x,0)
@@ -1195,7 +1213,7 @@ function generate(traits) {
             ctx.lineWidth = line_width;
     }
     function draw_background() {
-        const background = traits['Background Color']
+        const background = traits['Background']
         if (images[background]) {
             const width = background_image.width
             const height = background_image.height
@@ -1212,11 +1230,24 @@ function generate(traits) {
             drawRipple(traits['Ripple Color']);
             animate = true
         } else {
-            ctx.fillStyle = background
+            ctx.fillStyle = traits['Ripple Color']
             ctx.fillRect(0, 0, c.width, c.height);
-            //draw_grid()
-            //draw_circles()
-            //draw_triangles()
+          if(traits['Background'] == "Graph Paper"){
+            draw_grid(traits['background_rand_1'],traits['background_rand_2'])
+          }
+          if(traits['Background'] == "Rhombus"){
+            draw_rhombus(traits['background_rand_1'],traits['background_rand_2'])
+          }
+          if(traits['Background'] == "Circles"){
+            draw_circles(traits['background_rand_1'],traits['background_rand_2'])
+          }
+          if(traits['Background'] == "Triangles"){
+            draw_triangles(traits['background_rand_1'],traits['background_rand_2'])
+          }
+          if(traits['Background'] == "Circles And Triangles"){
+            draw_circles(traits['background_rand_1'],traits['background_rand_2'])
+            draw_triangles(traits['background_rand_1'],traits['background_rand_2'])
+          }
         }
     }
 
@@ -1504,12 +1535,11 @@ function run(seed, homepage_loop_inner) {
 
 
   const traits = build_traits(seed)
-  console.log(traits)
   c = document.getElementById("canvas");
   ctx = c.getContext("2d");
 
-  const background_color = traits['Background Color']
-  if(background_color == "Ripple" || traits['Animation']){
+  const background_color = traits['Background']
+  if(background_color == "Ripple" || traits['Animation'] != "None"){
       x_speed =traits['x_speed']
       y_speed = traits['y_speed']
     if(traits['Animation'] == "Escalator" && !window.screen_shot){ // TODO make conditional on screenshot
