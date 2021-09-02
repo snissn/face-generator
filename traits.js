@@ -103,9 +103,14 @@ function build_traits(seed){
     data['Nose Color'] = getRandomBackground()
   }
   data['Background'] = get_probabilities(backgrounds)
-  data['Ripple Color'] = getRandomBackground();
+  const three_backgrounds = get3RandomBackgrounds()
+  data['background_color_1'] = three_backgrounds[0]
+  data['background_color_2'] = three_backgrounds[1]
+  data['background_color_3'] = three_backgrounds[2]
   data['background_rand_1'] = random()
   data['background_rand_2'] = random()
+  data['background_rand_3'] = random()
+  data['background_rand_4'] = random()
   
   const animation =  get_probabilities(animation_probabilities);
   data['Animation'] =animation;
@@ -307,6 +312,10 @@ function getRandomEyeColor() {
     return ret;
 }
 
+function get3RandomBackgrounds() {
+  const shuffled = colors.sort(() => 0.5 - random());
+  return shuffled.slice(0, 3);
+}
 function getRandomBackground() {
     return colors[Math.floor(random() * colors.length)];
 }

@@ -6,9 +6,6 @@ if (seed === undefined) {
 
 
 
-      let triangle_distance =15+ 40*Math.random();
-      let triangle_radius = 15+40*Math.random();
-
 var background_image = new Image();
 
 var images = {
@@ -1119,6 +1116,22 @@ function generate(traits) {
     }
 
 
+
+    function draw_triangles(rand1,rand2, rand3,color,color2){
+      if(rand3> 0.5){
+        function fill(){
+          ctx.fill();
+        }
+        console.log('fill');
+      }else{
+         function fill(){
+         }
+        console.log('nofill');
+      }
+        function fill(){
+          ctx.fill();
+        }
+
   function draw_single_background_triangle(x,y,r){
     const x1 = x -  r*Math.sqrt(3)/3
     const y1 = y +  r*Math.sqrt(3)/3
@@ -1134,13 +1147,17 @@ function generate(traits) {
     ctx.lineTo(x3,y3)
     ctx.closePath()
     ctx.stroke()
+    fill()
   }
 
-    function draw_triangles(){
+      let triangle_distance =15+ 40*rand1
+      let triangle_radius = 15+40*rand2
+            ctx.fillStyle = color
+      ctx.strokeStyle = color2;
             ctx.lineWidth = 1;
           ctx.beginPath()
           draw_single_background_triangle(200,200,triangle_radius)
-          ctx.stroke()
+          ctx.stroke();fill()
       for(var x = 0; x< 400/2 + triangle_distance + triangle_radius; x+=triangle_distance){
       for(var y = 0; y< 400/2 + triangle_distance + triangle_radius; y+=triangle_distance){
           draw_single_background_triangle(200+x,200+y,triangle_radius)
@@ -1150,33 +1167,49 @@ function generate(traits) {
       }
       }
             ctx.lineWidth = line_width;
+    ctx.strokeStyle = "#001131";
     }
-    function draw_circles(rand1,rand2){
+    function draw_circles(rand1,rand2, rand3,color,color2){
+            ctx.fillStyle = color
+      ctx.strokeStyle = color2;
+      if(rand3> 0.5){
+        function fill(){
+          ctx.fill();
+        }
+        console.log('fill');
+      }else{
+         function fill(){
+         }
+        console.log('nofill');
+      }
+
       let circle_distance =15+ 40*rand1
       let circle_radius = 15+40*rand2
             ctx.lineWidth = 1;
           ctx.beginPath()
           ctx.arc(200,200,circle_radius, 0*Math.PI,2*Math.PI)
-          ctx.stroke()
+          ctx.stroke();fill();
       for(var x = 0; x< 400/2 + circle_distance + circle_radius; x+=circle_distance){
       for(var y = 0; y< 400/2 + circle_distance + circle_radius; y+=circle_distance){
           ctx.beginPath()
           ctx.arc(200+x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
-          ctx.stroke()
+          ctx.stroke();fill();
           ctx.beginPath()
           ctx.arc(200+x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
-          ctx.stroke()
+          ctx.stroke();fill();
           ctx.beginPath()
           ctx.arc(200-x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
-          ctx.stroke()
+          ctx.stroke();fill();
           ctx.beginPath()
           ctx.arc(200-x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
-          ctx.stroke()
+          ctx.stroke();fill();
       }
       }
             ctx.lineWidth = line_width;
+    ctx.strokeStyle = "#001131";
     }
-    function draw_grid(rand1,rand2){
+    function draw_grid(rand1,rand2, color){
+            ctx.strokeStyle = color
             ctx.lineWidth = 1;
             var line_distance = rand1*100+5
           var skew = 0
@@ -1193,8 +1226,10 @@ function generate(traits) {
               ctx.closePath()
             }
             ctx.lineWidth = line_width;
+            ctx.strokeStyle = "#001131";
     }
-    function draw_rhombus(rand1,rand2){
+    function draw_rhombus(rand1,rand2, color){
+            ctx.strokeStyle = color
             ctx.lineWidth = 1;
             var line_distance = rand1*50+10
           var skew = 20+300*rand2
@@ -1211,6 +1246,7 @@ function generate(traits) {
               ctx.closePath()
             }
             ctx.lineWidth = line_width;
+            ctx.strokeStyle = "#001131";
     }
     function draw_background() {
         const background = traits['Background']
@@ -1227,26 +1263,26 @@ function generate(traits) {
                 centerShift_x, centerShift_y, width * ratio, height * ratio);
 
         } else if (background == "Ripple") {
-            drawRipple(traits['Ripple Color']);
+            drawRipple(traits['background_color_1']);
             animate = true
         } else {
-            ctx.fillStyle = traits['Ripple Color']
+            ctx.fillStyle = traits['background_color_1']
             ctx.fillRect(0, 0, c.width, c.height);
           if(traits['Background'] == "Graph Paper"){
-            draw_grid(traits['background_rand_1'],traits['background_rand_2'])
+            draw_grid(traits['background_rand_1'],traits['background_rand_2'], traits['background_color_2'])
           }
           if(traits['Background'] == "Rhombus"){
-            draw_rhombus(traits['background_rand_1'],traits['background_rand_2'])
+            draw_rhombus(traits['background_rand_1'],traits['background_rand_2'], traits['background_color_2'])
           }
           if(traits['Background'] == "Circles"){
-            draw_circles(traits['background_rand_1'],traits['background_rand_2'])
+            draw_circles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_3'],traits['background_color_2'], traits['background_color_3'])
           }
           if(traits['Background'] == "Triangles"){
-            draw_triangles(traits['background_rand_1'],traits['background_rand_2'])
+            draw_triangles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_3'],traits['background_color_2'], traits['background_color_3'])
           }
           if(traits['Background'] == "Circles And Triangles"){
-            draw_circles(traits['background_rand_1'],traits['background_rand_2'])
-            draw_triangles(traits['background_rand_1'],traits['background_rand_2'])
+            draw_circles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_3'],traits['background_color_2'], traits['background_color_3'])
+            draw_triangles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_4'],traits['background_color_2'], traits['background_color_3'])
           }
         }
     }
@@ -1535,6 +1571,7 @@ function run(seed, homepage_loop_inner) {
 
 
   const traits = build_traits(seed)
+  console.log(traits)
   c = document.getElementById("canvas");
   ctx = c.getContext("2d");
 
