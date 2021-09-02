@@ -5,7 +5,11 @@ if (seed === undefined) {
 }
 
 
+      let circle_distance =15+ 40*Math.random();
+      let circle_radius = 15+40*Math.random();
 
+      let triangle_distance =15+ 40*Math.random();
+      let triangle_radius = 15+40*Math.random();
 
 var background_image = new Image();
 
@@ -1116,6 +1120,80 @@ function generate(traits) {
         ctx.lineWidth = 4;
     }
 
+
+  function draw_single_background_triangle(x,y,r){
+    const x1 = x -  r*Math.sqrt(3)/3
+    const y1 = y +  r*Math.sqrt(3)/3
+
+    const x2 = x
+    const y2 = y -  r*Math.sqrt(3)/3
+
+    const x3 = x +  r*Math.sqrt(3)/3 
+    const y3 = y +  r*Math.sqrt(3)/3
+    ctx.beginPath()
+    ctx.moveTo(x1,y1)
+    ctx.lineTo(x2,y2)
+    ctx.lineTo(x3,y3)
+    ctx.closePath()
+    ctx.stroke()
+  }
+
+    function draw_triangles(){
+            ctx.lineWidth = 1;
+          ctx.beginPath()
+          draw_single_background_triangle(200,200,triangle_radius)
+          ctx.stroke()
+      for(var x = 0; x< 400/2 + triangle_distance + triangle_radius; x+=triangle_distance){
+      for(var y = 0; y< 400/2 + triangle_distance + triangle_radius; y+=triangle_distance){
+          draw_single_background_triangle(200+x,200+y,triangle_radius)
+          draw_single_background_triangle( 200+x,200-y,triangle_radius)
+          draw_single_background_triangle( 200-x,200+y,triangle_radius)
+          draw_single_background_triangle(200-x,200-y,triangle_radius)
+      }
+      }
+            ctx.lineWidth = line_width;
+    }
+    function draw_circles(){
+            ctx.lineWidth = 1;
+          ctx.beginPath()
+          ctx.arc(200,200,circle_radius, 0*Math.PI,2*Math.PI)
+          ctx.stroke()
+      for(var x = 0; x< 400/2 + circle_distance + circle_radius; x+=circle_distance){
+      for(var y = 0; y< 400/2 + circle_distance + circle_radius; y+=circle_distance){
+          ctx.beginPath()
+          ctx.arc(200+x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
+          ctx.stroke()
+          ctx.beginPath()
+          ctx.arc(200+x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
+          ctx.stroke()
+          ctx.beginPath()
+          ctx.arc(200-x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
+          ctx.stroke()
+          ctx.beginPath()
+          ctx.arc(200-x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
+          ctx.stroke()
+      }
+      }
+            ctx.lineWidth = line_width;
+    }
+    function draw_grid(){
+            ctx.lineWidth = 1;
+            var line_distance = 20
+          var skew = 100;
+            for(var x = -skew ; x < 400+skew; x += line_distance){
+              ctx.beginPath()
+              ctx.moveTo(x,0)
+              ctx.lineTo(x+skew,400)
+              ctx.stroke()
+              ctx.closePath()
+              ctx.beginPath()
+              ctx.moveTo(0,x)
+              ctx.lineTo(400,x+skew)
+              ctx.stroke()
+              ctx.closePath()
+            }
+            ctx.lineWidth = line_width;
+    }
     function draw_background() {
         const background = traits['Background Color']
         if (images[background]) {
@@ -1136,6 +1214,9 @@ function generate(traits) {
         } else {
             ctx.fillStyle = background
             ctx.fillRect(0, 0, c.width, c.height);
+            //draw_grid()
+            //draw_circles()
+            //draw_triangles()
         }
     }
 

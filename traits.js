@@ -231,6 +231,31 @@ function getColorPalette() {
   return get_probabilities(color_probabilities);
 }
 
+const backgrounds = {
+  "Worm Hole" : 0.1,
+  "Money":0.25,
+  "Saturn":0.25,
+  "Moon Landing":0.25,
+  "Cryptos":0.5,
+  "Matrix":0.5,
+  "Space Lambo":0.5,
+  "Railway":0.5,
+  "Bitcoin":0.75,
+  "American Flag":0.75,
+  "Mount Rushmore":0.75,
+  "Manhattan Bridge" : 1.0,
+  "Bokeh":1.0,
+  "Rainbow":3,
+  "Galaxy":3,
+  "Pizza":3,
+  "Ripple":3,
+  "Graph Paper":10,
+  "Rhombus":10,
+  "Circles":10,
+  "Triangles":10,
+  "Circles And Triangles":10,
+  "Normal":5
+}
 
 function getCrazyRandomBackground() {
   const randnum = random(); 
