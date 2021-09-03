@@ -1241,18 +1241,35 @@ function generate(traits) {
             ctx.lineWidth = 1;
             var line_distance = rand1*100+5
           var skew = 0
-            for(var x = -skew ; x < 400+skew; x += line_distance){
+            for(var y = 200;  y < 400+line_distance; y += line_distance){
               ctx.beginPath()
-              ctx.moveTo(x,0)
-              ctx.lineTo(x+skew,400)
-              ctx.stroke()
-              ctx.closePath()
-              ctx.beginPath()
-              ctx.moveTo(0,x)
-              ctx.lineTo(400,x+skew)
+              ctx.moveTo(0,y)
+              ctx.lineTo(400,y)
               ctx.stroke()
               ctx.closePath()
             }
+            for(var y = 200-line_distance;  y > 0 ;  y -= line_distance){
+              ctx.beginPath()
+              ctx.moveTo(0,y)
+              ctx.lineTo(400,y)
+              ctx.stroke()
+              ctx.closePath()
+            }
+            for(var x = 200;  x < 400+line_distance; x += line_distance){
+              ctx.beginPath()
+              ctx.moveTo(x,0)
+              ctx.lineTo(x,400)
+              ctx.stroke()
+              ctx.closePath()
+            }
+            for(var x = 200-line_distance;  x > 0 ;  x -= line_distance){
+              ctx.beginPath()
+              ctx.moveTo(x,0)
+              ctx.lineTo(x,400)
+              ctx.stroke()
+              ctx.closePath()
+            }
+          
             ctx.lineWidth = line_width;
             ctx.strokeStyle = "#001131";
     }
