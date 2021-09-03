@@ -1155,16 +1155,18 @@ function generate(traits) {
             ctx.fillStyle = color
       ctx.strokeStyle = color2;
             ctx.lineWidth = 1;
-          ctx.beginPath()
+       /*   ctx.beginPath()
           draw_single_background_triangle(200,200,triangle_radius)
           ctx.stroke();fill()
+          */
       for(var x = 0; x< 400/2 + triangle_distance + triangle_radius; x+=triangle_distance){
-      for(var y = 0; y< 400/2 + triangle_distance + triangle_radius; y+=triangle_distance){
-          draw_single_background_triangle(200+x,200+y,triangle_radius)
-          draw_single_background_triangle( 200+x,200-y,triangle_radius)
-          draw_single_background_triangle( 200-x,200+y,triangle_radius)
-          draw_single_background_triangle(200-x,200-y,triangle_radius)
-      }
+        for(var y = 0; y< 400 + triangle_distance + triangle_radius; y+=triangle_distance){
+            draw_single_background_triangle(200+x,y,triangle_radius)
+            //draw_single_background_triangle( 200+x,200-y,-triangle_radius)
+            if(x!=0)
+            draw_single_background_triangle( 200-x,y,triangle_radius)
+            //draw_single_background_triangle(200-x,200-y,-triangle_radius)
+        }
       }
             ctx.lineWidth = line_width;
     ctx.strokeStyle = "#001131";
@@ -1189,17 +1191,43 @@ function generate(traits) {
           ctx.beginPath()
           ctx.arc(200,200,circle_radius, 0*Math.PI,2*Math.PI)
           ctx.stroke();fill();
-      for(var x = 0; x< 400/2 + circle_distance + circle_radius; x+=circle_distance){
-      for(var y = 0; y< 400/2 + circle_distance + circle_radius; y+=circle_distance){
+
+          for(var x = circle_distance; x< 400/2 + circle_distance + circle_radius; x+=circle_distance){
+              var y = 0;
+              ctx.beginPath()
+              ctx.arc(200+x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
+              ctx.stroke();fill();
+              ctx.beginPath()
+              ctx.arc(200-x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
+              ctx.stroke();fill();
+
+          }
+          for(var y = circle_distance; y< 400/2 + circle_distance + circle_radius; y+=circle_distance){
+            var x = 0;
+            ctx.beginPath()
+            ctx.arc(200+x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
+            ctx.stroke();fill();
+            ctx.beginPath()
+            ctx.arc(200-x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
+            ctx.stroke();fill();
+        }
+
+    
+      for(var x = circle_distance; x< 400/2 + circle_distance + circle_radius; x+=circle_distance){
+      for(var y = circle_distance; y< 400/2 + circle_distance + circle_radius; y+=circle_distance){
           ctx.beginPath()
           ctx.arc(200+x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
           ctx.stroke();fill();
+          
           ctx.beginPath()
           ctx.arc(200+x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
           ctx.stroke();fill();
+          
+
           ctx.beginPath()
           ctx.arc(200-x,200+y,circle_radius, 0*Math.PI,2*Math.PI)
           ctx.stroke();fill();
+
           ctx.beginPath()
           ctx.arc(200-x,200-y,circle_radius, 0*Math.PI,2*Math.PI)
           ctx.stroke();fill();
@@ -1232,7 +1260,7 @@ function generate(traits) {
             ctx.strokeStyle = color
             ctx.lineWidth = 1;
             var line_distance = rand1*50+10
-          var skew = 20+300*rand2
+          var skew = line_distance* Math.sqrt(2+2*Math.cos(rand2*Math.PI*2))
             for(var x = -skew ; x < 400+skew; x += line_distance){
               ctx.beginPath()
               ctx.moveTo(x,0)
@@ -1281,9 +1309,16 @@ function generate(traits) {
             draw_triangles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_3'],traits['background_color_2'], traits['background_color_3'])
           }
           if(traits['Background'] == "Circles And Triangles"){
-            draw_circles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_3'],traits['background_color_2'], traits['background_color_3'])
-            draw_triangles(traits['background_rand_1'],traits['background_rand_2'], traits['background_rand_4'],traits['background_color_2'], traits['background_color_3'])
-          }
+
+            if(traits['background_rand_7'] > 0.5){
+                draw_circles(traits['background_rand_1'],traits['background_rand_2'], 1,traits['background_color_2'], traits['background_color_3'])
+                draw_triangles(traits['background_rand_4'],traits['background_rand_5'], 0,traits['background_color_2'], traits['background_color_3'])
+                  }else{
+                    draw_triangles(traits['background_rand_4'],traits['background_rand_5'], 1,traits['background_color_2'], traits['background_color_3'])
+                    draw_circles(traits['background_rand_1'],traits['background_rand_2'], 0,traits['background_color_2'], traits['background_color_3'])
+                  }
+              }
+
         }
     }
 

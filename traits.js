@@ -111,6 +111,9 @@ function build_traits(seed){
   data['background_rand_2'] = random()
   data['background_rand_3'] = random()
   data['background_rand_4'] = random()
+  data['background_rand_5'] = random()
+  data['background_rand_6'] = random()
+  data['background_rand_7'] = random()
   
   const animation =  get_probabilities(animation_probabilities);
   data['Animation'] =animation;
@@ -254,8 +257,8 @@ const backgrounds = {
   "Galaxy":3,
   "Pizza":3,
   "Ripple":3,
-  "Graph Paper":10,
-  "Rhombus":10,
+  "Graph Paper":5,
+  "Rhombus":5,
   "Circles":10,
   "Triangles":10,
   "Circles And Triangles":10,
