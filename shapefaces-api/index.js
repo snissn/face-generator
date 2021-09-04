@@ -36,7 +36,7 @@ app.get('/:tokenid',  async (req, res) =>  {
   }
   for(var key in traits_dict){
     const value = traits_dict[key]
-    if(key.split("Eyebrow").length > 1 ||  value.split("#").length > 1){
+    if(key.split("Eyebrow").length > 1 ||key.split("_").length > 1 ||  value.split("#").length > 1){
       continue;
     }
     traits_array.push({"trait_type":key,"value":value})
