@@ -102,10 +102,18 @@ function build_traits(seed){
   if(data['Nose'] == 'Triangle' || data['Nose'] == "3D Triangle"){
     data['Nose Color'] = getRandomBackground()
   }
-  data['Background Color'] = getCrazyRandomBackground()
-  if(data['Background Color'] == "Ripple"){
-    data['Ripple Color'] = getRandomBackground();
-  }
+  data['Background'] = get_probabilities(backgrounds)
+  const three_backgrounds = get3RandomBackgrounds()
+  data['background_color_1'] = three_backgrounds[0]
+  data['background_color_2'] = three_backgrounds[1]
+  data['background_color_3'] = three_backgrounds[2]
+  data['background_rand_1'] = random()
+  data['background_rand_2'] = random()
+  data['background_rand_3'] = random()
+  data['background_rand_4'] = random()
+  data['background_rand_5'] = random()
+  data['background_rand_6'] = random()
+  data['background_rand_7'] = random()
   
   const animation =  get_probabilities(animation_probabilities);
   data['Animation'] =animation;
@@ -231,6 +239,31 @@ function getColorPalette() {
   return get_probabilities(color_probabilities);
 }
 
+const backgrounds = {
+  "Worm Hole" : 0.1,
+  "Money":0.25,
+  "Saturn":0.25,
+  "Moon Landing":0.25,
+  "Cryptos":0.5,
+  "Matrix":0.5,
+  "Space Lambo":0.5,
+  "Railway":0.5,
+  "Bitcoin":0.75,
+  "American Flag":0.75,
+  "Mount Rushmore":0.75,
+  "Manhattan Bridge" : 1.0,
+  "Bokeh":1.0,
+  "Rainbow":3,
+  "Galaxy":3,
+  "Pizza":3,
+  "Ripple":3,
+  "Graph Paper":5,
+  "Rhombus":5,
+  "Circles":10,
+  "Triangles":10,
+  "Circles And Triangles":10,
+  "Normal":5
+}
 
 function getCrazyRandomBackground() {
   const randnum = random(); 
@@ -282,6 +315,10 @@ function getRandomEyeColor() {
     return ret;
 }
 
+function get3RandomBackgrounds() {
+  const shuffled = colors.sort(() => 0.5 - random());
+  return shuffled.slice(0, 3);
+}
 function getRandomBackground() {
     return colors[Math.floor(random() * colors.length)];
 }
