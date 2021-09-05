@@ -315,8 +315,28 @@ function getRandomEyeColor() {
     return ret;
 }
 
+function shuffle(arr) { // randomly rearanges the items in an array
+  const result = [];
+  for (let i = arr.length-1; i >= 0; i--) {
+    // picks an integer between 0 and i:
+    const r = Math.floor(random()*(i+1));   // NOTE: use a better RNG if cryptographic security is needed
+    // inserts the arr[i] element in the r-th free space in the shuffled array:
+    for(let j = 0, k = 0; j <= arr.length-1; j++) {
+      if(result[j] === undefined) {
+        if(k === r) {
+          result[j] = arr[i];    // NOTE: if array contains objects, this doesn't clone them! Use a better clone function instead, if that is needed.
+          break;
+        }
+        k++;
+      }
+    }
+  }
+  return result;
+}
+
 function get3RandomBackgrounds() {
-  const shuffled = colors.sort(() => 0.5 - random());
+  const shuffled = shuffle(colors);
+  console.log(shuffled);
   return shuffled.slice(0, 3);
 }
 function getRandomBackground() {
@@ -362,7 +382,7 @@ function build_male_face(){
    if(randnum < 0.35){
     return "Medium Circle"
   } else if(randnum >= .33 && randnum < .35){
-    var side = Math.floor(Math.random() * 2);
+    var side = Math.floor(random() * 2);
     if (side == 1){
       return "Trapezoid"
     }else {
