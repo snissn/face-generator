@@ -84,6 +84,13 @@ function generate(traits) {
     } else {
         draw_face_female()
         draw_eyes_female()
+      if(traits['Head']=="Crown"){
+        draw_crown();
+      }
+      if(traits['Head']=="Halo"){
+        draw_halo();
+      }
+
     }
     draw_nose()
     draw_mouth()
@@ -233,6 +240,14 @@ function generate(traits) {
             draw_top_hat(traits["Hat Color"])
 
         }
+        if (head == "Halo") {
+            draw_halo(traits["Hat Color"])
+
+        }
+        if (head == "Crown") {
+            draw_crown(traits["Hat Color"])
+
+        }
         if (head == "Bald") {
 
         }
@@ -329,6 +344,94 @@ function generate(traits) {
 
     }
 
+    function draw_halo() {
+        ctx.strokeStyle = "yellow";
+      ctx.lineWidth=8
+        ctx.beginPath()
+        ellipse(200, 25, 85, 18, 00, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.closePath();
+
+
+
+    ctx.strokeStyle = "white"
+      ctx.lineWidth=1
+        ctx.beginPath()
+        ellipse(200, 25, 85-4, 18-4, 00, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.closePath();
+
+        ctx.beginPath()
+        ellipse(200, 25, 85+4, 18+4, 00, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.closePath();
+
+
+    ctx.strokeStyle = "#001131";
+
+    ctx.lineWidth = line_width;
+    }
+    function draw_crown() {
+        ctx.fillStyle = "gold";
+        ctx.beginPath()
+        moveTo(170, 95);
+        lineTo(230, 95);
+        lineTo(230, 55);
+        lineTo(220, 70);
+
+        lineTo(210, 55);
+
+        lineTo(200, 70);
+        lineTo(190, 55);
+        lineTo(180, 70);
+        lineTo(170, 55);
+        lineTo(170, 95);
+        ctx.fill();
+        ctx.closePath()
+        ctx.stroke()
+      ctx.beginPath()
+
+      ctx.fillStyle="yellow"
+        moveTo(210, 85);
+        lineTo(215, 80);
+        lineTo(210, 75);
+        lineTo(205, 80);
+        lineTo(210, 85);
+        ctx.fill();
+        ctx.closePath()
+
+
+      ctx.beginPath()
+      ctx.fillStyle="red"
+        moveTo(190, 85);
+        lineTo(195, 80);
+        lineTo(190, 75);
+        lineTo(185, 80);
+        lineTo(190, 85);
+        ctx.fill();
+        ctx.closePath()
+
+
+      ctx.beginPath()
+      ctx.fillStyle="blue"
+        moveTo(230+2, 85);
+        lineTo(40+190+2, 75);
+        lineTo(40+185, 80);
+        lineTo(40+190+2, 85);
+        ctx.fill();
+        ctx.closePath()
+
+      ctx.beginPath()
+      ctx.fillStyle="blue"
+        moveTo(190-20, 85);
+        lineTo(-20+195, 80);
+        lineTo(-20+190-2, 75);
+        lineTo(-20+190-2, 85);
+        ctx.fill();
+        ctx.closePath()
+
+
+    }
     function draw_chefs_hat() {
         ctx.fillStyle = "white";
         ctx.beginPath()

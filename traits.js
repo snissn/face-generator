@@ -62,7 +62,7 @@ function build_traits(seed){
 
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
-    data['Head'] = "Big Hair"
+    data['Head'] = build_female_hair()
     data['Face'] = build_female_face()
     data['Hair Color'] = getRandomEyeColor()
 
@@ -442,32 +442,32 @@ function build_eye(){
 
 function build_gender(){
   const randnum = random();
-  if(randnum < 0.25){
+  if(randnum < 0.35){
     return "Female"
   }else{
     return "Male"
   }
 }
 
+var head_traits = {
+  "Left Swoop":25,
+  "Right Swoop":25,
+  "Left Swirl":20.5,
+  "Right Swirl":20.5,
+  "Fedora":5,
+  "Top Hat":1.5,
+  "Chefs Hat":2,
+  "Bald":3,
+  "Crown":1,
+  "Halo":0.8
+}
+
+function build_female_hair(){
+  return get_probabilities({"Big Hair":99, "Crown":1, "Halo":0.8})
+}
+
 function build_male_hair(){
-  const randnum = random();
-  if(randnum < 0.25){
-    return "Left Swoop"
-  }else if(randnum >= 0.25 && randnum < 0.5){
-    return "Right Swoop"
-  }else if(randnum >= 0.5 && randnum < 0.705){
-    return "Left Swirl"
-  }else if(randnum >= 0.705 && randnum < 0.91){
-    return "Right Swirl"
-  }else if(randnum >= 0.91 && randnum < 0.96){
-    return "Fedora"
-  }else if(randnum >= 0.96 && randnum < 0.97){
-    return "Chefs Hat"
-  }else if(randnum >= 0.97 && randnum < 0.98){
-    return "Top Hat"
-  }else if(randnum >= 0.98 ){
-    return "Bald"
-  }
+  return get_probabilities(head_traits);
 }
 class RND {
      constructor(seed) {
