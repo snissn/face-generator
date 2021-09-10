@@ -663,7 +663,7 @@ function generate(traits) {
         if (eyes == "Circle") {
             draw_circle_eyes_female(color)
         }
-        if (eyes == "Square" || eyes == "Hexagon" || eyes == "Polygon" || eyes == "Hearts") {
+        if (eyes == "Square")
             draw_square_eyes_female(color)
         }
     }

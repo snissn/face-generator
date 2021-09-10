@@ -62,9 +62,10 @@ function build_traits(seed){
 
   data['Gender'] = build_gender()
   if(data['Gender'] == "Female"){
-    data['Head'] = "Big Hair"
+    data['Head'] = build_female_hair()
     data['Face'] = build_female_face()
     data['Hair Color'] = getRandomEyeColor()
+    data['Eye'] = build_female_eye()
 
   }else{
     data['Head'] = build_male_hair()
@@ -72,8 +73,8 @@ function build_traits(seed){
       data['Hat Color'] = getRandomBackground()
     }
     data['Face'] = build_male_face()
+    data['Eye'] = build_eye()
   }
-  data['Eye'] = build_eye()
   if (data["Face"] == "Polygon"){
     data['Polygon Face Sides'] = build_face_polygon();
    }
@@ -153,26 +154,20 @@ function random(){
   return r.rb(0, 1);
 }
 
-function  build_face_polygon(){
-  const randnum = random();
-  if (randnum < (1/8)){
-    return 5;
-  }else if (randnum < (2/8) && randnum > (1/8)){
-    return 6;
-  } else if (randnum < (3/8) && randnum > (2/8)){
-    return 7;
-  }else if (randnum < (4/8) && randnum > (3/8)){
-    return 8;
-  }else if (randnum < (5/8) && randnum > (4/8)){
-    return 9;
-  }else if (randnum < (6/8) && randnum > (5/8)){
-    return 10;
-  }else if (randnum < (7/8) && randnum > (6/8)){
-    return 11;
-  }else {
-    return 12;
-  }
 
+polygon_sides_rarity = {
+  5:5,
+  6:6,
+  7:7,
+  8:8,
+  9:9,
+  10:10,
+  11:11,
+  12:12
+}
+
+function  build_face_polygon(){
+  return get_probabilities(polygon_sides_rarity);
 }
 
 function build_left_eyebrow(){
@@ -442,32 +437,35 @@ function build_eye(){
 
 function build_gender(){
   const randnum = random();
-  if(randnum < 0.25){
+  if(randnum < 0.35){
     return "Female"
   }else{
     return "Male"
   }
 }
 
+var head_traits = {
+  "Left Swoop":25,
+  "Right Swoop":25,
+  "Left Swirl":20.5,
+  "Right Swirl":20.5,
+  "Fedora":5,
+  "Top Hat":1.5,
+  "Chefs Hat":2,
+  "Bald":3,
+  "Crown":1,
+  "Halo":0.8
+}
+
+function build_female_eye(){
+  return get_probabilities({"Circle":50, "Square":50})
+}
+function build_female_hair(){
+  return get_probabilities({"Big Hair":99, "Crown":1, "Halo":0.8})
+}
+
 function build_male_hair(){
-  const randnum = random();
-  if(randnum < 0.25){
-    return "Left Swoop"
-  }else if(randnum >= 0.25 && randnum < 0.5){
-    return "Right Swoop"
-  }else if(randnum >= 0.5 && randnum < 0.705){
-    return "Left Swirl"
-  }else if(randnum >= 0.705 && randnum < 0.91){
-    return "Right Swirl"
-  }else if(randnum >= 0.91 && randnum < 0.96){
-    return "Fedora"
-  }else if(randnum >= 0.96 && randnum < 0.97){
-    return "Chefs Hat"
-  }else if(randnum >= 0.97 && randnum < 0.98){
-    return "Top Hat"
-  }else if(randnum >= 0.98 ){
-    return "Bald"
-  }
+  return get_probabilities(head_traits);
 }
 class RND {
      constructor(seed) {

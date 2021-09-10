@@ -65,6 +65,7 @@ function build_traits(seed){
     data['Head'] = build_female_hair()
     data['Face'] = build_female_face()
     data['Hair Color'] = getRandomEyeColor()
+    data['Eye'] = build_female_eye()
 
   }else{
     data['Head'] = build_male_hair()
@@ -72,8 +73,8 @@ function build_traits(seed){
       data['Hat Color'] = getRandomBackground()
     }
     data['Face'] = build_male_face()
+    data['Eye'] = build_eye()
   }
-  data['Eye'] = build_eye()
   if (data["Face"] == "Polygon"){
     data['Polygon Face Sides'] = build_face_polygon();
    }
@@ -153,26 +154,20 @@ function random(){
   return r.rb(0, 1);
 }
 
-function  build_face_polygon(){
-  const randnum = random();
-  if (randnum < (1/8)){
-    return 5;
-  }else if (randnum < (2/8) && randnum > (1/8)){
-    return 6;
-  } else if (randnum < (3/8) && randnum > (2/8)){
-    return 7;
-  }else if (randnum < (4/8) && randnum > (3/8)){
-    return 8;
-  }else if (randnum < (5/8) && randnum > (4/8)){
-    return 9;
-  }else if (randnum < (6/8) && randnum > (5/8)){
-    return 10;
-  }else if (randnum < (7/8) && randnum > (6/8)){
-    return 11;
-  }else {
-    return 12;
-  }
 
+polygon_sides_rarity = {
+  5:5,
+  6:6,
+  7:7,
+  8:8,
+  9:9,
+  10:10,
+  11:11,
+  12:12
+}
+
+function  build_face_polygon(){
+  return get_probabilities(polygon_sides_rarity);
 }
 
 function build_left_eyebrow(){
@@ -462,6 +457,9 @@ var head_traits = {
   "Halo":0.8
 }
 
+function build_female_eye(){
+  return get_probabilities({"Circle":50, "Square":50})
+}
 function build_female_hair(){
   return get_probabilities({"Big Hair":99, "Crown":1, "Halo":0.8})
 }
