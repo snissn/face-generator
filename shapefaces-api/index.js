@@ -21,9 +21,11 @@ function getscreenshot(url){
 app.get('/favicon.ico',  async (req, res) =>  {
   res.json({});
 })
-app.get('/:tokenid',  async (req, res) =>  {
+
+app.get('/:address/:tokenid',  async (req, res) =>  {
     const tokenID = req.params.tokenid;
-  const seed = await chain.getSeed(tokenID);
+    const address = req.params.address;
+  const seed = await chain.getSeed(address,tokenID);
   const traits_array = []
   const traits_dict = traits.build_traits(seed);
   delete traits_dict['y_speed']
