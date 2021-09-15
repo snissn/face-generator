@@ -41,7 +41,7 @@ let colors_palletes = {
   "Dark":[  "#FF6600", "#363E40", "#5E6D70", "#424E4F", "#1B1D1E"],
   "Emerald": [  "#04D94F", "#02590F", "#99F280", "#6CBF45", "#F2F2F2"],
   "Gold":[  "#F2CE1B", "#D9A91A", "#BF8211", "#D9B36C", "#A6600A"],
-  "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF", "#9F6EFA"],
+  "Light":[  "#FCFCFC", "#E6E6E6", "#BFBFBF", "#EAEDEF"],
   "Monochrome":[  "#595956", "#8C8C88", "#F2F2F2", "#D9D8D7", "#A3A3A3"],
   "Neon": ["#4deeea", "#74ee15", '#fcfc35',"#f000ff", '#009fff','#0eff06','#40feff'],
   "Purp": [  "#A75CF2", "#C4A2F2", "#280673", "#4B1DF2", "#2C0AA6"],

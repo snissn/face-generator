@@ -6,7 +6,7 @@ const app = express();
 const chain = require("./chain")
 
 const traits = require("./traits")
-const description = "Shape Faces is a generative block chain based art project. Shape Faces is an artistic study of what happens when we start with the fundamental building blocks of reality - Shapes and build up from those shapes a unique yet recognizable view of humanity."
+const description = "Shape Faces is a generative blockchain based art project constructing backgrounds and beings using fundamental geometric building blocks. Mathematical objects are the fundamental building blocks of our physical reality, and geometric shapes make up the background and foreground of Shape Faces NFTs. Shape Faces builds and conjures exciting and personable backgrounds and characters from the mathematical void of empty space and geometry."
 
 function getscreenshot(url){
   var options = {
