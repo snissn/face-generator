@@ -3,7 +3,7 @@ async function get_mint_count(){
   const contract = get_contract()
   const contractsigner = contract.connect(provider)
   const x=  await contractsigner.getMintCount();
-  document.getElementById("sales").innerHTML=x.toString()
+  document.getElementById("sales").innerHTML=977-x.toString()
   
 }
 
