@@ -156,9 +156,9 @@ function random(){
 
 
 polygon_sides_rarity = {
-  5:5,
-  6:6,
-  7:7,
+  5:2,
+  6:4,
+  7:6,
   8:8,
   9:9,
   10:10,
