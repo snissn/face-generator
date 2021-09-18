@@ -1,0 +1,12 @@
+html{
+  background-size: 120px 120px;
+  background-image:
+    linear-gradient(to right, #001131 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, #001131 0.5px, transparent 0.5px);
+  }
+
+  p,h1,h2,h3,h4,ul, .box{
+    background-color:white;
+    border: #001131 1px solid;
+    padding:40px !important;
+  }
