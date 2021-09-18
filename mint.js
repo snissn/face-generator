@@ -1,3 +1,4 @@
+var error;
 async function get_mint_count(){
   const provider = new ethers.providers.InfuraProvider(null,'6851b8e47b8b40e8bc174d3dae71a9a2')
   const contract = get_contract()
@@ -24,7 +25,12 @@ console.log("amount",amount)
           value: ethers.utils.parseEther((0.029*amount).toFixed(4)+"")
         }
         console.log(overrides)
-        contractsigner.mint(amount, overrides)
+        try{
+          await contractsigner.mint(amount, overrides)
+          alert("Success!")
+        }catch(e){
+          alert(e.reason);
+        }
       }else{
         alert("Choose a value for the amount of ShapeFaces you would like to mint")
       }
