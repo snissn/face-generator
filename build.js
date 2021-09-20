@@ -1375,6 +1375,7 @@ function generate(traits) {
           
             ctx.lineWidth = line_width;
             ctx.strokeStyle = "#001131";
+              ctx.beginPath()
     }
     function draw_rhombus(rand1,rand2, color){
             ctx.strokeStyle = color
