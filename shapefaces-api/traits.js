@@ -74,16 +74,13 @@ function build_traits(seed){
     }
     data['Face'] = build_male_face()
     data['Eye'] = build_eye()
+    if (data["Face"] == "Polygon"){
+      data['Polygon Face Sides'] = build_face_polygon();
+     }
+    if (data['Eye'] == "Polygon"){
+      data['Polygon Eyes Sides'] = build_face_polygon();
+      }
   }
-  if (data["Face"] == "Polygon"){
-    data['Polygon Face Sides'] = build_face_polygon();
-   }
-
-
-  
-  if (data['Eye'] == "Polygon"){
-    data['Polygon Eyes Sides'] = build_face_polygon();
-    }
   
 
   data['Mouth'] = build_mouth()
@@ -133,6 +130,11 @@ function build_traits(seed){
       data[ 'x_speed'] = Math.abs( data[ 'y_speed'] )
     }
   }
+  if(data['Gender'] == "Female"){
+    if (data["Face"] == "Polygon"){
+      data['Polygon Face Sides'] = build_face_polygon();
+     }
+  }
   return data
   
 }
@@ -156,9 +158,9 @@ function random(){
 
 
 polygon_sides_rarity = {
-  5:5,
-  6:6,
-  7:7,
+  5:2,
+  6:4,
+  7:6,
   8:8,
   9:9,
   10:10,
@@ -362,14 +364,17 @@ function build_nose_normal(data){
   return get_probabilities(nose_probabilities);
 }
 
+var female_face = {
+  "Small Circle": 15,
+  "Medium Circle": 15,
+  "Polygon": 60,
+  "Diamond": 10,
+  "No Face": 2
+
+}
 
 function build_female_face(){
-  const randnum = random();
-  if(randnum < 0.20){
-    return "Small Circle"
-  }else{
-    return "Medium Circle"
-  }
+  return get_probabilities(female_face);
 }
 
 function build_male_face(){

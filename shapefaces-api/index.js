@@ -53,7 +53,7 @@ app.get('/:address/:tokenid',  async (req, res) =>  {
     "tokenID":tokenID,
     "seed":seed,
     "animation_url":"https://shapefaces.com/build.html#"+seed,
-    "image":getscreenshot("https://www.shapefaces.com/image.html?seed="+seed+"&version=test_new")
+    "image":getscreenshot("https://www.shapefaces.com/image.html?seed="+seed+"&version=sept-20-2021")
   }
   res.json(data);
 });
