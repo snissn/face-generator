@@ -1449,8 +1449,48 @@ function generate(traits) {
             small_female_face()
         } else if (traits['Face'] == 'Medium Circle') {
             medium_female_face()
+        }else if(traits['Face'] == "Polygon"){
+          female_polygon()
+        }else if (traits['Face'] == "Diamond"){
+          female_diamond();
+        } else if (traits['Face'] == "No Face"){
         }
     }
+
+  function female_diamond(){
+        ctx.fillStyle = traits['Hair Color']
+        rect(25, 20, 350, 285);
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        const color = traits['Face Color']
+        ctx.fillStyle = color
+        var Xsize = 150;
+        var Ysize = 170;
+        var Xcenter = 200;
+        var Ycenter = 200;
+        moveTo(Xcenter, Ycenter - Ysize);
+        lineTo(Xcenter+Xsize,Ycenter)
+        lineTo(Xcenter,Ycenter+Ysize)
+        lineTo(Xcenter-Xsize,Ycenter)
+        lineTo(Xcenter, Ycenter - Ysize);
+        ctx.closePath()
+        ctx.fill()
+        ctx.stroke()
+  }
+  function female_polygon(){
+        ctx.fillStyle = traits['Hair Color']
+        rect(50, 30, 300, 260);
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.beginPath();
+        const color = traits['Face Color']
+
+        ctx.fillStyle = color
+          polygon_face(color)
+      return;
+  }
 
     function small_female_face() {
         ctx.fillStyle = traits['Hair Color']
