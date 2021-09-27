@@ -21,9 +21,17 @@ async function get_shapes(address){
 
 
 async function collection(){
-  await window.ethereum.enable()
-  const address=window.ethereum.selectedAddress
-  document.getElementById("share_button").href=`https://shapefaces.com/share.html?address=${address}`
+  const  params= decodeURI(window.location.search)
+  .replace('?', '')
+  .split('&')
+  .map(param => param.split('='))
+  .reduce((values, [ key, value ]) => {
+    values[ key ] = value
+    return values
+  }, {})
+
+  const address=params.address
+  document.getElementById("address").innerHTML=address.slice(0,8)
   window.ethereum.on('accountsChanged', async function (accounts) {
     await collection()
   })
@@ -41,3 +49,4 @@ async function collection(){
   document.getElementById("sales").innerHTML=977-x.toString()
 
 }
+
