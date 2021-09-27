@@ -16,6 +16,7 @@ async function get_shapes(address){
   const url = `https://api.opensea.io/api/v1/assets?owner=${address}&asset_contract_address=0x8323dcbf8e1e460f8cb5822cb4bf562b44653ded&order_direction=desc&offset=0&limit=20`
   const call = await fetch(url)
   const ret = await call.json()
+  console.log(ret)
   return display_shapes(ret)
 }
 

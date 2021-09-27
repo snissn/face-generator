@@ -1,13 +1,52 @@
-
 window.addEventListener('load', function() {
   collection()
 });
 
 
+function display_traits(traits){
+  var template = ''
+  traits.forEach((data) =>{
+    template += `
+<div class="columns has-text-left	 p-0">
+
+
+  <div class="column p-0">
+
+      <span class="title is-5">
+      ${data.trait_type}:
+      </span>
+  </div>
+  <div class="column p-0">
+      <span class="subtitle is-5">
+
+
+      <span>${data.value}</span>
+      <span>(${data.trait_count})</span>
+      </span>
+  </div>
+     
+      </div>`
+  })
+  return template
+
+}
 function display_shapes(shapes){
   let template=''
   shapes.assets.forEach( (shape) => {
-    template += ` <iframe src="${shape.animation_url}" width=420 height=500></iframe> `
+    const display_trait = display_traits(shape.traits)
+    template += `
+
+<div class="columns has-text-left	 p-0">
+  <div class="column p-0">
+      <iframe src="${shape.animation_url}" width=420 height=500></iframe> 
+  </div>
+  <div class="column p-0 pt-6" style="padding-top:150px !important;">
+      ${display_trait}
+  </div>
+</div>
+
+      `
+  console.log('hi',shape)
   });
   return template
 }
