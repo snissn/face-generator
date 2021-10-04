@@ -17,7 +17,7 @@ function display_shapes(shapes){
       
       
       <div>
-      <a  href="https://opensea.io/assets/0x8323dcbf8e1e460f8cb5822cb4bf562b44653ded/116"  target="_blank"  style="display:inherit;">
+      <a  href="https://opensea.io/assets/0x8323dcbf8e1e460f8cb5822cb4bf562b44653ded/${shape.token_id}"  target="_blank"  style="display:inherit;">
         <span style="color: var(--github); height:30px;">
           <img src="Logomark-Blue.png" style="height:30px"/>
         </span>
