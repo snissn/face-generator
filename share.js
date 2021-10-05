@@ -86,9 +86,11 @@ async function collection(){
 
   const address=params.address
   document.getElementById("address").innerHTML=address.slice(0,8)
+  if(window.ethereum){
   window.ethereum.on('accountsChanged', async function (accounts) {
     await collection()
   })
+  }
 
   const template = await get_shapes(address)
 
