@@ -32,7 +32,7 @@ function display_traits(traits){
 }
 function display_shapes(shapes){
   let template=''
-  shapes.assets.forEach( (shape) => {
+  shapes.forEach( (shape) => {
     const display_trait = display_traits(shape.traits)
     template += `
 
@@ -42,6 +42,11 @@ function display_shapes(shapes){
   </div>
   <div class="column p-0 pt-6" style="padding-top:150px !important;">
       ${display_trait}
+      <a  href="https://opensea.io/assets/0x8323dcbf8e1e460f8cb5822cb4bf562b44653ded/${shape.token_id}"  target="_blank"  style="display:inherit;">
+        <span style="color: var(--github); height:30px;">
+          <img src="Logomark-Blue.png" style="height:30px;border:0;" />
+        </span>
+        </a>
   </div>
 </div>
 
@@ -52,10 +57,20 @@ function display_shapes(shapes){
 }
 
 async function get_shapes(address){
-  const url = `https://api.opensea.io/api/v1/assets?owner=${address}&asset_contract_address=0x8323dcbf8e1e460f8cb5822cb4bf562b44653ded&order_direction=desc&offset=0&limit=50`
-  const call = await fetch(url)
-  const ret = await call.json()
-  return display_shapes(ret)
+  let nfts = []
+  let page=0;
+  const limit = 50
+  while(nfts.length >= page){
+    console.log("while")
+    console.log(page)
+    const url = `https://api.opensea.io/api/v1/assets?owner=${address}&asset_contract_address=0x8323dcbf8e1e460f8cb5822cb4bf562b44653ded&order_direction=desc&offset=${page}&limit=${limit}`
+    const call = await fetch(url)
+    const ret = await call.json()
+    nfts = nfts.concat(ret.assets)
+    page+=limit
+  }
+  let template = display_shapes(nfts)
+  document.getElementById("collection").innerHTML=template
 }
 
 
@@ -77,7 +92,6 @@ async function collection(){
 
   const template = await get_shapes(address)
 
-  document.getElementById("collection").innerHTML=template
   return
 
 
