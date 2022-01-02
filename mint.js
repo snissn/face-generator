@@ -22,7 +22,7 @@ window.addEventListener('load', function() {
 console.log("amount",amount)
       if ( amount > 0 && amount < 11){
         let overrides = {
-          value: ethers.utils.parseEther((0.029*amount).toFixed(4)+"")
+          value: ethers.utils.parseEther((0.000*amount).toFixed(4)+"")
         }
         console.log(overrides)
         try{
