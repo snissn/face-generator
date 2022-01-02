@@ -29,7 +29,7 @@ console.log("amount",amount)
           await contractsigner.mint(amount, overrides)
           alert("Success!")
         }catch(e){
-          alert(e.reason);
+          alert(e.message);
         }
       }else{
         alert("Choose a value for the amount of ShapeFaces you would like to mint")
